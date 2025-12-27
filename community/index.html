@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Community – Runnix</title>
+  <meta name="description" content="Community Runnix: il movimento degli atleti ibridi."/>
+  <link rel="icon" href="/icons/img_logo.png"/>
+
+  <!-- Font + CSS globali -->
+  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css"/>
+
+  <style>
+    :root{
+      --bg:#f5f5f7;            /* stesso sfondo team/contatti */
+      --text:#0D0E10;
+      --muted:rgba(0,0,0,.62);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --border:rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .page{
+      padding:110px 0 140px;
+    }
+
+    /* ===== Hero titolo + sottotitolo ===== */
+    .hero{
+      width:1300px;
+      max-width:calc(100% - 40px);
+      margin:0 auto;
+      text-align:center;
+    }
+    .hero h1{
+      margin:0 0 14px;
+      font-size:clamp(32px,4.8vw,58px);
+      line-height:1.08;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .hero p{
+      margin:0 auto;
+      max-width:820px;
+      font-size:18px;
+      line-height:1.6;
+      color:var(--muted);
+    }
+
+    /* Immagine grande al centro w980 x h600 */
+    .hero-image{
+      width:980px;
+      height:600px;
+      max-width:100%;
+      margin:70px auto 0;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* ===== Sezione blocchi ===== */
+    .blocks{
+      width:980px;
+      max-width:calc(100% - 40px);
+      margin:80px auto 0;
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+    }
+
+    /* Contenitore grande (1 e 4) */
+    .block{
+      width:980px;
+      height:470px;
+      max-width:100%;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr 1fr; /* metà immagine, metà testo */
+    }
+    .block-media{
+      width:100%;
+      height:100%;
+      overflow:hidden;
+    }
+    .block-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .block-text{
+      padding:52px 56px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:left;
+      gap:12px;
+    }
+    .block-text h2{
+      margin:0;
+      font-size:clamp(22px,3.2vw,34px);
+      line-height:1.12;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .block-text p{
+      margin:0;
+      font-size:18px;
+      line-height:1.6;
+      color:var(--muted);
+      max-width:440px;
+    }
+
+    /* alternanza grande: testo a sinistra / a destra */
+    .block.reverse .block-media{ order:2; }
+    .block.reverse .block-text{ order:1; }
+
+    /* (NEW) per card 4: immagine a sinistra e testi a destra su desktop */
+    .block.reverse-desktop .block-media{ order:1; }
+    .block.reverse-desktop .block-text{ order:2; }
+
+    /* ===== Righe con 2 card (contenitori 2-3 e 5-6) ===== */
+    .cards-row{
+      width:980px;
+      max-width:100%;
+      display:flex;
+      justify-content:space-between;
+      gap:30px; /* "lascia un po' di spazio" */
+    }
+
+    /* (NEW) card cliccabile */
+    .mini-card{
+      width:475px;
+      height:450px;
+      max-width:100%;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+
+      cursor:pointer;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .mini-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,0,0,0.14);
+      box-shadow:0 16px 46px rgba(0,0,0,.10);
+    }
+    .mini-card:active{ transform:translateY(-2px); }
+
+    /* per accessibilità: focus visibile quando è <a> */
+    .mini-card:focus-visible{
+      outline:3px solid rgba(0,0,0,.35);
+      outline-offset:4px;
+    }
+
+    .mini-media{
+      width:100%;
+      height:52%;
+      overflow:hidden;
+      background:#f0f0f2;
+    }
+    .mini-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .mini-text{
+      height:48%;
+      padding:26px 26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:left;
+      gap:10px;
+    }
+    .mini-text h3{
+      margin:0;
+      font-size:24px;
+      line-height:1.15;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .mini-text p{
+      margin:0;
+      font-size:16.5px;
+      line-height:1.55;
+      color:var(--muted);
+      max-width:380px;
+    }
+
+    /* (NEW) rendi l'anchor full-size */
+    .mini-link{
+      display:flex;
+      flex-direction:column;
+      width:100%;
+      height:100%;
+    }
+
+    /* ===== CTA finale stile blocco team (w1300xh550) ===== */
+    .cta-wrap{
+      margin-top:90px;
+    }
+    .cta{
+      width:980px;
+      height:550px;
+      max-width:calc(100% - 40px);
+      margin:0 auto;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:44px 26px;
+      text-align:center;
+    }
+    .cta-inner{
+      width:100%;
+      max-width:760px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+    .cta-title{
+      margin:0 0 6px;
+      font-size:clamp(30px,4.4vw,54px);
+      line-height:1.1;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .cta-sub{
+      margin:0 0 10px;
+      font-size:18px;
+      line-height:1.6;
+      color:var(--muted);
+    }
+    .cta-btn{
+      width:100%;
+      max-width:520px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      background:#1d1d1f;
+      color:#ffffff;
+      font-size:14px;
+      font-weight:800;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .block{
+        height:auto;
+        grid-template-columns: 1fr;
+      }
+      .block.reverse .block-media{ order:1; }
+      .block.reverse .block-text{ order:2; }
+
+      /* (NEW) su mobile segue sempre immagine sopra, testo sotto */
+      .block.reverse-desktop .block-media{ order:1; }
+      .block.reverse-desktop .block-text{ order:2; }
+
+      .block-media{ height:240px; }
+      .block-text{ padding:28px 22px; }
+      .block-text p{ max-width:100%; }
+
+      .cards-row{
+        flex-direction:column;
+        gap:18px;
+      }
+      .mini-card{
+        width:100%;
+        height:auto;
+      }
+      .mini-media{ height:240px; }
+      .mini-text{ height:auto; padding:22px 18px; }
+      .mini-text p{ max-width:100%; }
+    }
+    @media (max-width: 640px){
+      .page{ padding:90px 0 110px; }
+      .hero-image{ height:520px; border-radius:20px; }
+      .blocks{ margin-top:60px; }
+      .cta{ height:auto; padding:34px 18px; }
+      .cta-btn{ max-width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header via partial -->
+  <div id="site-header"></div>
+
+  <main class="page">
+
+    <!-- Titolo + sottotitolo -->
+    <section class="hero">
+      <h1>Community Runnix</h1>
+      <p>Il luogo dove gli atleti ibridi si incontrano, si motivano e crescono insieme.</p>
+
+      <!-- Immagine grande (LASCIARE COSÌ) -->
+      <div class="hero-image">
+        <img src="/assets/community/community.jpg" alt="Community Runnix">
+      </div>
+    </section>
+
+    <!-- Blocchi -->
+    <section class="blocks" aria-label="Contenuti della community">
+
+      <!-- CONTENITORE 1 -->
+      <div class="block">
+        <div class="block-text">
+          <h2>Trova risposte e fai domande</h2>
+          <p>Cerca risposte nella community di Runnix oppure pubblica una nuova domanda.</p>
+        </div>
+        <div class="block-media">
+          <img src="/assets/community/chall1.jpg" alt="Domande e risposte">
+        </div>
+      </div>
+
+      <!-- CONTENITORI 2 + 3 (cliccabili) -->
+      <div class="cards-row" aria-label="Strumenti community">
+        <!-- Contenitore 2 -->
+        <a class="mini-card" href="#" aria-label="Ottimizza la tua esperienza">
+          <span class="mini-link">
+            <span class="mini-media">
+              <img src="/assets/community/chall2.jpg" alt="Ottimizza la tua esperienza">
+            </span>
+            <span class="mini-text">
+              <h3>Ottimizza la tua esperienza</h3>
+              <p>Ottieni il massimo dalla community. Condividi la tua competenza, personalizza la tua esperienza e interagisci con gli altri membri.</p>
+            </span>
+          </span>
+        </a>
+
+        <!-- Contenitore 3 -->
+        <a class="mini-card" href="#" aria-label="Vota il contenuto">
+          <span class="mini-link">
+            <span class="mini-media">
+              <img src="/assets/community/chall3.jpg" alt="Vota il contenuto">
+            </span>
+            <span class="mini-text">
+              <h3>Vota il contenuto</h3>
+              <p>Vota a favore o contro i contenuti o le nuove funzionalità nella community. Seleziona “Anch’io” se hai la stessa domanda.</p>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <!-- CONTENITORE 4: immagine a sinistra, testo a destra (desktop), testo sempre allineato a sinistra -->
+      <div class="block reverse-desktop">
+        <div class="block-text">
+          <h2>Come scrivere i suggerimenti per l’utente</h2>
+          <p>Condividi le tue preziose conoscenze con la community creando Suggerimenti per gli utenti.</p>
+        </div>
+        <div class="block-media">
+          <img src="/assets/community/social1.jpg" alt="Suggerimenti per gli utenti">
+        </div>
+      </div>
+
+      <!-- CONTENITORI 5 + 6 (cliccabili) -->
+      <div class="cards-row" aria-label="Approfondimenti community">
+        <!-- Contenitore 5 -->
+        <a class="mini-card" href="#" aria-label="Partecipa alle discussioni">
+          <span class="mini-link">
+            <span class="mini-media">
+              <img src="/assets/community/social2.jpg" alt="Partecipa alle discussioni">
+            </span>
+            <span class="mini-text">
+              <h3>Partecipa alle discussioni</h3>
+              <p>Commenta, condividi insight e confrontati con altri atleti ibridi: è qui che le buone idee diventano routine migliori.</p>
+            </span>
+          </span>
+        </a>
+
+        <!-- Contenitore 6 -->
+        <a class="mini-card" href="#" aria-label="Segui i tuoi argomenti">
+          <span class="mini-link">
+            <span class="mini-media">
+              <img src="/assets/community/social3.jpg" alt="Segui i tuoi argomenti">
+            </span>
+            <span class="mini-text">
+              <h3>Segui i tuoi argomenti</h3>
+              <p>Salva thread, tag e persone che ti ispirano. Torna quando vuoi e resta aggiornato su ciò che conta per te.</p>
+            </span>
+          </span>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- CTA finale (LASCIARE COSÌ) -->
+    <section class="cta-wrap" aria-label="Scarica l'app">
+      <div class="cta">
+        <div class="cta-inner">
+          <h2 class="cta-title">Entra nella community.</h2>
+          <p class="cta-sub">Scarica l’app e inizia ad allenarti con un percorso connesso, completo e condiviso.</p>
+          <a class="cta-btn" href="https://app.runnix.app">Scarica l’app</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer via partial -->
+  <div id="site-footer"></div>
+
+  <script>
+    async function include(id, url){
+      const el = document.getElementById(id);
+      if(!el) return;
+      try{
+        const r = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await r.text();
+      }catch(e){ console.error('Include failed:', e); }
+    }
+    include('site-header','/partials/header.html');
+    include('site-footer','/partials/footer.html');
+  </script>
+</body>
+</html>

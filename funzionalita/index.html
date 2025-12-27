@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funzionalità</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1d1d1f;
+    }
+
+    .section {
+      width: 100%;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-content {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 16px;
+      margin-top: 200px;
+    }
+
+    /* (2) Ingrandire tutti i titoli principali delle sezioni sotto */
+    .section-title {
+      font-size: 56px; /* era 48px */
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .section-description {
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+      max-width: 640px;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: visible;
+      margin-bottom: 50px;
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      width: fit-content;
+    }
+
+    .carousel-item {
+      flex-shrink: 0;
+      width: 375px;
+    }
+
+    .carousel-item.wide {
+      width: 765px;
+    }
+
+    .carousel-image {
+      width: 375px;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 16px;
+    }
+
+    .carousel-item.wide .carousel-image {
+      width: 765px;
+    }
+
+    .carousel-caption {
+      font-size: 17px;
+      line-height: 1.4;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 200px;
+    }
+
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.15);
+      transform: scale(1.05);
+    }
+
+    .carousel-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: scale(1);
+    }
+
+    .carousel-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Colori delle sezioni */
+    .section-1 {
+      background: linear-gradient(180deg, #ffffff 0%, rgba(193, 255, 114, 0.16) 100%);
+      color: #1d1d1f;
+    }
+
+    .section-1 .section-description,
+    .section-1 .carousel-caption {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .section-2 {
+      background: linear-gradient(180deg, #ffffff 0%, rgba(0, 203, 255, 0.14) 100%);
+      color: #1d1d1f;
+    }
+
+    .section-2 .section-description,
+    .section-2 .carousel-caption {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .section-3 {
+      background: linear-gradient(180deg, #ffffff 0%, rgba(249, 16, 79, 0.12) 100%);
+      color: #1d1d1f;
+    }
+
+    .section-3 .section-description,
+    .section-3 .carousel-caption {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .section-4 {
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255, 233, 125, 0.16) 100%);
+      color: #1d1d1f;
+    }
+
+    .section-5 {
+      background: linear-gradient(180deg, #ffffff 0%, rgba(200, 161, 214, 0.16) 100%);
+      color: #1d1d1f;
+    }
+
+    .section-5 .section-description,
+    .section-5 .carousel-caption {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 40px; /* era 32px */
+      }
+
+      .section-description {
+        font-size: 18px;
+      }
+
+      .carousel-image {
+        width: 300px;
+        height: 360px;
+      }
+
+      .carousel-item {
+        width: 300px;
+      }
+    }
+
+    /* ====== HEADER (agganciato al tuo partial) ====== */
+    .header {
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .container.nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #1d1d1f;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .center-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .center-links a {
+      color: #1d1d1f;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    .center-links a:hover {
+      opacity: 1;
+    }
+
+    .right-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+    }
+
+    .btn-app {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #1d1d1f;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .menu {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: #ffffff;
+      color: #1d1d1f;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 980px) {
+      .center-links { display: none; }
+    }
+
+    /* ====== ABOVE THE FOLD (immagine di sfondo + overlay per leggibilità) ====== */
+    .hero {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      padding: 0 20px;
+      color: #ffffff;
+
+      /* 👇 QUI METTI LA TUA IMMAGINE */
+      background-image: url('/assets/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* fallback se l'immagine non carica */
+      background-color: #111111;
+    }
+
+    /* overlay scuro per rendere il testo sempre leggibile */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+      min-height: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: flex-start;
+      z-index: 2;
+      padding: 0 0 80px 0;
+    }
+
+    /* distanza hero */
+    .hero-spacer-200 {
+      height: 200px;
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      color: #ffffff;
+      text-shadow: 0 20px 60px rgba(0,0,0,0.30);
+    }
+
+    .hero-subgroup {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* ✅ FIX ERROR CSS (NON TOCCO ALTRO) */
+    .hero-sub1{
+      font-size: 20px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+      max-width: 820px;
+    }
+
+    /* ====== BLOCCO FINALE ====== */
+    .final-area {
+      background: #f5f5f7;
+      padding: 200px 20px 200px 20px;
+    }
+
+    .final-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card-white {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .card-1000 {
+      width: 980px;
+      height: 1000px;
+      margin: 0 auto;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: flex-start;
+    }
+
+    .card-980 {
+      width: 980px;
+      height: 980px;
+      margin: 0 auto;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: flex-start;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.08);
+    }
+
+    .card-title {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .card-desc {
+      font-size: 18px;
+      line-height: 1.55;
+      color: rgba(0,0,0,0.7);
+      max-width: 720px;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-top: 12px;
+    }
+
+    .spacer-200 {
+      height: 200px;
+    }
+
+    .two-cards {
+      width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 480px 480px;
+      gap: 20px;
+    }
+
+    .card-437 {
+      width: 480px;
+      height: 437px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: flex-start;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ HEADER UNIFICATO (come le altre pagine) -->
+  <div id="site-header"></div>
+
+  <!-- ABOVE THE FOLD -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-spacer-200"></div>
+
+      <span class="hero-tag">Runnix</span>
+      <h1 class="hero-title">Traccia i tuoi progressi,<br> rimani motivato.</h1>
+
+      <div class="hero-spacer-150"></div>
+
+      <div class="hero-subgroup">
+        <div class="hero-sub2">Sottotitolo 1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 1: ATTIVITÀ FISICA -->
+  <section class="section section-1" id="attivita">
+    <div class="section-content">
+      <span class="section-tag">Movimento</span>
+      <h2 class="section-title">Il tuo piano non è statico: evolve con te, senza perdere logica.</h2>
+      <p class="section-description">La differenza tra “allenarsi tanto” e “allenarsi bene” è la programmazione. Runnix costruisce micro e mesocicli che integrano corsa e forza evitando conflitti di stimolo (tipo gambe distrutte prima del lungo, o lavori di qualità nel giorno sbagliato). Poi adatta il piano in base a ciò che fai davvero e a come recuperi.</p>
+
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carousel1">
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Ibrido/4.png" alt="Persona che cammina" class="carousel-image">
+            <p class="carousel-caption">Piani su 3 livelli (principiante / intermedio / esperto). Non esiste “un piano per tutti” quando devi far convivere corsa e forza. Runnix parte dal tuo livello reale e ti mette su un binario chiaro: principiante per costruire base e tecnica senza sfinirti, intermedio per aumentare qualità e volume con criterio, esperto per lavorare su performance, densità e specificità. La differenza non è quante cose fai, ma come sono distribuite e quanto sono sostenibili settimana dopo settimana.</p>
+          </div>
+          <div class="carousel-item wide">
+            <img src="/assets/funzionalita/Ibrido/2.jpg" alt="Yoga all'aperto" class="carousel-image">
+            <p class="carousel-caption">Progressione automatica (volumi, intensità, densità). La progressione è il punto dove la maggior parte delle persone si incasina: o spinge troppo presto, o resta ferma per mesi. Runnix gestisce la progressione in modo pratico: aumenta volumi quando il corpo sta assorbendo, alza intensità quando sei pronto a fare uno step, e lavora sulla densità (stesso lavoro, in meno tempo / con più qualità) quando serve consolidare. Così migliori senza dover riscrivere schede ogni due settimane e senza trasformare l’ibrido in un burnout annunciato.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Ibrido/1.png" alt="Palestra" class="carousel-image">
+            <p class="carousel-caption">Split intelligente e riadattamento settimanale. L’atleta ibrido perde risultati quando gli stimoli si pestano i piedi (tipo gambe distrutte il giorno sbagliato). Runnix crea uno split che ha logica: accosta le sessioni in modo da evitare conflitti e massimizzare l’adattamento (forza pesante, lavori di qualità, lungo, recupero attivo). E quando la tua settimana reale non rispetta la teoria — lavoro, viaggio, imprevisti — il sistema riadatta la struttura, mantenendo la direzione senza farti “ricominciare da capo”.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Ibrido/3.jpg" alt="Bicicletta" class="carousel-image">
+            <p class="carousel-caption">Preparazione eventi ibridi (Hyrox, OCR, Spartan, Triathlon ecc.). Allenarsi ibrido “generico” è una cosa; preparare un evento con richieste precise è un’altra. Runnix imposta blocchi di lavoro orientati alla gara: costruzione base → intensificazione → specificità → scarico. Tradotto: non ti ritrovi con tanta corsa ma poca forza utile (o viceversa). Ti prepari con sessioni che riproducono le richieste reali dell’evento: transizioni, resistenza sotto fatica, forza ripetuta, capacità di recuperare tra sforzi diversi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel('carousel1', -1)" id="prev1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-btn" onclick="scrollCarousel('carousel1', 1)" id="next1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: FORZA -->
+  <section class="section section-2" id="forza">
+    <div class="section-content">
+      <span class="section-tag">Tracking Multidisciplinare</span>
+      <h2 class="section-title">Tutti i tuoi allenamenti in un unico posto, con un linguaggio unico.</h2>
+      <p class="section-description">Runnix unifica cardio e forza in una dashboard coerente: non hai più “due mondi separati”. Registri serie, ripetizioni e carichi; tracci km, ritmo e durata; e vedi come i blocchi si influenzano tra loro nel tempo. È qui che l’atleta ibrido smette di andare “a sensazione” e inizia a costruire.</p>
+
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carousel2">
+          <div class="carousel-item wide">
+            <img src="/assets/funzionalita/forza/1.jpg" alt="Allenamento forza" class="carousel-image">
+            <p class="carousel-caption">Log forza completo (serie/ripetizioni/carichi, note, storico). Il log della forza deve essere veloce mentre ti alleni, ma dettagliato quando vuoi capire cosa sta funzionando. Runnix ti permette di registrare serie, ripetizioni, carichi, con note e storico sempre accessibile. Così smetti di affidarti alla memoria e inizi a vedere pattern reali: quali esercizi ti fanno crescere, dove stalli, quando stai accumulando troppo volume o quando puoi spingere di più.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/forza/4.png" alt="Squat" class="carousel-image">
+            <p class="carousel-caption">Cardio tracking (km, ritmo, durata, dislivello quando disponibile). Per la corsa non basta “ho corso”: servono segnali chiari per misurare adattamento e fatica. Runnix traccia distanza, ritmo, durata e, quando disponibile, anche dislivello e contesto. La cosa importante è che questi dati non restano isolati: vengono letti insieme alla forza, perché nell’ibrido la performance è la somma di tutto, non la media.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Forza/5.png" alt="Plank" class="carousel-image">
+            <p class="carousel-caption">Grafici settimanali/mensili e trend. Le singole sessioni contano, ma è il trend che decide se stai migliorando o se stai solo facendo volume a caso. Runnix mostra grafici settimanali e mensili che rendono visibili le cose che di solito scopri tardi: crescita costante, cali di qualità, settimane troppo dense, recupero che non regge. È la differenza tra “mi sento stanco” e “capisco perché sono stanco”.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Forza/6.png" alt="Deadlift" class="carousel-image">
+            <p class="carousel-caption">Record personali, consistenza, cronologia completa. I PR motivano, ma la vera arma è la costanza. Runnix tiene traccia dei record personali quando ha senso, ma soprattutto mette in evidenza la continuità: quante settimane hai retto bene, quante sessioni chiave hai fatto, dove hai saltato e come rientrare senza buttare via il lavoro. La cronologia completa serve per una cosa sola: trasformare mesi di allenamento in una storia leggibile, non in un caos di attività scollegate.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel('carousel2', -1)" id="prev2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-btn" onclick="scrollCarousel('carousel2', 1)" id="next2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 3: CORSA -->
+  <section class="section section-3" id="corsa">
+    <div class="section-content">
+      <span class="section-tag">Recovery & Readiness</span>
+      <h2 class="section-title">Recupero al centro: perché è lì che si decide la performance.</h2>
+      <p class="section-description">La maggior parte delle app ti mostra dati, poche ti aiutano a usarli per decidere. Runnix collega carico e segnali di recupero (sonno, HRV, stress quando integrati) per farti capire se è il giorno giusto per spingere o per consolidare. L’obiettivo non è “allenarsi meno”: è allenarsi meglio e più a lungo, riducendo il rischio di sovraccarico.</p>
+
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carousel3">
+          <div class="carousel-item wide">
+            <img src="/assets/funzionalita/Corsa/1.png" alt="Corsa mattutina" class="carousel-image">
+            <p class="carousel-caption">Monitoraggio carico cumulativo e impatto nel tempo. Il corpo non ragiona “a giornata”: ragiona per accumulo. Runnix monitora il carico nel tempo e ti fa vedere l’impatto reale delle settimane, non solo del singolo workout. Così capisci se stai costruendo una progressione sostenibile o se stai accumulando fatica che prima o poi ti presenta il conto (prestazione che cala, sonno che peggiora, motivazione che sparisce).</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Corsa/3.png" alt="Trail running" class="carousel-image">
+            <p class="carousel-caption">Indicatori di recupero e segnali di affaticamento. Recupero non significa riposo totale: significa “quanto sei pronto a fare lavoro di qualità oggi”. Runnix usa indicatori disponibili (sonno/HRV/stress quando integrati + feedback in-app) per individuare segnali di affaticamento. Il valore non è la metrica in sé: è il fatto che ti avvisa prima che la stanchezza diventi infortunio, e prima che l’allenamento diventi una lotta.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Corsa/2.png" alt="Pista d'atletica" class="carousel-image">
+            <p class="carousel-caption">Suggerimenti di scalata/upgrade sessione. Il punto non è allenarsi sempre forte. Il punto è allenarsi giusto. Runnix suggerisce quando scalare (ridurre volume/intensità, cambiare stimolo, spostare qualità) e quando fare upgrade (aggiungere un blocco, alzare intensità, aumentare densità) in base a come stai rispondendo. È la stessa logica di un coach: non cambia il tuo obiettivo, cambia la strada per arrivarci senza rompere il ritmo.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/Corsa/4.png" alt="Maratona" class="carousel-image">
+            <p class="carousel-caption">Recupero attivo, mobilità e settimane di consolidamento. La gente tratta recupero e mobilità come “extra”. Nell’ibrido sono parte del sistema. Runnix integra recupero attivo e mobilità come strumenti per mantenere qualità nelle settimane, e inserisce settimane di consolidamento quando serve — non per rallentarti, ma per permetterti di assorbire il lavoro e tornare a spingere meglio. È qui che si fanno i progressi puliti, quelli che restano.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel('carousel3', -1)" id="prev3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-btn" onclick="scrollCarousel('carousel3', 1)" id="next3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 4: RECUPERO -->
+  <section class="section section-4" id="recupero">
+    <div class="section-content">
+      <span class="section-tag">Integrazioni & Data Hub</span>
+      <h2 class="section-title">Sincronizza ciò che usi già: Runnix diventa il tuo centro di gravità.</h2>
+      <p class="section-description">Non devi cambiare ecosistema: devi smettere di gestirne cinque. Runnix integra i dati dai principali device e piattaforme e li organizza in un modello unico, così la programmazione e le analisi non dipendono da dove hai registrato l’allenamento, ma da ciò che hai davvero fatto.</p>
+
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carousel4">
+          <div class="carousel-item wide">
+            <img src="/assets/funzionalita/recovery1.avif" alt="Stretching" class="carousel-image">
+            <p class="carousel-caption">Integrazione con Strava, Garmin, Apple Health (e altri nel tempo). Non devi cambiare abitudini: devi solo smettere di avere dati sparsi. Runnix si collega alle piattaforme che già usi e porta tutto in un sistema unico. L’obiettivo è semplice: corsa e forza parlano la stessa lingua e finiscono nello stesso posto, così hai una visione completa senza doppie registrazioni e senza “buchi” nello storico.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/recovery1.avif" alt="Massaggio" class="carousel-image">
+            <p class="carousel-caption">Import automatico e aggiornamenti coerenti. Il bello dell’automazione è che funziona senza chiederti attenzione. Runnix importa le attività, aggiorna i riepiloghi e mantiene coerenza tra dashboard e programmazione. In pratica: fai l’allenamento, i dati entrano, il sistema si aggiorna. Tu non devi “sistemare” nulla per poter continuare ad allenarti.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/recovery1.avif" alt="Idroterapia" class="carousel-image">
+            <p class="carousel-caption">KPI olistici e lettura “ibrida” dei dati. Le app tradizionali leggono il mondo a compartimenti: o runner, o gym. Runnix legge in modalità ibrida: mette in relazione performance, carico e recupero, e ti fa capire come un blocco influenza l’altro. È la differenza tra vedere numeri e capire cosa farci: quando spingere sulla corsa, quando tenere la forza in manutenzione, quando invertire priorità per non sforare.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/recovery1.avif" alt="Meditazione" class="carousel-image">
+            <p class="carousel-caption">Storico centralizzato (allenamento + recupero). Avere uno storico completo non serve per nostalgia: serve per decisioni migliori. Runnix unisce allenamenti e recupero in un archivio unico, così puoi guardare indietro e capire cosa ha funzionato davvero nelle tue settimane migliori (e cosa invece precede sempre i cali). È come avere memoria lunga: quella che ti evita di ripetere gli stessi errori ogni mese.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel('carousel4', -1)" id="prev4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-btn" onclick="scrollCarousel('carousel4', 1)" id="next4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 5: SONNO -->
+  <section class="section section-5" id="sonno">
+    <div class="section-content">
+      <span class="section-tag">AI Coach, Smart Tools & Gamification</span>
+      <h2 class="section-title">Dalla teoria alla pratica: consigli rapidi, adattamenti intelligenti, motivazione continua.</h2>
+      <p class="section-description">La parte difficile non è conoscere la teoria: è applicarla quando hai poco tempo, poca energia o poche attrezzature. Runnix ti aiuta a scegliere la cosa giusta da fare oggi, a sostituire esercizi senza rovinare lo stimolo, e a restare costante con sfide e obiettivi che premiano la continuità.</p>
+
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carousel5">
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/sonno-1.jpg" alt="Camera da letto" class="carousel-image">
+            <p class="carousel-caption">AI Coach (domande/risposte e adattamento sessioni). Quando il piano incontra la vita reale, ti serve qualcuno che trasformi un “dovrei” in un “posso fare questo”. Con l’AI Coach chiedi cose pratiche: “ho 30 minuti”, “solo corpo libero”, “sono scarico”, “voglio spingere”. Runnix risponde con adattamenti sensati, mantenendo lo stimolo e la direzione del programma. Non è un motivatore generico: è un assistente operativo.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/sonno-2.jpg" alt="Routine serale" class="carousel-image">
+            <p class="carousel-caption">Auto-substitution (alternative se manca attrezzatura/spazio). Saltare un allenamento perché manca un attrezzo è una sconfitta evitabile. Runnix sostituisce esercizi e blocchi mantenendo lo stesso obiettivo (forza, potenza, resistenza muscolare, tecnica). Se non hai bilanciere, se sei in hotel, se hai poco spazio: l’allenamento cambia forma, non perde efficacia. Questo è ciò che rende l’app davvero usabile nel tempo.</p>
+          </div>
+          <div class="carousel-item wide">
+            <img src="/assets/funzionalita/sonno-3.jpg" alt="Melatonina naturale" class="carousel-image">
+            <p class="carousel-caption">Suggerimenti micro-cicli (3–5 giorni) basati sulle settimane recenti. Non sempre puoi ragionare “lun-dom”. A volte hai finestre corte e devi massimizzarle. Runnix propone micro-cicli da 3–5 giorni basati su ciò che hai fatto di recente, così puoi mantenere progressione anche in settimane irregolari. È un modo intelligente per non perdere continuità quando la routine si rompe.</p>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/funzionalita/sonno-4.jpg" alt="Riposo profondo" class="carousel-image">
+            <p class="carousel-caption">Challenge, badge, leaderboard per livello e disciplina. La gamification funziona quando è giusta: non ti umilia, ti aggancia. Le challenge di Runnix sono progettate per atleti ibridi: obiettivi per disciplina e per livello, badge che premiano la costanza, leaderboard che ha senso perché confronta mele con mele. Motivazione vera, non caos da social.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="scrollCarousel('carousel5', -1)" id="prev5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="carousel-btn" onclick="scrollCarousel('carousel5', 1)" id="next5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCCO FINALE (SFONDO #f5f5f7, CARD BIANCHE) -->
+  <section class="final-area">
+    <div class="final-inner">
+
+      <div class="card-white card-1000">
+        <div class="card-icon"></div>
+        <div class="card-title">I tuoi dati a colpo d’occhio.</div>
+        <div class="card-desc">L’app Runnid ti aiuta a raccogliere tutti i dati dei tuoi allenenamenti più importanti, come corsa, forza, sonno, attività e altro ancora, in un unico posto sicuro a cui è facile accedere da iPhone e iPad. Fornisce inoltre grafici interattivi e analisi avanzate dei trend, in modo da poter monitorare e visualizzare i tuoi dati nel tempo.</div>
+        <img class="card-img" src="/assets/dashboard.jpg" alt="Immagine">
+      </div>
+
+      <div class="spacer-200"></div>
+
+      <div class="card-white card-980">
+        <div class="card-icon"></div>
+        <div class="card-title">Runnix non ti chiede di essere perfetto. Ti aiuta a essere continuo.</div>
+        <div class="card-desc">L’atleta ibrido non è quello che fa tutto sempre. È quello che sa integrare stimoli, recuperare bene e migliorare nel tempo. Runnix nasce per questo: mettere insieme i pezzi — corsa, forza, recupero — e farli lavorare come un sistema unico.</div>
+      </div>
+
+      <div class="spacer-200"></div>
+
+      <div class="two-cards">
+        <div class="card-white card-437">
+          <div class="card-icon"></div>
+          <div class="card-title">Titolo</div>
+          <div class="card-desc">Testo</div>
+        </div>
+
+        <div class="card-white card-437">
+          <div class="card-icon"></div>
+          <div class="card-title">Titolo</div>
+          <div class="card-desc">Testo</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✅ FOOTER UNIFICATO (come le altre pagine) -->
+  <div id="site-footer"></div>
+
+  <script>
+    // include header + footer (uguale alle altre pagine)
+    async function include(id, url){
+      const el = document.getElementById(id);
+      if(!el) return;
+      try{
+        const r = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await r.text();
+      }catch(e){ console.error('Include failed:', e); }
+    }
+    include('site-header','/partials/header.html');
+    include('site-footer','/partials/footer.html');
+
+    // attiva pulsante menu dal partial
+    document.addEventListener('click', (e)=>{
+      if(e.target && e.target.id === 'menuBtn'){
+        alert('Menu mobile in arrivo');
+      }
+    });
+
+    const carousels = {};
+
+    function initCarousel(id) {
+      carousels[id] = {
+        element: document.getElementById(id),
+        currentIndex: 0
+      };
+      updateButtons(id);
+    }
+
+    function scrollCarousel(id, direction) {
+      const carousel = carousels[id];
+      const items = carousel.element.children;
+
+      carousel.currentIndex += direction;
+      carousel.currentIndex = Math.max(0, Math.min(carousel.currentIndex, items.length - 1));
+
+      let scrollAmount = 0;
+      for (let i = 0; i < carousel.currentIndex; i++) {
+        scrollAmount += items[i].offsetWidth + 20;
+      }
+
+      carousel.element.style.transform = `translateX(-${scrollAmount}px)`;
+      updateButtons(id);
+    }
+
+    function updateButtons(id) {
+      const carousel = carousels[id];
+      const carouselNum = id.replace('carousel', '');
+      const items = carousel.element.children;
+
+      document.getElementById(`prev${carouselNum}`).disabled = carousel.currentIndex === 0;
+      document.getElementById(`next${carouselNum}`).disabled = carousel.currentIndex >= items.length - 1;
+    }
+
+    ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5'].forEach(id => {
+      initCarousel(id);
+    });
+  </script>
+</body>
+</html>

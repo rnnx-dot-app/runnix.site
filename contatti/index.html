@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contatti – Runnix</title>
+  <meta name="description" content="Supporto Runnix: scrivici e ti aiutiamo subito."/>
+  <link rel="icon" href="/icons/img_logo.png"/>
+
+  <!-- Font + CSS globali -->
+  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css"/>
+
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --text:#0D0E10;
+      --muted:rgba(0,0,0,.62);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --border:rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1200px; margin:0 auto; padding:0 20px}
+
+    /* ===== Layout pagina ===== */
+    .support-page{
+      padding:110px 0 140px;
+    }
+
+    /* ===== Intro (prima del blocco form) ===== */
+    .support-intro{
+      width:1300px;
+      max-width:calc(100% - 40px);
+      margin:0 auto 0 auto;
+      text-align:center;
+    }
+  
+    .support-h1{
+      margin:0 0 50px; /* Titolo -> Sottotitolo: h50 */
+      font-size:clamp(30px,4.4vw,58px);
+      line-height:1.08;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+
+    .support-sub{
+      margin:0 auto 70px; /* Sottotitolo -> blocchi: h70 */
+      max-width:720px;
+      font-size:18px;
+      line-height:1.6;
+      color:var(--muted);
+    }
+
+    .quick-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 310px);
+      justify-content:center;
+      gap:14px;
+      margin-bottom:100px; /* 6 blocchi -> contenitore form: h100 */
+    }
+    @media (max-width: 1020px){
+      .quick-grid{
+        grid-template-columns:repeat(2, 310px);
+      }
+    }
+    @media (max-width: 680px){
+      .quick-grid{
+        grid-template-columns:1fr;
+        max-width:310px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+    }
+
+    .quick-card{
+      width:310px;
+      height:210px;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:18px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      align-items:center;         /* centro orizzontale */
+      justify-content:center;     /* centro verticale */
+      text-align:center;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .quick-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 46px rgba(0,0,0,.08);
+      border-color:rgba(0,0,0,0.12);
+    }
+
+    .q-ico{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      background:rgba(0,0,0,0.04);
+      border:1px solid rgba(0,0,0,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .q-ico svg{
+      width:22px;
+      height:22px;
+      fill:none;
+      stroke:rgba(0,0,0,0.70);
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .q-title{
+      font-size:15px;
+      font-weight:800;
+      color:#1d1d1f;
+      line-height:1.2;
+      max-width:240px;
+    }
+
+    /* ===== Contenitore ultimo blocco ===== */
+    .support-box{
+      width:960px;
+      height:800px;
+      max-width:calc(100% - 40px);
+      margin:0 auto;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:44px 26px;
+      text-align:center;
+    }
+
+    .support-inner{
+      width:100%;
+      max-width:760px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+
+    .support-tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 20px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.14);
+      background:rgba(0,0,0,0.02);
+      font-size:13px;
+      font-weight:700;
+      color:rgba(0,0,0,0.72);
+    }
+
+    .support-title{
+      margin:30px 0 4px;
+      font-size:clamp(30px,4.4vw,40px);
+      line-height:1.1;
+      font-weight:800;
+      color:#1d1d1f;
+    }
+
+    /* ===== Form ===== */
+    form{width:100%;}
+    .field{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      text-align:left;
+      margin-top:35px;
+    }
+    label{
+      font-size:13px;
+      font-weight:700;
+      color:rgba(0,0,0,0.72);
+      margin:0 0 5px;
+    }
+    input, textarea{
+      width:100%;
+      border:1px solid rgba(0,0,0,0.12);
+      background:#ffffff;
+      color:#1d1d1f;
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:15px;
+      outline:none;
+      transition:box-shadow .2s ease, border-color .2s ease;
+    }
+    textarea{min-height:130px; resize:vertical}
+    input:focus, textarea:focus{
+      border-color:rgba(0,0,0,0.22);
+      box-shadow:0 0 0 3px rgba(0,0,0,0.06);
+    }
+
+    .btn-row{
+      display:flex;
+      justify-content:center;
+      margin-top:40px;
+      width:100%;
+    }
+    .btn-send{
+      width:100%;              /* allunga orizzontalmente */
+      max-width:820px;         /* limite “bello” */
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      background:#1d1d1f;
+      color:#ffffff;
+      font-size:14px;
+      font-weight:800;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    @media (max-width: 640px){
+      .support-page{ padding:90px 0 110px; }
+      .support-box{ height:auto; padding:34px 18px; }
+      .support-inner{ max-width:100%; }
+      .support-logo{ margin-bottom:70px; }
+      .btn-send{ max-width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="support-page">
+
+    <!-- INTRO + GRID -->
+    <section class="support-intro" aria-label="Supporto Runnix - scorciatoie">
+
+      <h1 class="support-h1">Supporto Runnix</h1>
+      <p class="support-sub">Hai bisogno di aiuto? Inizia qui</p>
+
+      <div class="quick-grid">
+        <a class="quick-card" href="#" aria-label="Per iniziare">
+          <div class="q-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3v18"></path>
+              <path d="M3 12h18"></path>
+            </svg>
+          </div>
+          <div class="q-title">Per iniziare</div>
+        </a>
+
+        <a class="quick-card" href="#" aria-label="Novità">
+          <div class="q-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3l2.4 6.2 6.6.5-5 4.1 1.6 6.5L12 17.2 6.4 20.3 8 13.8 3 9.7l6.6-.5L12 3z"></path>
+            </svg>
+          </div>
+          <div class="q-title">Novità</div>
+        </a>
+
+        <a class="quick-card" href="#" aria-label="Forum">
+          <div class="q-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 14a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+            </svg>
+          </div>
+          <div class="q-title">Forum</div>
+        </a>
+
+        <a class="quick-card" href="#" aria-label="Richiedi una funzionalità">
+          <div class="q-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h10"></path>
+              <path d="M4 17h16"></path>
+              <path d="M19 10v6"></path>
+              <path d="M16 13h6"></path>
+            </svg>
+          </div>
+          <div class="q-title">Richiedi una funzionalità</div>
+        </a>
+
+        <a class="quick-card" href="#" aria-label="Segnala un bug">
+          <div class="q-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 9h6"></path>
+              <path d="M10 13h4"></path>
+              <path d="M8 3l1 3"></path>
+              <path d="M16 3l-1 3"></path>
+              <path d="M7 7l-2-2"></path>
+              <path d="M17 7l2-2"></path>
+              <path d="M6 14H3"></path>
+              <path d="M21 14h-3"></path>
+              <path d="M7 20l2-2"></path>
+              <path d="M17 20l-2-2"></path>
+              <path d="M8 10a4 4 0 0 1 8 0v2a4 4 0 0 1-8 0z"></path>
+            </svg>
+          </div>
+          <div class="q-title">Segnala un bug</div>
+        </a>
+
+        <a class="quick-card" href="#" aria-label="Modifica il tuo abbonamento">
+          <div class="q-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 8V7a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-1"></path>
+              <path d="M3 10h18"></path>
+              <path d="M16 16h4"></path>
+            </svg>
+          </div>
+          <div class="q-title">Modifica il tuo abbonamento</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="support-box" aria-label="Supporto Runnix">
+      <div class="support-inner">
+        <div class="support-tag">Supporto Runnix</div>
+
+        <h1 class="support-title">Contattaci</h1>
+
+        <form method="post" action="#" autocomplete="on">
+          <!-- Se usi Formspree: action="https://formspree.io/f/XYZ" -->
+          <div class="field">
+            <label for="name">Nome</label>
+            <input id="name" name="name" required placeholder="Il tuo nome">
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required placeholder="nome@gmail.com">
+          </div>
+
+          <div class="field">
+            <label for="message">Messaggio</label>
+            <textarea id="message" name="message" required placeholder="Scrivi qui il tuo messaggio"></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-send" type="submit">Invia</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    async function include(id, url){
+      const el = document.getElementById(id);
+      if(!el) return;
+      try{
+        const r = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await r.text();
+      }catch(e){ console.error('Include failed:', e); }
+    }
+    include('site-header','/partials/header.html');
+    include('site-footer','/partials/footer.html');
+  </script>
+</body>
+</html>

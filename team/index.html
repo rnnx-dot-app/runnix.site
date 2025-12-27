@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Team – Runnix</title>
+  <meta name="description" content="Il team di Runnix: persone ossessionate da performance, salute e semplicità."/>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/icons/img_logo.png"/>
+  <link rel="apple-touch-icon" href="/icons/img_logo.png" />
+
+  <!-- Font + CSS globali (IDENTICI all’Home) -->
+  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- SOLO stili di pagina (non tocco header) -->
+  <style>
+    :root{
+      --bg:#f5f5f7;           /* tutta la pagina come blocco manifesto */
+      --panel:#15161A;
+      --text:#0D0E10;
+      --muted:rgba(0,0,0,.62);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:18px;
+      --maxw:1200px;
+      --border:rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    /* ===== Manifesto ===== */
+    .manifesto-final{
+      background:var(--bg);
+      padding:140px 20px 90px 20px;
+    }
+    .manifesto-final-inner{
+      max-width:980px; /* contenitore più grande */
+      margin:0 auto;
+    }
+    .manifesto-title{
+      font-size:clamp(32px,4.5vw,42px);
+      line-height:1.1;
+      margin:0 0 100px;
+      color:#1d1d1f;
+      text-align:center;
+      font-weight:800;
+    }
+
+    .manifesto-card{
+      position:relative;
+      background:#ffffff;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      padding:150px 64px 56px 64px;
+      border:1px solid rgba(0,0,0,0.06);
+      min-height:980px; /* più “lungo” */
+    }
+
+    /* toolbar stile Google Docs */
+    .doc-toolbar{
+      position:absolute;
+      top:40px;
+      right:40px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      opacity:0.4;
+    }
+    .doc-pill{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:10px 10px;
+      border-radius:14px;
+      background:#f5f5f7;
+      border:1px solid rgba(0,0,0,0.08);
+    }
+    .doc-ctrl{
+      height:28px;
+      padding:0 10px;
+      border-radius:10px;
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.10);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:13px;
+      font-weight:700;
+      color:rgba(0,0,0,0.72);
+      line-height:1;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .doc-ctrl.mono{
+      font-weight:800;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+    }
+    .doc-ctrl.italic{
+      font-weight:700;
+      font-style:italic;
+    }
+    .doc-icon{
+      width:28px;
+      padding:0;
+    }
+    .doc-icon svg{
+      width:16px;
+      height:16px;
+      fill:none;
+      stroke:rgba(0,0,0,0.62);
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .manifesto-in-title{
+      font-size:25px;
+      font-weight:900;
+      line-height:1.12;
+      margin:0 0 35px;
+      color:#1d1d1f;
+      max-width:980px;
+    }
+    .manifesto-text{
+      font-size:16px;
+      line-height:1.2;
+      color:rgba(0,0,0,0.72);
+      max-width:980px;
+      margin:20;
+      white-space:pre-line;
+    }
+
+    /* ===== Intro Team (prima delle card) ===== */
+    .team-intro{
+      padding:70px 0 20px;
+    }
+    .team-intro h2{
+      text-align:center;
+      margin:0 0 10px;
+      font-size:clamp(28px,4vw,44px);
+      line-height:1.1;
+      color:#1d1d1f;
+      font-weight:700;
+    }
+    .team-intro p{
+      text-align:center;
+      margin:0 auto;
+      max-width:760px;
+      font-size:18px;
+      line-height:1.6;
+      color:rgba(0,0,0,0.62);
+    }
+
+    /* ===== Team grid (resta uguale, ma adattato a background chiaro) ===== */
+    .team-wrap{padding:30px 0 110px;}
+    .team-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:20px; }
+
+    .member{
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:24px;
+      padding:16px;
+      box-shadow:var(--shadow);
+      transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .member:hover{
+      transform:translateY(-6px);
+      border-color:rgba(0,0,0,.14);
+      box-shadow:0 16px 46px rgba(0,0,0,.10);
+    }
+    .portrait{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:14px;
+      filter:grayscale(1) contrast(1.05) brightness(.95);
+      transition:filter .25s ease;
+    }
+    .member:hover .portrait{ filter:grayscale(0) contrast(1.05) brightness(1); }
+    .member h3{margin:12px 0 6px; font-size:20px; color:#1d1d1f}
+
+    .role{
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(0,0,0,.04);
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      color:rgba(0,0,0,.72);
+      margin-bottom:8px;
+    }
+    .bio{color:rgba(0,0,0,.68); margin:6px 0 0; line-height:1.55}
+    .social{display:flex; gap:10px; margin-top:12px}
+    .social a{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:10px;
+      border:1px solid rgba(0,0,0,.12); background:rgba(0,0,0,.03);
+      transition:background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .social a:hover{ background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.18); transform:translateY(-2px); }
+    .social svg{ fill:#1d1d1f; }
+
+    /* ===== CTA finale (w1300 x h550) ===== */
+    .cta-after-team{
+      padding:80px 0 140px; /* spazio dopo card + spazio finale pagina */
+    }
+    .cta-box{
+      width:1300px;
+      height:550px;
+      max-width:calc(100% - 40px);
+      margin:0 auto;
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 24px;
+    }
+    .cta-inner{
+      max-width:780px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+    .cta-title{
+      margin:0;
+      font-size:clamp(28px,4.2vw,52px);
+      line-height:1.1;
+      color:#1d1d1f;
+      font-weight:800;
+    }
+    .cta-sub{
+      margin:0;
+      font-size:18px;
+      line-height:1.6;
+      color:rgba(0,0,0,0.62);
+      max-width:720px;
+    }
+    .cta-btn{
+      margin-top:8px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      background:#1d1d1f;
+      color:#ffffff;
+      font-size:14px;
+      font-weight:700;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    /* ===== Responsive grid ===== */
+    @media (max-width: 1020px){
+      .team-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+      .manifesto-card{ min-height:660px; padding:52px 40px; }
+      .cta-box{ height:520px; }
+    }
+    @media (max-width: 640px){
+      .manifesto-final{ padding:90px 16px 70px 16px; }
+      .manifesto-card{ padding:46px 18px 34px 18px; min-height:620px; }
+      .doc-toolbar{ top:14px; right:14px; }
+      .manifesto-in-title{ font-size:30px; }
+      .manifesto-text{ font-size:16px; }
+      .team-wrap{ padding:20px 0 80px; }
+      .team-grid{ grid-template-columns:1fr; gap:16px; }
+      .portrait{ height:220px; }
+      .cta-after-team{ padding:60px 0 110px; }
+      .cta-box{ height:520px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header via partial (stili in /css/main.css) -->
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Manifesto -->
+    <section class="manifesto-final">
+      <div class="manifesto-final-inner">
+        <h2 class="manifesto-title">La nostra missione è quella di sbloccare il potenziale umano attraverso il movimento.</h2>
+
+        <div class="manifesto-card">
+          <div class="doc-toolbar" aria-hidden="true">
+            <div class="doc-pill">
+              <div class="doc-ctrl">Aa</div>
+              <div class="doc-ctrl">B</div>
+              <div class="doc-ctrl italic">I</div>
+
+              <div class="doc-ctrl doc-icon" title="Link">
+                <svg viewBox="0 0 24 24">
+                  <path d="M10 13a5 5 0 0 1 0-7l1.5-1.5a5 5 0 0 1 7 7L17 13"/>
+                  <path d="M14 11a5 5 0 0 1 0 7L12.5 19.5a5 5 0 0 1-7-7L7 11"/>
+                </svg>
+              </div>
+
+              <div class="doc-ctrl">"</div>
+
+              <div class="doc-ctrl mono">&lt;/&gt;</div>
+
+              <div class="doc-ctrl doc-icon" title="Download">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3v10"/>
+                  <path d="M8 11l4 4 4-4"/>
+                  <path d="M4 20h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="manifesto-in-title">Dove nascono e migliorano gli atleti...</div>
+          <p class="manifesto-text">Se hai un corpo, sei un atleta.
+Non perché lo diciamo noi, ma perché ogni corpo è fatto per muoversi, adattarsi, resistere, diventare più forte. L’atleta non nasce sul podio. Nasce nel momento in cui smetti di aspettare di sentirti pronto e inizi. Anche piano. Anche male. Anche senza sapere esattamente dove stai andando.
+
+Per anni l’allenamento completo è stato raccontato come qualcosa per pochi. O correvi, o facevi forza. O eri “portato”, o lasciavi perdere. La preparazione vera, quella che unisce resistenza, potenza, recupero e continuità, era riservata a chi aveva tempo, soldi, coach, strutture. Tutti gli altri si arrangiavano, saltando da un metodo all’altro, da un’app all’altra, senza una direzione chiara.
+
+Runnix nasce da qui. Dal rifiuto di questa divisione. Dall’idea che l’atleta del futuro non debba scegliere. Che possa essere completo. Che possa capire il proprio corpo invece di subirlo. Che possa allenarsi con intelligenza, non solo con forza di volontà.
+
+Allenarsi non è spingere sempre di più. È sapere quando farlo. È riconoscere i segnali. È trasformare la fatica in informazione. È costruire nel tempo qualcosa che regge. La tecnologia, se usata bene, non sostituisce l’atleta: lo rende più consapevole. I dati non servono a giudicare, servono a guidare. A togliere rumore. A dare senso a ogni sessione, a ogni recupero, a ogni giorno no.
+
+Non esistono programmi perfetti. Esistono corpi reali, che cambiano. Runnix non chiede di adattarti a un piano. È il piano che si adatta a te. A come stai. A come dormi. A come rispondi allo stress. A come cresci. Un allenamento dopo l’altro, senza scorciatoie, senza promesse facili.
+
+Il vero progresso non è spettacolare. È silenzioso. È tornare ad allenarsi quando la motivazione vacilla. È finire un workout che non avevi voglia di iniziare. È battere un tuo record e capire che non è stato un caso. È guardarti indietro e renderti conto che sei diventato qualcosa di diverso.
+
+Ma l’atleta non è mai solo. Anche quando si allena da solo. Ogni percorso è personale, ma nessuno cresce davvero in isolamento. Runnix è un luogo dove storie diverse si incrociano: chi inizia da zero, chi ricomincia, chi non ha mai smesso. Non per confrontarsi, ma per riconoscersi. Per ricordarsi che la fatica condivisa pesa meno e vale di più.
+
+In un mondo che automatizza tutto, noi scegliamo di restare umani. Dietro ogni numero c’è una persona. Dietro ogni grafico c’è una scelta. Dietro ogni progresso c’è qualcuno che ha deciso di non fermarsi.
+
+Non stiamo costruendo un’app. Stiamo costruendo un modo diverso di vivere l’allenamento. Un modo che non separa forza e resistenza, tecnologia ed emozione, individuo e community. Un modo che restituisce alle persone il controllo del proprio percorso.
+
+Se un giorno Runnix verrà ricordata, non sarà per le funzionalità. Ma per il momento in cui qualcuno ha capito di non essere “uno che si allena”.
+Ma un atleta.
+
+Questo è Runnix.
+Dove gli atleti prendono forma.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Titolo + sottotitolo prima delle card -->
+    <section class="team-intro">
+      <div class="container">
+        <h2>Il nostro team</h2>
+        <p>Persone ossessionate da sport, performance, salute e semplicità.</p>
+      </div>
+    </section>
+
+    <!-- Team cards (INTEGRALI) -->
+    <section class="team-wrap">
+      <div class="container">
+        <div class="team-grid">
+          <article class="member">
+            <img src="/assets/team/filippo.png" alt="Filippo D'agostini" class="portrait">
+            <h3>Filippo D'agostini</h3>
+            <div class="role">CEO &amp; Head of Growth</div>
+            <p class="bio">Laureato in Economia, ha fondato e guidato per 4 anni un’agenzia di marketing digitale, lavorando con brand B2C e D2C. Oggi guida la Growth Strategy di Runnix.</p>
+            <div class="social">
+              <a href="#" aria-label="LinkedIn di Filippo" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1d1d1f" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.06 0 5.99 3.33 5.99 7.66V24h-5v-7.6c0-1.81-.03-4.13-2.52-4.13-2.52 0-2.91 1.97-2.91 4v7.73h-5V8z"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="member">
+            <img src="/assets/team/giulia.png" alt="Giulia Sciosci" class="portrait">
+            <h3>Giulia Sciosci</h3>
+            <div class="role">CPO & Designer</div>
+            <p class="bio">Laurea in Grafica e master in UI Design presso Talent Garden. 
+In Runnix, progetta brand identity, user experience e interfaccia dell’app.</p>
+            <div class="social">
+              <a href="#" aria-label="LinkedIn di Giulia" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1d1d1f" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.06 0 5.99 3.33 5.99 7.66V24h-5v-7.6c0-1.81-.03-4.13-2.52-4.13-2.52 0-2.91 1.97-2.91 4v7.73h-5V8z"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="member">
+            <img src="/assets/team/team3.png" alt="Filippo Pizzella" class="portrait">
+            <h3>Filippo Pizzella</h3>
+            <div class="role">AI Engineer</div>
+            <p class="bio">Laurea magistrale in Statistical Methods and Applications con esperienza di ricerca al CNR. 
+In Runnix sviluppa modelli di machine learning e sistemi predittivi basati su AI, ottimizzando la personalizzazione dell’esperienza utente.</p>
+            <div class="social">
+              <a href="#" aria-label="LinkedIn di Filippo Pizzella" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1d1d1f" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.06 0 5.99 3.33 5.99 7.66V24h-5v-7.6c0-1.81-.03-4.13-2.52-4.13-2.52 0-2.91 1.97-2.91 4v7.73h-5V8z"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="member">
+            <img src="/assets/team/team5.png" alt="Veronica Pizzella" class="portrait">
+            <h3>Veronica Pizzella</h3>
+            <div class="role">CTO</div>
+            <p class="bio">PhD in Fisica presso il Max-Planck-Institute di Heidelberg, con esperienza post-doc e background in ingegneria del software e modellazione numerica. In Runnix guida lo sviluppo tecnologico e coordina l’integrazione dei modelli di intelligenza artificiale nel prodotto.</p>
+            <div class="social">
+              <a href="#" aria-label="LinkedIn CTO" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1d1d1f" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.06 0 5.99 3.33 5.99 7.66V24h-5v-7.6c0-1.81-.03-4.13-2.52-4.13-2.52 0-2.91 1.97-2.91 4v7.73h-5V8z"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="member">
+            <img src="/assets/team/team6.jpg" alt="Federico Salvi" class="portrait">
+            <h3>Federico Salvi</h3>
+            <div class="role">Coach Ibrido</div>
+            <p class="bio">Laurea Magistrale in Scienze Motorie. Professore di Educazione fisica e coach ibrido. In Runnix si occupa della qualità e della generazione dei programmi ibridi.</p>
+            <div class="social">
+              <a href="#" aria-label="LinkedIn Coach Ibrido" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1d1d1f" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6 5.06 0 5.99 3.33 5.99 7.66V24h-5v-7.6c0-1.81-.03-4.13-2.52-4.13-2.52 0-2.91 1.97-2.91 4v7.73h-5V8z"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA finale (NUOVO BLOCCO) -->
+    <section class="cta-after-team">
+      <div class="cta-box">
+        <div class="cta-inner">
+          <h2 class="cta-title">Scarica Runnix</h2>
+          <p class="cta-sub">Porta con te allenamento, recupero e performance. Tutto in un unico posto.</p>
+          <a class="cta-btn" href="https://app.runnix.app">Scarica l'app</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer via partial -->
+  <div id="site-footer"></div>
+
+  <script>
+    async function include(id, url){
+      const el = document.getElementById(id);
+      if(!el) return;
+      try{
+        const r = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await r.text();
+      }catch(e){ console.error('Include failed:', e); }
+    }
+    include('site-header','/partials/header.html');
+    include('site-footer','/partials/footer.html');
+
+    // (opz.) attiva pulsante menu dal partial
+    document.addEventListener('click', (e)=>{
+      if(e.target && e.target.id === 'menuBtn'){
+        alert('Menu mobile in arrivo');
+      }
+    });
+  </script>
+</body>
+</html>
