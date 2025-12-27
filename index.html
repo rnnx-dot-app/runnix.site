@@ -40,7 +40,7 @@
     /* ===== HERO FULL SCREEN (IMMAGINE DA HTML) ===== */
     .hero{
       position:relative;
-      min-height:100vh;
+      min-height:95vh;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -70,13 +70,13 @@
       width:1300px;
       max-width:calc(100% - 40px);
       text-align:center;
-      padding:170px 0 130px;
+      padding:10px 0 10px;
       color:#fff;
     }
     .hero-title{
       margin:0 0 14px;
       font-size:clamp(34px,4.8vw,62px);
-      line-height:1.06;
+      line-height:1.5;
       font-weight:900;
       letter-spacing:-.4px;
       text-shadow:0 30px 80px rgba(0,0,0,.35);
@@ -85,7 +85,7 @@
       margin:0 auto 24px;
       max-width:820px;
       font-size:18px;
-      line-height:1.6;
+      line-height:1.5;
       color:rgba(255,255,255,.78);
     }
     .hero-cta{
@@ -117,7 +117,7 @@
     }
 
     /* ✅ base: distanza 130px tra blocchi (come hai chiesto) */
-    .section{ padding:130px 0 0; }
+    .section{ padding:100px 0 0; }
 
     /* ✅ attaccati per “blocco unico” */
     .section-tight{ padding-top:26px; }
@@ -138,7 +138,7 @@
       margin:0 auto;
       max-width:860px;
       font-size:18px;
-      line-height:1.6;
+      line-height:1.1;
       color:var(--muted);
     }
 
@@ -216,14 +216,14 @@
     .bc-text h3{
       margin:0;
       font-size:clamp(22px,3.2vw,34px);
-      line-height:1.12;
+      line-height:1.1;
       font-weight:950;
       color:#1d1d1f;
     }
     .bc-text p{
       margin:0;
       font-size:18px;
-      line-height:1.6;
+      line-height:1.3;
       color:var(--muted);
       max-width:520px;
     }
@@ -240,40 +240,40 @@
       padding:44px 0px 30px;
     }
     .vision-title{
-      margin:0;
+      margin:10;
       text-align:center;
-      font-size:clamp(12px,3.2vw,20px);
+      font-size:clamp(15px,3.2vw,34px);
       line-height:1.1;
-      font-weight:500;
+      font-weight:800;
       color:#1d1d1f;
     }
 
     .slideshow{
       display:flex;
-      gap:20px;
+      gap:10px;
       overflow-x:auto;
-      padding:40px 4px 60px;
+      padding:40px 40px 0px;
       scroll-snap-type:x mandatory;
       -webkit-overflow-scrolling:touch;
     }
     .slideshow::-webkit-scrollbar{ height:5px; }
-    .slideshow::-webkit-scrollbar-thumb{ background:rgba(0,0,0,.14); border-radius:999px; }
+    .slideshow::-webkit-scrollbar-thumb{ background:rgba(0,0,0,0); border-radius:999px; }
 
     .s-card{
-      flex:0 0 500px;
+      flex:0 0 300px;
       background:#fff;
       border:1px solid rgba(0,0,0,0.06);
       border-radius:22px;
-      box-shadow:var(--shadow);
+      box-shadow:var(shadow);
       overflow:hidden;
       scroll-snap-align:center;
       transition:transform .25s ease;
     }
     .s-card:hover{ transform:translateY(-6px); }
-    .s-card img{ width:100%; height:340px; object-fit:cover; }
+    .s-card img{ width:100%; height:450px; object-fit:cover; }
     .s-card .in{ padding:40px 40px 50px; text-align:left; }
     .s-card h4{ margin:0 0 8px; font-size:18px; font-weight:950; color:#1d1d1f; }
-    .s-card p{ margin:0; font-size:14.5px; line-height:1.55; color:var(--muted); }
+    .s-card p{ margin:0; font-size:14.5px; line-height:1.1; color:var(--muted); }
 
     /* ===== VERTICAL PAIR ===== */
     .v-pair{
@@ -314,7 +314,7 @@
       text-align:left;
     }
     .v-card h3{ margin:0; font-size:24px; font-weight:950; line-height:1.12; }
-    .v-card p{ margin:0; color:var(--muted); line-height:1.55; font-size:16px; max-width:420px; }
+    .v-card p{ margin:0; color:var(--muted); line-height:1.1; font-size:16px; max-width:420px; }
 
     /* ===== PRICING ===== */
     .pricing-grid{
@@ -552,8 +552,8 @@
     <section class="hero" aria-label="Hero Runnix">
       <img class="hero-img" src="/assets/home/vision_background__d6q7ibmzm6oi_large.jpg" alt="" aria-hidden="true">
       <div class="hero-inner">
-        <h1 class="hero-title">Ti aiuta a cominciare. <br>Ti spinge a continuare</h1>
-        <p class="hero-sub">Corsa, forza e recupero in un unico hub intelligente. Meno caos, più progressi.</p>
+        <h1 class="hero-title">L'app per gli atleti completi.</h1>
+        <p class="hero-sub">Runnix trasforma i tuoi dati di fitness in approfondimenti e consigli personalizzati.</p>
         <div class="hero-cta">
           <a class="btn-dark" href="https://app.runnix.app">Prova Gratis</a>
         </div>
@@ -595,14 +595,14 @@
     <!-- Parametri -->
     <section class="section">
       <div class="wrap">
-        <h2 class="title-center">I parametri ti tengono sul pezzo.</h2>
-        <p class="sub-center">I numeri servono se diventano decisioni. Runnix seleziona le metriche che contano e le rende leggibili, così capisci subito come stai andando e cosa sta davvero guidando i tuoi progressi.</p>
+        <h2 class="title-center">Le dashboard ti tengono sul pezzo.</h2>
+        <p class="sub-center">I numeri servono se diventano decisioni. Runnix seleziona le metriche che contano e le rende leggibili, così capisci subito come stai funzionando e cosa sta davvero guidando i tuoi progressi.</p>
 
         <div class="grid-1100">
           <div class="stack">
             <article class="big-card">
               <div class="bc-text">
-                <h3>Motivazione a mille con Runnix</h3>
+                <h3>Motivazione a mille</h3>
                 <p>Quando la settimana è piena, la motivazione non arriva dai discorsi: arriva dal vedere che stai migliorando. Runnix mette in evidenza trend e traguardi (senza farti perdere tempo), così ogni sessione si collega a una traiettoria: più solidità nella forza, più qualità nella corsa, più controllo sul recupero.</p>
               </div>
               <div class="bc-media phone">
@@ -681,7 +681,7 @@
         <div class="v-pair">
           <article class="v-card">
             <img src="/assets/home/diario.png" alt="Recupero intelligente">
-            <div class="in"><h3>Diario quotidiano che pesa poco, ma vale tanto.</h3><p>Un feedback veloce è spesso più utile di mille dettagli. Runnix usa il diario per contestualizzare i dati e prevenire errori tipici: spingere quando sei scarico, o frenarti quando invece sei a rischio infortuni.</p></div>
+            <div class="in"><h3>Il tuo diario quotidiano che vale tanto.</h3><p>Un feedback veloce è spesso più utile di mille dettagli. Runnix usa il diario per contestualizzare i dati e prevenire errori tipici: spingere quando sei scarico, o frenarti quando invece sei a rischio infortuni.</p></div>
           </article>
           <article class="v-card">
             <img src="/assets/home/aicoach.png" alt="Decisioni migliori">
