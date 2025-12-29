@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Careers – Runnix</title>
+  <meta name="description" content="Lavora con noi in Runnix. Scopri i nostri valori e le posizioni aperte."/>
+  <link rel="icon" href="/icons/img_logo.png"/>
+
+  <!-- Font + CSS globali -->
+  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- ✅ font “scritto a matita” per citazione -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/main.css"/>
+
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --text:#1d1d1f;
+      --muted:rgba(0,0,0,.62);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:24px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Zalando Sans SemiExpanded', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .page{ padding:110px 0 140px; }
+
+    /* ===== widths allineate (immagine grande + valori) ===== */
+    .w980{
+      width:980px;
+      max-width:calc(100% - 40px);
+      margin:0 auto;
+    }
+
+    /* ===== spacing tra sezioni (puntuale, non universale) ===== */
+    .pad-150{ padding-top:150px; }
+    @media (max-width:980px){ .pad-150{ padding-top:110px; } }
+
+    /* ===== HERO ===== */
+    .hero{
+      text-align:center;
+    }
+    .hero h1{
+      margin:0 0 14px;
+      font-size:clamp(32px,4.8vw,58px);
+      line-height:1.08;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .hero p{
+      margin:0 auto;
+      max-width:900px;
+      font-size:18px;
+      line-height:1.3;
+      color:var(--muted);
+    }
+
+    /* ===== immagine grande centrale ===== */
+    .hero-image{
+      width:980px;
+      height:600px;
+      max-width:100%;
+      margin:60px auto 0;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-image img{ width:100%; height:100%; object-fit:cover; }
+
+    @media (max-width:640px){
+      .hero-image{ height:520px; border-radius:20px; margin-top:46px; }
+    }
+
+    /* ===== section title ===== */
+    .section-title{
+      text-align:center;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 18px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.14);
+      background:rgba(0,0,0,0.02);
+      font-size:13px;
+      font-weight:800;
+      color:rgba(0,0,0,0.72);
+    }
+    .section-title h2{
+      margin:14px 0 12px;
+      font-size:clamp(26px,3.8vw,44px);
+      line-height:1.1;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .section-title p{
+      margin:0 auto;
+      max-width:900px;
+      font-size:18px;
+      line-height:1.3;
+      color:var(--muted);
+    }
+
+    /* =========================
+       VALUES SLIDER (w980 allineato)
+       ========================= */
+    .values-wrap{
+      margin-top:44px;
+    }
+
+    .values-track{
+      display:flex;
+      gap:18px;
+      overflow-x:auto;
+      padding:2px 2px 10px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .values-track::-webkit-scrollbar{ height:0; }
+
+    /* ✅ card meno arrotondate SOLO qui */
+    .value-card{
+      flex:0 0 auto;
+      width:580px;
+      height:440px;
+      border-radius:14px; /* meno arrotondate */
+      overflow:hidden;
+      position:relative;
+      background:#111;
+      box-shadow:var(--shadow);
+      scroll-snap-align:start;
+      cursor:pointer;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .value-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,0,0,0.14);
+      box-shadow:0 16px 46px rgba(0,0,0,.10);
+    }
+    .value-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform:scale(1.02);
+    }
+    .value-card::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 420px at 70% 10%, rgba(176,230,85,.12), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.55) 65%, rgba(0,0,0,.80) 100%);
+      pointer-events:none;
+    }
+
+    .value-overlay{
+      position:absolute;
+      inset:0;
+      padding:18px 18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      gap:10px;
+      z-index:1;
+      color:#fff;
+    }
+
+    /* titolo meno bold */
+    .value-title{
+      margin:0;
+      font-size:24px;
+      line-height:1.15;
+      font-weight:700; /* meno bold */
+      letter-spacing:-.15px;
+      text-shadow:0 18px 44px rgba(0,0,0,.28);
+      max-width:92%;
+    }
+
+    /* ✅ bottone + / - */
+    .toggle-btn{
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background:rgba(0,0,0,.18);
+      backdrop-filter: blur(8px);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      font-weight:700;
+      line-height:1;
+      cursor:pointer;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      flex:0 0 auto;
+    }
+    .toggle-btn:hover{
+      transform:translateY(-2px);
+      background:rgba(0,0,0,.26);
+      border-color:rgba(255,255,255,.28);
+    }
+
+    .value-topline{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    /* ✅ descrizione “tendina verso l’alto” */
+    .value-desc{
+      margin:0;
+      max-width:520px;
+      font-size:15.5px;
+      line-height:1.3;
+      color:rgba(255,255,255,.86);
+
+      transform:translateY(10px);
+      opacity:0;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .28s ease, opacity .28s ease, transform .28s ease;
+    }
+    .value-card.is-open .value-desc{
+      max-height:160px;
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* ✅ frecce SOTTO, non sopra le immagini */
+    .values-controls{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-top:14px; /* distanziale */
+    }
+    .arrow-btn{
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.12);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+      box-shadow:var(--shadow);
+    }
+    .arrow-btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,0,0,0.18);
+    }
+    .arrow-btn svg{
+      width:18px; height:18px;
+      fill:none;
+      stroke:rgba(0,0,0,.75);
+      stroke-width:2.5;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    @media (max-width:980px){
+      .value-card{ width:88vw; max-width:580px; height:420px; }
+    }
+
+    /* ===== quote (font pencil) ===== */
+    .quote{
+      text-align:center;
+    }
+    .quote p{
+      margin:0;
+      font-family:'Caveat', cursive;
+      font-size:clamp(30px,4.8vw,54px);
+      line-height:1.05;
+      color:#111;
+      letter-spacing:.2px;
+    }
+    .quote .by{
+      margin-top:14px;
+      font-size:14px;
+      font-weight:850;
+      color:var(--muted);
+      font-family:'Zalando Sans SemiExpanded', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    /* ===== POSIZIONI (centrato + tendine orizzontali) ===== */
+    .roles{
+      text-align:center;
+    }
+    .roles h2{
+      margin:0 0 12px;
+      font-size:clamp(26px,3.8vw,44px);
+      line-height:1.1;
+      font-weight:850;
+      color:#1d1d1f;
+    }
+    .roles p{
+      margin:0 auto;
+      max-width:880px;
+      font-size:18px;
+      line-height:1.3;
+      color:var(--muted);
+    }
+
+    .jobs{
+      margin-top:44px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      text-align:left;
+    }
+
+    /* ✅ “faq orizzontale” ma più bello */
+    details.job{
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    details.job:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,0,0,0.14);
+      box-shadow:0 16px 46px rgba(0,0,0,.09);
+    }
+
+    summary.job-sum{
+      list-style:none;
+      cursor:pointer;
+      padding:16px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-weight:850;
+      color:#1d1d1f;
+      user-select:none;
+    }
+    summary.job-sum::-webkit-details-marker{ display:none; }
+
+    .job-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .job-title{
+      font-size:16px;
+      font-weight:950;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .job-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.12);
+      background:rgba(0,0,0,0.02);
+      color:rgba(0,0,0,.70);
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .job-icon{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background:rgba(0,0,0,0.04);
+      border:1px solid rgba(0,0,0,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+    }
+    .job-icon svg{
+      width:18px; height:18px;
+      fill:none;
+      stroke:rgba(0,0,0,.72);
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .chev{
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.12);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform .2s ease;
+      flex:0 0 auto;
+    }
+    .chev svg{
+      width:18px; height:18px;
+      fill:none;
+      stroke:rgba(0,0,0,.72);
+      stroke-width:2.5;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    details[open] .chev{ transform:rotate(180deg); }
+
+    .job-body{
+      padding:0 18px 18px;
+      color:var(--muted);
+      line-height:1.3;
+      font-size:15px;
+    }
+    .job-body p{ margin:0 0 12px; }
+    .job-body ul{
+      margin:0 0 16px;
+      padding-left:18px;
+      color:rgba(0,0,0,.72);
+      line-height:1.5;
+      font-size:14.5px;
+    }
+    .job-body li{ margin:6px 0; }
+
+    .job-cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .btn-dark{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      background:#1d1d1f;
+      color:#fff;
+      font-weight:950;
+      font-size:14px;
+      border:0;
+      cursor:pointer;
+    }
+    .btn-outline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.14);
+      background:transparent;
+      color:#1d1d1f;
+      font-weight:950;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    @media (max-width:640px){
+      .job-title{ white-space:normal; }
+      .hero-image{ height:520px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="w980 hero" aria-label="Careers Runnix">
+      <h1>Careers</h1>
+      <p>
+        Stiamo costruendo Runnix per rendere l’allenamento ibrido più chiaro, sostenibile e umano.
+        Se ti riconosci in questo approccio, potresti essere nel posto giusto.
+      </p>
+
+      <!-- ✅ immagine grande al centro -->
+      <div class="hero-image" aria-label="Team Runnix">
+        <img src="/assets/careers/hero.jpg" alt="Runnix Team">
+      </div>
+    </section>
+
+    <!-- VALORI -->
+    <section class="pad-150" aria-label="Valori Runnix">
+      <div class="w980 section-title">
+        <span class="tag">I nostri valori</span>
+        <h2>Come lavoriamo, ogni giorno</h2>
+        <p>Clicca sul <strong>+</strong> per leggere il significato di ogni valore.</p>
+      </div>
+
+      <!-- ✅ stesso w980 della hero-image -->
+      <div class="w980 values-wrap" aria-label="Slideshow valori">
+        <div class="values-track" id="valuesTrack">
+
+          <article class="value-card" data-value>
+            <img src="/assets/careers/card1.png" alt="Al servizio di ogni atleta">
+            <div class="value-overlay">
+              <div class="value-topline">
+                <h3 class="value-title">Al servizio di ogni atleta</h3>
+                <button class="toggle-btn" type="button" aria-label="Apri descrizione" data-toggle>+</button>
+              </div>
+              <p class="value-desc">
+                Progettiamo per chi si allena davvero: livelli diversi, giornate diverse, obiettivi diversi.
+                La qualità si misura quando l’esperienza funziona anche nelle settimane storte.
+              </p>
+            </div>
+          </article>
+
+          <article class="value-card" data-value>
+            <img src="/assets/careers/card2.jpg" alt="Costruire con coraggio">
+            <div class="value-overlay">
+              <div class="value-topline">
+                <h3 class="value-title">Costruire con coraggio</h3>
+                <button class="toggle-btn" type="button" aria-label="Apri descrizione" data-toggle>+</button>
+              </div>
+              <p class="value-desc">
+                Ogni idea deve risolvere un bisogno reale. Sperimentiamo veloce, impariamo in fretta,
+                e cambiamo rotta quando i feedback lo richiedono.
+              </p>
+            </div>
+          </article>
+
+          <article class="value-card" data-value>
+            <img src="/assets/careers/card3.jpeg" alt="Sempre in movimento">
+            <div class="value-overlay">
+              <div class="value-topline">
+                <h3 class="value-title">Sempre in movimento</h3>
+                <button class="toggle-btn" type="button" aria-label="Apri descrizione" data-toggle>+</button>
+              </div>
+              <p class="value-desc">
+                Preferiamo l’azione alle riunioni infinite: priorità chiare, decisioni rapide, iterazioni continue.
+                La velocità conta solo se resta sostenibile.
+              </p>
+            </div>
+          </article>
+
+          <article class="value-card" data-value>
+            <img src="/assets/careers/card4.jpg" alt="Responsabilità prima di tutto">
+            <div class="value-overlay">
+              <div class="value-topline">
+                <h3 class="value-title">Responsabilità prima di tutto</h3>
+                <button class="toggle-btn" type="button" aria-label="Apri descrizione" data-toggle>+</button>
+              </div>
+              <p class="value-desc">
+                Trasparenza, rispetto e responsabilità. Se una scelta non regge alla prova “etica”,
+                non la facciamo. Punto.
+              </p>
+            </div>
+          </article>
+
+          <article class="value-card" data-value>
+            <img src="/assets/careers/values-5.jpg" alt="Vinciamo come team">
+            <div class="value-overlay">
+              <div class="value-topline">
+                <h3 class="value-title">Vinciamo come team</h3>
+                <button class="toggle-btn" type="button" aria-label="Apri descrizione" data-toggle>+</button>
+              </div>
+              <p class="value-desc">
+                Feedback diretti, zero ego, collaborazione vera. Celebriamo i risultati condivisi e ci prendiamo cura
+                delle cose importanti insieme.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ✅ frecce sotto (non sovrapposte) -->
+        <div class="values-controls" aria-label="Controlli slider">
+          <button class="arrow-btn" id="valuesPrev" type="button" aria-label="Valori precedenti">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="arrow-btn" id="valuesNext" type="button" aria-label="Valori successivi">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="pad-150" aria-label="Citazione ispirazione">
+      <div class="w980 quote">
+        <p>“Non puoi mettere un limite a nulla. <br> Più sogni, più lontano arrivi.”</p>
+        <div class="by">— Michael Phelps</div>
+      </div>
+    </section>
+
+    <!-- POSIZIONI APERTE -->
+    <section class="pad-150" aria-label="Posizioni aperte">
+      <div class="w980 roles">
+        <h2>Posizioni aperte</h2>
+        <p>
+          Se vuoi costruire insieme a noi, parti da qui. Se non trovi la posizione giusta, inviaci una candidatura spontanea.
+        </p>
+
+        <div class="jobs" aria-label="Elenco posizioni">
+
+          <!-- Social Media Manager -->
+          <details class="job">
+            <summary class="job-sum">
+              <span class="job-left">
+                <span class="job-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+                  </svg>
+                </span>
+                <span class="job-title">Social Media Manager</span>
+                <span class="job-pill">Open</span>
+              </span>
+              <span class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+
+            <div class="job-body">
+              <p>
+                Cerchiamo una persona che sappia trasformare prodotto e community in contenuti chiari, forti e coerenti con l’identità Runnix.
+              </p>
+              <ul>
+                <li>Gestione calendario editoriale (IG/TikTok/YouTube Shorts)</li>
+                <li>Ideazione format, copy, storytelling e brief creativi</li>
+                <li>Collaborazioni con creator/ambassador e contenuti UGC</li>
+                <li>Analisi performance (metriche, iterazioni, insight)</li>
+              </ul>
+              <div class="job-cta">
+                <a class="btn-dark" href="mailto:info@runnix.it?subject=Candidatura%20-%20Social%20Media%20Manager&body=Ciao%20Runnix%2C%0A%0Ami%20candido%20per%20la%20posizione%20di%20Social%20Media%20Manager.%0A%0A%2D%20Link%20portfolio%3A%20%0A%2D%20Link%20CV%3A%20%0A%2D%20Disponibilit%C3%A0%3A%20%0A%0AGrazie!">
+                  Invia il tuo CV
+                </a>
+                <a class="btn-outline" href="mailto:info@runnix.it?subject=Domanda%20-%20Social%20Media%20Manager">Hai una domanda?</a>
+              </div>
+            </div>
+          </details>
+
+          <!-- Candidatura spontanea -->
+          <details class="job">
+            <summary class="job-sum">
+              <span class="job-left">
+                <span class="job-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3v18"></path>
+                    <path d="M3 12h18"></path>
+                  </svg>
+                </span>
+                <span class="job-title">Candidatura spontanea</span>
+                <span class="job-pill">Always open</span>
+              </span>
+              <span class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+
+            <div class="job-body">
+              <p>
+                Non vedi la posizione giusta ma vuoi lavorare con noi? Raccontaci cosa sai fare, cosa vuoi costruire e perché Runnix.
+              </p>
+              <ul>
+                <li>Link CV / portfolio</li>
+                <li>Ruolo desiderato e disponibilità</li>
+                <li>1–2 progetti di cui vai fiero/a</li>
+              </ul>
+              <div class="job-cta">
+                <a class="btn-dark" href="mailto:info@runnix.it?subject=Candidatura%20spontanea&body=Ciao%20Runnix%2C%0A%0Ami%20piacerebbe%20candidarmi%20spontaneamente.%0A%0A%2D%20Ruolo%20di%20interesse%3A%20%0A%2D%20Link%20CV%2Fportfolio%3A%20%0A%2D%20Disponibilit%C3%A0%3A%20%0A%0AGrazie!">
+                  Invia il tuo CV
+                </a>
+                <a class="btn-outline" href="mailto:info@runnix.it?subject=Info%20-%20Candidatura%20spontanea">Chiedi info</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/main.js"></script>
+  <script>
+    // ===== Values slider: + / - toggles description, arrows scroll =====
+    (function(){
+      const track = document.getElementById('valuesTrack');
+      const prev = document.getElementById('valuesPrev');
+      const next = document.getElementById('valuesNext');
+      if(!track) return;
+
+      const cards = Array.from(track.querySelectorAll('[data-value]'));
+
+      // toggle one, close others
+      const openCard = (card)=>{
+        cards.forEach(c=>{
+          if(c !== card){
+            c.classList.remove('is-open');
+            const b = c.querySelector('[data-toggle]');
+            if(b) b.textContent = '+';
+            if(b) b.setAttribute('aria-label','Apri descrizione');
+          }
+        });
+        card.classList.toggle('is-open');
+        const btn = card.querySelector('[data-toggle]');
+        if(btn){
+          const isOpen = card.classList.contains('is-open');
+          btn.textContent = isOpen ? '−' : '+';
+          btn.setAttribute('aria-label', isOpen ? 'Chiudi descrizione' : 'Apri descrizione');
+        }
+      };
+
+      // only button toggles (not whole card)
+      cards.forEach(card=>{
+        const btn = card.querySelector('[data-toggle]');
+        if(btn){
+          btn.addEventListener('click', (e)=>{
+            e.stopPropagation();
+            openCard(card);
+          });
+        }
+      });
+
+      const scrollByCard = (dir)=>{
+        const first = cards[0];
+        if(!first) return;
+        const gap = 18;
+        const amount = first.getBoundingClientRect().width + gap;
+        track.scrollBy({ left: dir * amount, behavior:'smooth' });
+      };
+      if(prev) prev.addEventListener('click', ()=>scrollByCard(-1));
+      if(next) next.addEventListener('click', ()=>scrollByCard(1));
+    })();
+  </script>
+</body>
+</html>
