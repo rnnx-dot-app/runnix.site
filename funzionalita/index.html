@@ -2,8 +2,13 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Funzionalità</title>
+
+  <!-- ✅ Font + CSS globali (UGUALI ALLA HOME) -->
+  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
 
   <style>
     * {
@@ -12,10 +17,12 @@
       box-sizing: border-box;
     }
 
+    /* ✅ Non override del font: usa quello globale come le altre pagine */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
       color: #1d1d1f;
+      background: #ffffff;
+      font-family: 'Zalando Sans SemiExpanded', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     }
 
     .section {
@@ -43,9 +50,8 @@
       margin-top: 200px;
     }
 
-    /* (2) Ingrandire tutti i titoli principali delle sezioni sotto */
     .section-title {
-      font-size: 56px; /* era 48px */
+      font-size: 56px;
       font-weight: 700;
       margin-bottom: 20px;
       line-height: 1.1;
@@ -141,7 +147,6 @@
       background: linear-gradient(180deg, #ffffff 0%, rgba(193, 255, 114, 0.16) 100%);
       color: #1d1d1f;
     }
-
     .section-1 .section-description,
     .section-1 .carousel-caption {
       color: rgba(0, 0, 0, 0.7);
@@ -151,7 +156,6 @@
       background: linear-gradient(180deg, #ffffff 0%, rgba(0, 203, 255, 0.14) 100%);
       color: #1d1d1f;
     }
-
     .section-2 .section-description,
     .section-2 .carousel-caption {
       color: rgba(0, 0, 0, 0.7);
@@ -161,7 +165,6 @@
       background: linear-gradient(180deg, #ffffff 0%, rgba(249, 16, 79, 0.12) 100%);
       color: #1d1d1f;
     }
-
     .section-3 .section-description,
     .section-3 .carousel-caption {
       color: rgba(0, 0, 0, 0.7);
@@ -176,118 +179,19 @@
       background: linear-gradient(180deg, #ffffff 0%, rgba(200, 161, 214, 0.16) 100%);
       color: #1d1d1f;
     }
-
     .section-5 .section-description,
     .section-5 .carousel-caption {
       color: rgba(0, 0, 0, 0.7);
     }
 
     @media (max-width: 768px) {
-      .section-title {
-        font-size: 40px; /* era 32px */
-      }
-
-      .section-description {
-        font-size: 18px;
-      }
-
-      .carousel-image {
-        width: 300px;
-        height: 360px;
-      }
-
-      .carousel-item {
-        width: 300px;
-      }
+      .section-title { font-size: 40px; }
+      .section-description { font-size: 18px; }
+      .carousel-image { width: 300px; height: 360px; }
+      .carousel-item { width: 300px; }
     }
 
-    /* ====== HEADER (agganciato al tuo partial) ====== */
-    .header {
-      width: 100%;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .container.nav {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #1d1d1f;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .brand img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .center-links {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .center-links a {
-      color: #1d1d1f;
-      text-decoration: none;
-      font-size: 14px;
-      opacity: 0.85;
-    }
-
-    .center-links a:hover {
-      opacity: 1;
-    }
-
-    .right-cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      white-space: nowrap;
-    }
-
-    .btn-app {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #1d1d1f;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .menu {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.12);
-      background: #ffffff;
-      color: #1d1d1f;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    @media (max-width: 980px) {
-      .center-links { display: none; }
-    }
-
-    /* ====== ABOVE THE FOLD (immagine di sfondo + overlay per leggibilità) ====== */
+    /* ====== ABOVE THE FOLD (immagine + overlay) ====== */
     .hero {
       width: 100%;
       position: relative;
@@ -295,17 +199,14 @@
       padding: 0 20px;
       color: #ffffff;
 
-      /* 👇 QUI METTI LA TUA IMMAGINE */
       background-image: url('/assets/hero.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
 
-      /* fallback se l'immagine non carica */
       background-color: #111111;
     }
 
-    /* overlay scuro per rendere il testo sempre leggibile */
     .hero::before {
       content: "";
       position: absolute;
@@ -328,9 +229,14 @@
       padding: 0 0 80px 0;
     }
 
-    /* distanza hero */
     .hero-spacer-200 {
       height: 200px;
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    .hero-spacer-150 {
+      height: 150px;
       width: 100%;
       flex: 0 0 auto;
     }
@@ -364,7 +270,6 @@
       align-items: center;
     }
 
-    /* ✅ FIX ERROR CSS (NON TOCCO ALTRO) */
     .hero-sub1{
       font-size: 20px;
       line-height: 1.45;
@@ -440,9 +345,7 @@
       margin-top: 12px;
     }
 
-    .spacer-200 {
-      height: 200px;
-    }
+    .spacer-200 { height: 200px; }
 
     .two-cards {
       width: 980px;
@@ -466,7 +369,7 @@
 
 <body>
 
-  <!-- ✅ HEADER UNIFICATO (come le altre pagine) -->
+  <!-- ✅ HEADER UNIFICATO (partial) -->
   <div id="site-header"></div>
 
   <!-- ABOVE THE FOLD -->
@@ -474,13 +377,13 @@
     <div class="hero-inner">
       <div class="hero-spacer-200"></div>
 
-      <span class="hero-tag">Runnix</span>
+      <span class="hero-tag">Perché Runnix?</span>
       <h1 class="hero-title">Traccia i tuoi progressi,<br> rimani motivato.</h1>
 
       <div class="hero-spacer-150"></div>
 
       <div class="hero-subgroup">
-        <div class="hero-sub2">Sottotitolo 1</div>
+        <div class="hero-sub2"></div>
       </div>
     </div>
   </section>
@@ -489,7 +392,7 @@
   <section class="section section-1" id="attivita">
     <div class="section-content">
       <span class="section-tag">Movimento</span>
-      <h2 class="section-title">Il tuo piano non è statico: evolve con te, senza perdere logica.</h2>
+      <h2 class="section-title">Il piano evolve con te, senza perdere logica.</h2>
       <p class="section-description">La differenza tra “allenarsi tanto” e “allenarsi bene” è la programmazione. Runnix costruisce micro e mesocicli che integrano corsa e forza evitando conflitti di stimolo (tipo gambe distrutte prima del lungo, o lavori di qualità nel giorno sbagliato). Poi adatta il piano in base a ciò che fai davvero e a come recuperi.</p>
 
       <div class="carousel-container">
@@ -700,7 +603,7 @@
     </div>
   </section>
 
-  <!-- BLOCCO FINALE (SFONDO #f5f5f7, CARD BIANCHE) -->
+  <!-- BLOCCO FINALE -->
   <section class="final-area">
     <div class="final-inner">
 
@@ -708,7 +611,7 @@
         <div class="card-icon"></div>
         <div class="card-title">I tuoi dati a colpo d’occhio.</div>
         <div class="card-desc">L’app Runnid ti aiuta a raccogliere tutti i dati dei tuoi allenenamenti più importanti, come corsa, forza, sonno, attività e altro ancora, in un unico posto sicuro a cui è facile accedere da iPhone e iPad. Fornisce inoltre grafici interattivi e analisi avanzate dei trend, in modo da poter monitorare e visualizzare i tuoi dati nel tempo.</div>
-        <img class="card-img" src="/assets/dashboard.jpg" alt="Immagine">
+        <img class="card-img" src="/assets/home/dashboard.png" alt="Immagine">
       </div>
 
       <div class="spacer-200"></div>
@@ -738,23 +641,23 @@
     </div>
   </section>
 
-  <!-- ✅ FOOTER UNIFICATO (come le altre pagine) -->
+  <!-- ✅ FOOTER UNIFICATO (partial) -->
   <div id="site-footer"></div>
 
   <script>
-    // include header + footer (uguale alle altre pagine)
+    // ✅ include header + footer (uguale alle altre pagine)
     async function include(id, url){
       const el = document.getElementById(id);
       if(!el) return;
       try{
         const r = await fetch(url, { cache: "no-cache" });
         el.innerHTML = await r.text();
-      }catch(e){ console.error('Include failed:', e); }
+      }catch(e){ console.error("Include failed:", e); }
     }
     include('site-header','/partials/header.html');
     include('site-footer','/partials/footer.html');
 
-    // attiva pulsante menu dal partial
+    // (se nel partial esiste un bottone con id=menuBtn)
     document.addEventListener('click', (e)=>{
       if(e.target && e.target.id === 'menuBtn'){
         alert('Menu mobile in arrivo');
@@ -764,15 +667,15 @@
     const carousels = {};
 
     function initCarousel(id) {
-      carousels[id] = {
-        element: document.getElementById(id),
-        currentIndex: 0
-      };
+      const el = document.getElementById(id);
+      if(!el) return;
+      carousels[id] = { element: el, currentIndex: 0 };
       updateButtons(id);
     }
 
     function scrollCarousel(id, direction) {
       const carousel = carousels[id];
+      if(!carousel) return;
       const items = carousel.element.children;
 
       carousel.currentIndex += direction;
@@ -789,16 +692,19 @@
 
     function updateButtons(id) {
       const carousel = carousels[id];
+      if(!carousel) return;
       const carouselNum = id.replace('carousel', '');
       const items = carousel.element.children;
 
-      document.getElementById(`prev${carouselNum}`).disabled = carousel.currentIndex === 0;
-      document.getElementById(`next${carouselNum}`).disabled = carousel.currentIndex >= items.length - 1;
+      const prev = document.getElementById(`prev${carouselNum}`);
+      const next = document.getElementById(`next${carouselNum}`);
+      if(prev) prev.disabled = carousel.currentIndex === 0;
+      if(next) next.disabled = carousel.currentIndex >= items.length - 1;
     }
 
-    ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5'].forEach(id => {
-      initCarousel(id);
-    });
+    ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5'].forEach(initCarousel);
   </script>
+
+  <script src="/main.js"></script>
 </body>
 </html>

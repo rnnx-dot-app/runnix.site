@@ -4,15 +4,35 @@
     <!-- Col 1 -->
     <div class="rnx-footer__col rnx-footer__brandcol">
       <img class="rnx-footer__logo" src="/assets/logo/logo_bianco.png" alt="Runnix" width="34" height="34">
-      <p class="rnx-footer__desc">
-        Runnix è la prima app italiana che aiuta a migliorare le performance degli atleti.
-      </p>
+
+      <!-- App store icons (solo img, cambi i nomi file e basta) -->
+      <div class="rnx-footer__stores" aria-label="Scarica l'app">
+        <a class="rnx-footer__iconbtn" href="#" aria-label="App Store">
+          <img src="/assets/footer/appstore.png" alt="App Store">
+        </a>
+        <a class="rnx-footer__iconbtn" href="#" aria-label="Google Play">
+          <img src="/assets/footer/googleplay.png" alt="Google Play">
+        </a>
+      </div>
+
+      <!-- Social icons (solo img, cambi i nomi file e basta) -->
+      <div class="rnx-footer__social" aria-label="Social Runnix">
+        <a class="rnx-footer__iconbtn" href="#" aria-label="Instagram">
+          <img src="/assets/footer/ig.png" alt="Instagram">
+        </a>
+        <a class="rnx-footer__iconbtn" href="#" aria-label="TikTok">
+          <img src="/assets/footer/tiktok.png" alt="TikTok">
+        </a>
+      </div>
     </div>
 
-    <!-- Col 2 -->
+    <!-- Col 2 (Company) -->
     <div class="rnx-footer__col">
-      <h4 class="rnx-footer__title">About us</h4>
-      <nav class="rnx-footer__links" aria-label="About us">
+      <h4 class="rnx-footer__title">Company</h4>
+      <nav class="rnx-footer__links" aria-label="Company">
+        <a href="/funzionalita/">Funzionalità</a>
+        <a href="/blog/">Blog</a>
+        <a href="#">Research</a>
         <a href="/team/">Team</a>
         <a href="/community/">Community</a>
         <a href="/careers/index.html">Careers</a>
@@ -21,27 +41,16 @@
 
     <!-- Col 3 -->
     <div class="rnx-footer__col">
-      <h4 class="rnx-footer__title">Company</h4>
-      <nav class="rnx-footer__links" aria-label="Company">
-        <a href="/funzionalita/">Funzionalità</a>
-        <a href="/blog/">Blog</a>
-        <a href="#">Research</a>
-      </nav>
-    </div>
-
-    <!-- Col 4 -->
-    <div class="rnx-footer__col">
       <h4 class="rnx-footer__title">Informazioni legali</h4>
       <nav class="rnx-footer__links" aria-label="Informazioni legali">
         <a href="/policy/policy_index.html">Privacy Policy</a>
         <a href="/policy/terms_index.html">Cookie Policy</a>
         <a href="/policy/terms.html">Termini e condizioni</a>
         <a href="#">Brevetti</a>
-        <a href="#">Sicurezza</a>
       </nav>
     </div>
 
-    <!-- Col 5 -->
+    <!-- Col 4 -->
     <div class="rnx-footer__col">
       <h4 class="rnx-footer__title">Partner</h4>
       <nav class="rnx-footer__links" aria-label="Partner">
@@ -51,7 +60,7 @@
       </nav>
     </div>
 
-    <!-- Col 6 -->
+    <!-- Col 5 -->
     <div class="rnx-footer__col">
       <h4 class="rnx-footer__title">Contatti</h4>
       <nav class="rnx-footer__links" aria-label="Contatti">
@@ -66,3 +75,10 @@
     <small>© <span id="year"></span> 2026 Runnix. Tutti i diritti riservati. Runnix e Runnix app sono marchii commerciali di Runnix Inc. e non possono essere utilizzati senza autorizzazione.</small>
   </div>
 </footer>
+
+<script>
+  (function(){
+    const y = document.getElementById('year');
+    if(y) y.textContent = new Date().getFullYear();
+  })();
+</script>
