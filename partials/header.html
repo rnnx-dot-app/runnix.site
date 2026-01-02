@@ -1,10 +1,24 @@
 <header class="header" role="banner">
   <div class="container nav">
-    <a class="brand" href="/" aria-label="Runnix Home">
-      <img src="/assets/logo/logo_nero.png" alt="Runnix" />
-      <span>Runnix</span>
-    </a>
 
+    <!-- ✅ SOLO MOBILE: hamburger -->
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Apri menu"
+      aria-controls="mobileMenu"
+      aria-expanded="false"
+    >
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+
+    <!-- ✅ NON LINK: non deve aprire nulla, non deve navigare -->
+    <div class="brand" aria-label="Runnix">
+      <img class="brand__logo" src="/assets/logo/logo_nero.png" alt="Runnix" />
+      <span class="brand__text">Runnix</span>
+    </div>
+
+    <!-- Desktop links -->
     <nav class="center-links" aria-label="Principale">
       <a href="/home/index.html">Home</a>
       <a href="/funzionalita/">Funzionalità</a>
@@ -14,8 +28,32 @@
       <a href="/contatti/">Supporto</a>
     </nav>
 
+    <!-- CTA destra -->
     <div class="right-cta">
-      <a class="btn-app" href="https://runnix.it">Prova ora Runnix</a>
+      <a class="btn-app" href="https://runnix.it">Prova Gratis</a>
     </div>
   </div>
+
+  <!-- Overlay + Drawer -->
+  <div class="mobile-menu-overlay" data-menu-overlay hidden></div>
+
+  <aside id="mobileMenu" class="mobile-menu" aria-label="Menu mobile" hidden>
+    <div class="mobile-menu__top">
+      <span class="mobile-menu__title">Runnix</span>
+      <button class="mobile-menu__close" type="button" aria-label="Chiudi menu">✕</button>
+    </div>
+
+    <nav class="mobile-menu__links" aria-label="Navigazione mobile">
+      <a href="/home/index.html">Home</a>
+      <a href="/funzionalita/">Funzionalità</a>
+      <a href="/team/">Team</a>
+      <a href="/community/">Community</a>
+      <a href="/club/">Club</a>
+      <a href="/contatti/">Supporto</a>
+    </nav>
+
+    <div class="mobile-menu__cta">
+      <a class="btn-app" href="https://app.runnix.app">Scarica l’app</a>
+    </div>
+  </aside>
 </header>
