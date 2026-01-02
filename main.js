@@ -18,15 +18,21 @@ async function includePartial(targetId, url){
 async function bootPartials(){
   await includePartial("site-header", "/partials/header.html");
   await includePartial("site-footer", "/partials/footer.html");
+}
 
-  const y = document.getElementById("year");
-  if(y) y.textContent = new Date().getFullYear();
+/* =========================
+   Mobile Menu (delegation)
+   ========================= */
+function getMenuEls(){
+  return {
+    toggle: document.querySelector(".nav-toggle"),
+    drawer: document.getElementById("mobileMenu"),
+    overlay: document.querySelector("[data-menu-overlay]"),
+  };
 }
 
 function openMenu(){
-  const toggle = document.querySelector(".nav-toggle");
-  const drawer = document.getElementById("mobileMenu");
-  const overlay = document.querySelector("[data-menu-overlay]");
+  const { toggle, drawer, overlay } = getMenuEls();
   if(!toggle || !drawer || !overlay) return;
 
   drawer.hidden = false;
@@ -40,9 +46,7 @@ function openMenu(){
 }
 
 function closeMenu(){
-  const toggle = document.querySelector(".nav-toggle");
-  const drawer = document.getElementById("mobileMenu");
-  const overlay = document.querySelector("[data-menu-overlay]");
+  const { toggle, drawer, overlay } = getMenuEls();
   if(!toggle || !drawer || !overlay) return;
 
   document.body.classList.remove("menu-open");
@@ -63,12 +67,11 @@ function toggleMenu(){
 }
 
 function bootMenuEvents(){
-  // ✅ Event delegation: funziona anche con header caricato via partial
+  // Delegation: funziona anche se header viene inserito dopo (via fetch)
   document.addEventListener("click", (e)=>{
     const toggleBtn = e.target.closest(".nav-toggle");
     if(toggleBtn){
       e.preventDefault();
-      e.stopPropagation();
       toggleMenu();
       return;
     }
@@ -87,9 +90,8 @@ function bootMenuEvents(){
       return;
     }
 
-    // click su link del drawer -> chiude
-    const inDrawerLink = e.target.closest("#mobileMenu a");
-    if(inDrawerLink){
+    const drawerLink = e.target.closest("#mobileMenu a");
+    if(drawerLink){
       closeMenu();
       return;
     }
@@ -112,7 +114,46 @@ function bootMenuEvents(){
   else mq.addListener(onChange);
 }
 
+/* =========================
+   Parallax hero (come avevi)
+   ========================= */
+function bootHeroParallax(){
+  const heroImg = document.querySelector(".hero-img");
+  if(!heroImg) return;
+
+  const onScroll = ()=>{
+    const y = window.scrollY * 0.12;
+    heroImg.style.transform = `translateY(${Math.min(80, y)}px) scale(1.02)`;
+  };
+
+  window.addEventListener("scroll", onScroll, { passive:true });
+  onScroll();
+}
+
+/* =========================
+   Pricing toggle (come avevi)
+   ========================= */
+function bootPricingToggle(){
+  const toggle = document.getElementById("billingToggle");
+  const priceEls = document.querySelectorAll(".amount[data-monthly][data-annual]");
+
+  function applyBilling(isAnnual){
+    priceEls.forEach(el=>{
+      el.innerHTML = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    });
+  }
+
+  if(toggle){
+    toggle.addEventListener("change", (e)=>{
+      applyBilling(e.target.checked);
+    });
+    applyBilling(toggle.checked);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async ()=>{
-  bootMenuEvents();     // ✅ metto listener SUBITO (delegation)
-  await bootPartials(); // ✅ poi includo header/footer
+  bootMenuEvents();        // listener subito
+  await bootPartials();    // poi carica header/footer
+  bootHeroParallax();      // come prima
+  bootPricingToggle();     // come prima
 });

@@ -32,7 +32,7 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* =========================
-   HEADER (uguale per tutte)
+   HEADER
    ========================= */
 .header{
   width:100%;
@@ -99,33 +99,20 @@ a{ color:inherit; text-decoration:none; }
   font-weight:700;
 }
 
-.menu{
-  padding:10px 14px;
-  border-radius:999px;
-  border:1px solid rgba(0,0,0,0.12);
-  background:transparent;
-  color:#1d1d1f;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:700;
-}
-
-@media (max-width:980px){
-  .center-links{ display:none; }
-}
-/* ===== Mobile header layout ===== */
+/* =========================
+   HAMBURGER (mobile only)
+   ========================= */
 .nav-toggle{
   display:none;              /* desktop non si vede */
   width:44px;
   height:44px;
-  border-radius:999px;       /* cerchio */
+  border-radius:999px;
   border:1px solid rgba(0,0,0,0.14);
   background:#fff;
   cursor:pointer;
   align-items:center;
   justify-content:center;
 }
-
 .nav-toggle:hover{
   border-color:rgba(0,0,0,0.22);
 }
@@ -151,7 +138,7 @@ a{ color:inherit; text-decoration:none; }
 .nav-toggle__icon::before{ top:-6px; }
 .nav-toggle__icon::after{ top:6px; }
 
-/* brand: desktop logo + testo */
+/* brand */
 .brand__logo{
   width:40px;
   height:40px;
@@ -160,7 +147,9 @@ a{ color:inherit; text-decoration:none; }
 }
 .brand__text{ font-weight:700; }
 
-/* ===== Drawer mobile (sinistra) ===== */
+/* =========================
+   Drawer mobile
+   ========================= */
 .mobile-menu-overlay{
   position:fixed;
   inset:0;
@@ -168,6 +157,7 @@ a{ color:inherit; text-decoration:none; }
   z-index:999;
   opacity:0;
   transition:opacity .22s ease;
+  pointer-events:none; /* IMPORTANT: non blocca click quando chiuso */
 }
 
 .mobile-menu{
@@ -231,13 +221,16 @@ a{ color:inherit; text-decoration:none; }
   opacity:1;
 }
 
-.mobile-menu__cta{ margin-top:auto; }
-
-/* stato open */
+/* open state (JS mette body.menu-open) */
 body.menu-open .mobile-menu{ transform:translateX(0); }
-body.menu-open .mobile-menu-overlay{ opacity:1; }
+body.menu-open .mobile-menu-overlay{
+  opacity:1;
+  pointer-events:auto;
+}
 
-/* ===== Mobile rules: sinistra menu, centro testo, destra CTA ===== */
+/* =========================
+   Mobile layout header
+   ========================= */
 @media (max-width:980px){
   .center-links{ display:none; }
   .nav-toggle{ display:inline-flex; }
@@ -253,7 +246,7 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   .brand{ justify-self:center; }
   .right-cta{ justify-self:end; }
 
-  /* ✅ Mobile: nascondi logo, lascia solo scritta */
+  /* Mobile: nascondi logo, lascia solo scritta */
   .brand__logo{ display:none; }
 }
 
@@ -265,7 +258,6 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   }
 }
 
-
 /* =========================
    FOOTER RNX (namespaced)
    ========================= */
@@ -276,13 +268,11 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   padding:90px 0 50px;
 }
 
-/* ✅ centrato + colonne uniformi */
 .rnx-footer__inner{
   width:100%;
   max-width:1200px;
   margin:0 auto;
   padding:0 20px;
-
   display:grid;
   grid-template-columns:repeat(5, minmax(0, 1fr));
   gap:28px;
@@ -304,7 +294,6 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   display:block;
 }
 
-/* titoli */
 .rnx-footer__title{
   font-size:15px;
   font-weight:600;
@@ -312,7 +301,6 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   color:#fff;
 }
 
-/* link colonne */
 .rnx-footer__links{
   display:flex;
   flex-direction:column;
@@ -332,7 +320,6 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   opacity:1;
 }
 
-/* ===== icone: nessun box, solo click area pulita ===== */
 .rnx-footer__stores,
 .rnx-footer__social{
   display:flex;
@@ -356,20 +343,18 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   transform:translateY(-1px);
 }
 
-/* ✅ dimensioni icone (qui le fai grandi quanto vuoi) */
 .rnx-footer__stores img{
-  height:34px;     /* App Store / Play: più grandi */
+  height:34px;
   width:auto;
   display:block;
 }
 
 .rnx-footer__social img{
-  height:40px;     /* Social: grandi e leggibili */
+  height:40px;
   width:auto;
   display:block;
 }
 
-/* bottom */
 .rnx-footer__bottom{
   width:100%;
   max-width:1200px;
@@ -381,7 +366,6 @@ body.menu-open .mobile-menu-overlay{ opacity:1; }
   color:#AEB4BB;
 }
 
-/* responsive */
 @media (max-width:1020px){
   .rnx-footer__inner{
     grid-template-columns:repeat(3, minmax(0, 1fr));
