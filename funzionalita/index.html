@@ -11,33 +11,28 @@
   <link rel="stylesheet" href="/css/main.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ✅ Non override del font: usa quello globale come le altre pagine */
-    body {
+    body{
       line-height: 1.6;
       color: #1d1d1f;
       background: #ffffff;
       font-family: 'Zalando Sans SemiExpanded', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     }
 
-    .section {
+    .section{
       width: 100%;
       padding: 80px 20px;
       position: relative;
       overflow: hidden;
     }
 
-    .section-content {
+    .section-content{
       max-width: 980px;
       margin: 0 auto;
     }
 
-    .section-tag {
+    .section-tag{
       display: inline-block;
       font-size: 12px;
       font-weight: 600;
@@ -50,70 +45,73 @@
       margin-top: 200px;
     }
 
-    .section-title {
+    .section-title{
       font-size: 56px;
       font-weight: 700;
       margin-bottom: 20px;
       line-height: 1.1;
     }
 
-    .section-description {
+    .section-description{
       font-size: 21px;
       line-height: 1.5;
       margin-bottom: 40px;
       max-width: 640px;
     }
 
-    .carousel-container {
+    /* ===== Carousel base (DESKTOP) ===== */
+    .carousel-container{
       position: relative;
-      overflow: visible;
+      overflow: visible; /* desktop come prima */
       margin-bottom: 50px;
       margin-left: 0;
       width: 100%;
     }
 
-    .carousel-wrapper {
+    .carousel-wrapper{
       display: flex;
       gap: 20px;
       transition: transform 0.5s ease;
       width: fit-content;
+      transform: translateX(0);
     }
 
-    .carousel-item {
+    .carousel-item{
       flex-shrink: 0;
       width: 375px;
     }
 
-    .carousel-item.wide {
+    .carousel-item.wide{
       width: 765px;
     }
 
-    .carousel-image {
+    .carousel-image{
       width: 375px;
       height: 450px;
       object-fit: cover;
       border-radius: 18px;
       margin-bottom: 16px;
+      display: block;
     }
 
-    .carousel-item.wide .carousel-image {
+    .carousel-item.wide .carousel-image{
       width: 765px;
     }
 
-    .carousel-caption {
+    .carousel-caption{
       font-size: 17px;
       line-height: 1.4;
       color: rgba(0, 0, 0, 0.7);
     }
 
-    .carousel-controls {
+    .carousel-controls{
       display: flex;
       gap: 12px;
       justify-content: flex-end;
       margin-top: 200px;
     }
 
-    .carousel-btn {
+    .carousel-btn{
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -126,73 +124,104 @@
       transition: all 0.3s ease;
     }
 
-    .carousel-btn:hover {
+    .carousel-btn:hover{
       background: rgba(0, 0, 0, 0.15);
       transform: scale(1.05);
     }
 
-    .carousel-btn:disabled {
+    .carousel-btn:disabled{
       opacity: 0.3;
       cursor: not-allowed;
       transform: scale(1);
     }
 
-    .carousel-btn svg {
+    .carousel-btn svg{
       width: 20px;
       height: 20px;
     }
 
     /* Colori delle sezioni */
-    .section-1 {
+    .section-1{
       background: linear-gradient(180deg, #ffffff 0%, rgba(193, 255, 114, 0.16) 100%);
       color: #1d1d1f;
     }
     .section-1 .section-description,
-    .section-1 .carousel-caption {
-      color: rgba(0, 0, 0, 0.7);
-    }
+    .section-1 .carousel-caption{ color: rgba(0,0,0,0.7); }
 
-    .section-2 {
+    .section-2{
       background: linear-gradient(180deg, #ffffff 0%, rgba(0, 203, 255, 0.14) 100%);
       color: #1d1d1f;
     }
     .section-2 .section-description,
-    .section-2 .carousel-caption {
-      color: rgba(0, 0, 0, 0.7);
-    }
+    .section-2 .carousel-caption{ color: rgba(0,0,0,0.7); }
 
-    .section-3 {
+    .section-3{
       background: linear-gradient(180deg, #ffffff 0%, rgba(249, 16, 79, 0.12) 100%);
       color: #1d1d1f;
     }
     .section-3 .section-description,
-    .section-3 .carousel-caption {
-      color: rgba(0, 0, 0, 0.7);
-    }
+    .section-3 .carousel-caption{ color: rgba(0,0,0,0.7); }
 
-    .section-4 {
+    .section-4{
       background: linear-gradient(180deg, #ffffff 0%, rgba(255, 233, 125, 0.16) 100%);
       color: #1d1d1f;
     }
 
-    .section-5 {
+    .section-5{
       background: linear-gradient(180deg, #ffffff 0%, rgba(200, 161, 214, 0.16) 100%);
       color: #1d1d1f;
     }
     .section-5 .section-description,
-    .section-5 .carousel-caption {
-      color: rgba(0, 0, 0, 0.7);
-    }
+    .section-5 .carousel-caption{ color: rgba(0,0,0,0.7); }
 
-    @media (max-width: 768px) {
-      .section-title { font-size: 40px; }
-      .section-description { font-size: 18px; }
-      .carousel-image { width: 300px; height: 360px; }
-      .carousel-item { width: 300px; }
+    /* ✅ MOBILE: swipe nativo + frecce che scrollano (NO transform) */
+    @media (max-width: 768px){
+      .section-title{ font-size: 40px; }
+      .section-description{ font-size: 18px; }
+
+      .carousel-container{
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 6px;
+      }
+
+      /* su mobile non usiamo transform */
+      .carousel-wrapper{
+        transform: none !important;
+        transition: none !important;
+        gap: 14px;
+        width: max-content;        /* importante per lo scroll */
+        padding-right: 20px;
+      }
+
+      .carousel-item{
+        width: 82vw;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+
+      /* wide non deve rompere */
+      .carousel-item.wide{
+        width: 82vw;
+      }
+
+      .carousel-image{
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+      }
+
+      .carousel-item.wide .carousel-image{
+        width: 100%;
+      }
+
+      .carousel-container::-webkit-scrollbar{ height: 0; }
     }
 
     /* ====== ABOVE THE FOLD (immagine + overlay) ====== */
-    .hero {
+    .hero{
       width: 100%;
       position: relative;
       overflow: hidden;
@@ -207,7 +236,7 @@
       background-color: #111111;
     }
 
-    .hero::before {
+    .hero::before{
       content: "";
       position: absolute;
       inset: 0;
@@ -215,7 +244,7 @@
       z-index: 0;
     }
 
-    .hero-inner {
+    .hero-inner{
       position: relative;
       max-width: 980px;
       margin: 0 auto;
@@ -229,19 +258,10 @@
       padding: 0 0 80px 0;
     }
 
-    .hero-spacer-200 {
-      height: 200px;
-      width: 100%;
-      flex: 0 0 auto;
-    }
+    .hero-spacer-200{ height: 200px; width: 100%; flex: 0 0 auto; }
+    .hero-spacer-150{ height: 150px; width: 100%; flex: 0 0 auto; }
 
-    .hero-spacer-150 {
-      height: 150px;
-      width: 100%;
-      flex: 0 0 auto;
-    }
-
-    .hero-tag {
+    .hero-tag{
       display: inline-block;
       font-size: 12px;
       font-weight: 700;
@@ -254,7 +274,7 @@
       margin-bottom: 14px;
     }
 
-    .hero-title {
+    .hero-title{
       font-size: 58px;
       font-weight: 800;
       line-height: 1.05;
@@ -263,7 +283,7 @@
       text-shadow: 0 20px 60px rgba(0,0,0,0.30);
     }
 
-    .hero-subgroup {
+    .hero-subgroup{
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -275,94 +295,6 @@
       line-height: 1.45;
       color: rgba(255,255,255,0.92);
       max-width: 820px;
-    }
-
-    /* ====== BLOCCO FINALE ====== */
-    .final-area {
-      background: #f5f5f7;
-      padding: 200px 20px 200px 20px;
-    }
-
-    .final-inner {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .card-white {
-      background: #ffffff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    }
-
-    .card-1000 {
-      width: 980px;
-      height: 1000px;
-      margin: 0 auto;
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      justify-content: flex-start;
-    }
-
-    .card-980 {
-      width: 980px;
-      height: 980px;
-      margin: 0 auto;
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      justify-content: flex-start;
-    }
-
-    .card-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.08);
-    }
-
-    .card-title {
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .card-desc {
-      font-size: 18px;
-      line-height: 1.55;
-      color: rgba(0,0,0,0.7);
-      max-width: 720px;
-    }
-
-    .card-img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      border-radius: 18px;
-      margin-top: 12px;
-    }
-
-    .spacer-200 { height: 200px; }
-
-    .two-cards {
-      width: 980px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 480px 480px;
-      gap: 20px;
-    }
-
-    .card-437 {
-      width: 480px;
-      height: 437px;
-      padding: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      justify-content: flex-start;
     }
   </style>
 </head>
@@ -603,49 +535,11 @@
     </div>
   </section>
 
-  <!-- BLOCCO FINALE -->
-  <section class="final-area">
-    <div class="final-inner">
-
-      <div class="card-white card-1000">
-        <div class="card-icon"></div>
-        <div class="card-title">I tuoi dati a colpo d’occhio.</div>
-        <div class="card-desc">L’app Runnid ti aiuta a raccogliere tutti i dati dei tuoi allenenamenti più importanti, come corsa, forza, sonno, attività e altro ancora, in un unico posto sicuro a cui è facile accedere da iPhone e iPad. Fornisce inoltre grafici interattivi e analisi avanzate dei trend, in modo da poter monitorare e visualizzare i tuoi dati nel tempo.</div>
-        <img class="card-img" src="/assets/home/dashboard.png" alt="Immagine">
-      </div>
-
-      <div class="spacer-200"></div>
-
-      <div class="card-white card-980">
-        <div class="card-icon"></div>
-        <div class="card-title">Runnix non ti chiede di essere perfetto. Ti aiuta a essere continuo.</div>
-        <div class="card-desc">L’atleta ibrido non è quello che fa tutto sempre. È quello che sa integrare stimoli, recuperare bene e migliorare nel tempo. Runnix nasce per questo: mettere insieme i pezzi — corsa, forza, recupero — e farli lavorare come un sistema unico.</div>
-      </div>
-
-      <div class="spacer-200"></div>
-
-      <div class="two-cards">
-        <div class="card-white card-437">
-          <div class="card-icon"></div>
-          <div class="card-title">Titolo</div>
-          <div class="card-desc">Testo</div>
-        </div>
-
-        <div class="card-white card-437">
-          <div class="card-icon"></div>
-          <div class="card-title">Titolo</div>
-          <div class="card-desc">Testo</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- ✅ FOOTER UNIFICATO (partial) -->
   <div id="site-footer"></div>
 
   <script>
-    // ✅ include header + footer (uguale alle altre pagine)
+    // ✅ include header + footer
     async function include(id, url){
       const el = document.getElementById(id);
       if(!el) return;
@@ -657,54 +551,124 @@
     include('site-header','/partials/header.html');
     include('site-footer','/partials/footer.html');
 
-    // (se nel partial esiste un bottone con id=menuBtn)
-    document.addEventListener('click', (e)=>{
-      if(e.target && e.target.id === 'menuBtn'){
-        alert('Menu mobile in arrivo');
-      }
-    });
-
+    /* =========================
+       Carousel: desktop = transform, mobile = scrollLeft (swipe)
+       ========================= */
     const carousels = {};
 
-    function initCarousel(id) {
-      const el = document.getElementById(id);
-      if(!el) return;
-      carousels[id] = { element: el, currentIndex: 0 };
-      updateButtons(id);
+    function isMobile(){
+      return window.matchMedia("(max-width: 768px)").matches;
     }
 
-    function scrollCarousel(id, direction) {
-      const carousel = carousels[id];
-      if(!carousel) return;
-      const items = carousel.element.children;
+    function getGap(){
+      return isMobile() ? 14 : 20;
+    }
 
-      carousel.currentIndex += direction;
-      carousel.currentIndex = Math.max(0, Math.min(carousel.currentIndex, items.length - 1));
+    function initCarousel(id){
+      const wrapper = document.getElementById(id);
+      if(!wrapper) return;
 
-      let scrollAmount = 0;
-      for (let i = 0; i < carousel.currentIndex; i++) {
-        scrollAmount += items[i].offsetWidth + 20;
+      const container = wrapper.closest(".carousel-container");
+      if(!container) return;
+
+      carousels[id] = { wrapper, container, currentIndex: 0 };
+
+      // mobile: niente transform
+      if(isMobile()){
+        wrapper.style.transform = "none";
+        container.scrollLeft = 0;
+      }else{
+        wrapper.style.transform = "translateX(0)";
       }
 
-      carousel.element.style.transform = `translateX(-${scrollAmount}px)`;
+      updateButtons(id);
+
+      // su mobile: quando swipi, aggiorna lo stato bottoni
+      container.addEventListener("scroll", ()=>{
+        if(!isMobile()) return;
+        updateButtons(id);
+      }, { passive:true });
+    }
+
+    function scrollCarousel(id, direction){
+      const c = carousels[id];
+      if(!c) return;
+
+      const items = c.wrapper.children;
+      if(!items.length) return;
+
+      const gap = getGap();
+
+      if(isMobile()){
+        const step = items[0].offsetWidth + gap;
+        c.container.scrollBy({ left: direction * step, behavior: "smooth" });
+        return;
+      }
+
+      // desktop: logica originale (transform)
+      c.currentIndex += direction;
+      c.currentIndex = Math.max(0, Math.min(c.currentIndex, items.length - 1));
+
+      let scrollAmount = 0;
+      for(let i=0; i<c.currentIndex; i++){
+        scrollAmount += items[i].offsetWidth + gap;
+      }
+
+      c.wrapper.style.transform = `translateX(-${scrollAmount}px)`;
       updateButtons(id);
     }
 
-    function updateButtons(id) {
-      const carousel = carousels[id];
-      if(!carousel) return;
-      const carouselNum = id.replace('carousel', '');
-      const items = carousel.element.children;
+    function updateButtons(id){
+      const c = carousels[id];
+      if(!c) return;
 
+      const carouselNum = id.replace('carousel','');
       const prev = document.getElementById(`prev${carouselNum}`);
       const next = document.getElementById(`next${carouselNum}`);
-      if(prev) prev.disabled = carousel.currentIndex === 0;
-      if(next) next.disabled = carousel.currentIndex >= items.length - 1;
+
+      const items = c.wrapper.children;
+      if(!items.length) return;
+
+      if(isMobile()){
+        const gap = getGap();
+        const step = items[0].offsetWidth + gap;
+        const idx = Math.round(c.container.scrollLeft / step);
+
+        if(prev) prev.disabled = idx <= 0;
+        if(next) next.disabled = idx >= items.length - 1;
+        return;
+      }
+
+      if(prev) prev.disabled = c.currentIndex === 0;
+      if(next) next.disabled = c.currentIndex >= items.length - 1;
     }
 
-    ['carousel1', 'carousel2', 'carousel3', 'carousel4', 'carousel5'].forEach(initCarousel);
+    // init carousels
+    ['carousel1','carousel2','carousel3','carousel4','carousel5'].forEach(initCarousel);
+
+    // ✅ se cambia breakpoint (rotate / resize), reset coerente
+    window.addEventListener("resize", ()=>{
+      ['carousel1','carousel2','carousel3','carousel4','carousel5'].forEach((id)=>{
+        const c = carousels[id];
+        if(!c) return;
+
+        c.currentIndex = 0;
+        if(isMobile()){
+          c.wrapper.style.transform = "none";
+          c.container.scrollLeft = 0;
+        }else{
+          c.container.scrollLeft = 0;
+          c.wrapper.style.transform = "translateX(0)";
+        }
+        updateButtons(id);
+      });
+    }, { passive:true });
+
+    // espone la funzione per gli onclick
+    window.scrollCarousel = scrollCarousel;
   </script>
 
-  <script src="/main.js"></script>
+  <!-- ✅ JS globale del sito (hamburger, include ecc.) -->
+  <script src="/main.js" defer></script>
 </body>
 </html>
