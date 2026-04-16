@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blog – Runnix</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
     }
 
     *{box-sizing:border-box}
+
     body{
       margin:0;
       background:var(--bg);
@@ -28,28 +29,38 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
 
-    /* Layout coerente con le altre pagine */
-    .page{ padding:0 0 120px; }
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .page{
+      padding:0 0 120px;
+    }
+
     .wrap{
       width:1300px;
       max-width:calc(100% - 40px);
       margin:0 auto;
     }
-    .section{ padding:130px 0 0; }
+
     .container-1100{
       width:1100px;
       max-width:100%;
       margin:0 auto;
     }
 
-    /* Header area del blog */
     .blog-head{
       text-align:center;
-      padding-top:90px; /* prima sezione: un po’ più “leggera” sotto header */
+      padding-top:90px;
     }
+
     .blog-head h1{
       margin:0 0 10px;
       font-size:clamp(34px,4vw,58px);
@@ -57,6 +68,7 @@
       font-weight:850;
       letter-spacing:-.4px;
     }
+
     .blog-head .sub{
       margin:0 auto;
       max-width:860px;
@@ -65,7 +77,6 @@
       color:var(--muted);
     }
 
-    /* Toolbar */
     .blog-toolbar{
       margin-top:34px;
       display:flex;
@@ -74,12 +85,14 @@
       flex-wrap:wrap;
       justify-content:center;
     }
+
     .chips{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
     }
+
     .chip{
       appearance:none;
       border:1px solid var(--border);
@@ -92,8 +105,19 @@
       cursor:pointer;
       transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-    .chip:hover{ transform:translateY(-2px); border-color:rgba(0,0,0,.12); box-shadow:0 10px 22px rgba(0,0,0,.06); }
-    .chip:focus{ outline:none; box-shadow:0 0 0 3px rgba(176,230,85,.22); border-color:rgba(176,230,85,.45); }
+
+    .chip:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:0 10px 22px rgba(0,0,0,.06);
+    }
+
+    .chip:focus{
+      outline:none;
+      box-shadow:0 0 0 3px rgba(176,230,85,.22);
+      border-color:rgba(176,230,85,.45);
+    }
+
     .chip.active{
       border-color:rgba(176,230,85,.55);
       box-shadow:inset 0 0 0 1px rgba(176,230,85,.55);
@@ -105,6 +129,7 @@
       max-width:340px;
       flex:0 1 340px;
     }
+
     .search input{
       width:100%;
       background:#fff;
@@ -115,11 +140,13 @@
       font-size:14px;
       transition:border-color .2s ease, box-shadow .2s ease;
     }
+
     .search input:focus{
       outline:none;
       border-color:rgba(176,230,85,.55);
       box-shadow:0 0 0 3px rgba(176,230,85,.18);
     }
+
     .search svg{
       position:absolute;
       left:14px;
@@ -129,48 +156,58 @@
       pointer-events:none;
     }
 
-    /* Grid */
     .blog-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:18px;
-      margin-top:34px;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:24px;
+      margin-top:40px;
+      align-items:stretch;
     }
-    @media (max-width:1024px){ .blog-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
-    @media (max-width:640px){ .blog-grid{ grid-template-columns:1fr; } }
 
-    /* Card (coerente con big-card/v-card ma più compatta) */
+    @media (max-width:1024px){
+      .blog-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
     .blog-card{
       background:#fff;
       border:1px solid var(--border);
-      border-radius:24px;
+      border-radius:28px;
       overflow:hidden;
       box-shadow:var(--shadow);
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
       height:100%;
     }
+
     .blog-card:hover{
       transform:translateY(-6px);
       border-color:rgba(0,0,0,.12);
       box-shadow:0 16px 46px rgba(0,0,0,.10);
     }
+
     .blog-link{
       display:flex;
       flex-direction:column;
       height:100%;
+      text-align:left;
     }
+
     .cover{
       width:100%;
-      height:190px;
+      height:280px;
       object-fit:cover;
       background:#0c0c0c;
     }
+
     .content{
-      padding:16px 16px 18px;
+      padding:22px 22px 20px;
       display:flex;
       flex-direction:column;
-      gap:10px;
+      gap:14px;
       height:100%;
+      text-align:left;
+      align-items:flex-start;
     }
 
     .meta{
@@ -182,12 +219,15 @@
       font-size:12px;
       color:rgba(0,0,0,.55);
     }
+
     .dot{
-      width:6px; height:6px;
+      width:6px;
+      height:6px;
       border-radius:50%;
       background:rgba(0,0,0,.25);
       display:inline-block;
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
@@ -202,81 +242,72 @@
 
     .content h3{
       margin:0;
-      font-size:18px;
-      line-height:1.25;
+      font-size:24px;
+      line-height:1.2;
       font-weight:950;
       color:var(--text);
-      letter-spacing:-.1px;
+      letter-spacing:-.2px;
+      text-align:left;
     }
+
     .excerpt{
       margin:0;
       color:var(--muted);
-      font-size:14.5px;
-      line-height:1.55;
+      font-size:16px;
+      line-height:1.6;
+      text-align:left;
     }
-    .read{
-      margin-top:auto;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:rgba(0,0,0,.78);
-      font-weight:900;
-      font-size:14px;
-    }
-    .read svg{ transition:transform .2s ease; opacity:.9 }
-    .blog-card:hover .read svg{ transform:translateX(2px); }
 
-    /* Pagination */
-    .pagination{
+    .card-arrow{
+      margin-top:auto;
+      margin-left:auto;
+      width:42px;
+      height:42px;
+      border-radius:999px;
       display:flex;
-      justify-content:center;
       align-items:center;
-      gap:10px;
-      margin-top:34px;
-    }
-    .page-btn,
-    .page-number{
-      background:#fff;
-      border:1px solid var(--border);
+      justify-content:center;
       color:rgba(0,0,0,.78);
-      border-radius:14px;
-      font-weight:900;
-      font-size:14px;
-      transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+      border:1px solid rgba(0,0,0,.08);
+      transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-    .page-btn{
-      padding:10px 14px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .page-number{
-      width:38px; height:38px;
-      display:grid; place-items:center;
-    }
-    .page-btn:hover,
-    .page-number:hover{
-      transform:translateY(-2px);
-      border-color:rgba(0,0,0,.12);
+
+    .blog-card:hover .card-arrow{
+      transform:translateX(2px);
+      border-color:rgba(0,0,0,.14);
       box-shadow:0 10px 22px rgba(0,0,0,.06);
     }
-    .page-number.active{
-      border-color:rgba(176,230,85,.55);
-      box-shadow:inset 0 0 0 1px rgba(176,230,85,.55);
-    }
 
-    /* Mobile spacing */
     @media (max-width:640px){
-      .blog-head{ padding-top:70px; }
-      .section{ padding-top:110px; }
-      .search{ flex:1 1 100%; max-width:520px; }
-      .cover{ height:180px; }
+      .blog-head{
+        padding-top:70px;
+      }
+
+      .search{
+        flex:1 1 100%;
+        max-width:520px;
+      }
+
+      .cover{
+        height:220px;
+      }
+
+      .content{
+        padding:18px 18px 18px;
+      }
+
+      .content h3{
+        font-size:21px;
+      }
+
+      .excerpt{
+        font-size:15px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header via partial -->
   <div id="site-header"></div>
 
   <main class="page">
@@ -288,10 +319,9 @@
         <div class="blog-toolbar" role="toolbar" aria-label="Filtri blog">
           <div class="chips" aria-label="Categorie">
             <button class="chip active" type="button">Tutti</button>
-            <button class="chip" type="button">Allenamento</button>
+            <button class="chip" type="button">Ibrido</button>
             <button class="chip" type="button">Corsa</button>
             <button class="chip" type="button">Forza</button>
-            <button class="chip" type="button">Nutrizione</button>
             <button class="chip" type="button">Recupero</button>
           </div>
 
@@ -303,199 +333,125 @@
           </label>
         </div>
 
-        <!-- GRID -->
         <section class="blog-grid" aria-label="Articoli del blog">
-          <!-- CARD 1 -->
-          <article class="blog-card">
-            <a class="blog-link" href="/blog/posts/primo-articolo.html">
-              <img class="cover" loading="lazy" src="/assets/hero.png"Come costruire un piano di allenamento ibrido">
-              <div class="content">
-                <div class="meta">
-                  <span class="badge">Allenamento</span>
-                  <span class="dot" aria-hidden="true"></span>
-                  <time datetime="2025-09-30">30 Set 2025</time>
-                  <span class="dot" aria-hidden="true"></span>
-                  <span>7 min</span>
-                </div>
-                <h3>Come costruire un piano di allenamento ibrido</h3>
-                <p class="excerpt">Forza + resistenza + recupero: principi chiave e progressioni pratiche per crescere senza sovraccaricarti.</p>
-                <span class="read">Leggi di più
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
+          <article class="blog-card" data-category="Recupero">
+            <a class="blog-link" href="/blog/human-energy-bank/">
+              <img
+                class="cover"
+                loading="lazy"
+                src="/assets/blog/diario.png"
+                alt="Human Energy Bank"
+              />
 
-          <!-- CARD 2 -->
-          <article class="blog-card">
-            <a class="blog-link" href="/blog/posts/nutrizione-atleta-ibrido.html">
-              <img class="cover" loading="lazy" src="/assets/hero.jpg" alt="Nutrizione per l’atleta ibrido">
-              <div class="content">
-                <div class="meta">
-                  <span class="badge">Nutrizione</span>
-                  <span class="dot" aria-hidden="true"></span>
-                  <time datetime="2025-10-05">5 Ott 2025</time>
-                  <span class="dot" aria-hidden="true"></span>
-                  <span>6 min</span>
-                </div>
-                <h3>Nutrizione per l’atleta ibrido</h3>
-                <p class="excerpt">Timing, macro e strategie semplici per supportare sia lavori di forza che di corsa.</p>
-                <span class="read">Leggi di più
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
-
-          <!-- CARD 3 -->
-          <article class="blog-card">
-            <a class="blog-link" href="/blog/posts/recupero-e-sonno.html">
-              <img class="cover" loading="lazy" src="/assets/home/corsa.jpg" alt="Recupero e sonno per performance migliori">
               <div class="content">
                 <div class="meta">
                   <span class="badge">Recupero</span>
                   <span class="dot" aria-hidden="true"></span>
-                  <time datetime="2025-10-12">12 Ott 2025</time>
-                  <span class="dot" aria-hidden="true"></span>
-                  <span>5 min</span>
+                  <span>6 min</span>
                 </div>
-                <h3>Recupero: il moltiplicatore delle prestazioni</h3>
-                <p class="excerpt">Dalla gestione dei carichi alle routine pre-sonno: come recuperare in modo intelligente.</p>
-                <span class="read">Leggi di più
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
 
-          <!-- CARD 4 -->
-          <article class="blog-card">
-            <a class="blog-link" href="/blog/posts/vo2max-e-zona-allenamento.html">
-              <img class="cover" loading="lazy" src="/assets/home/forza.jpg" alt="VO2max e zone di allenamento">
-              <div class="content">
-                <div class="meta">
-                  <span class="badge">Corsa</span>
-                  <span class="dot" aria-hidden="true"></span>
-                  <time datetime="2025-10-14">14 Ott 2025</time>
-                  <span class="dot" aria-hidden="true"></span>
-                  <span>8 min</span>
-                </div>
-                <h3>VO₂max, soglie e zone: guida pratica</h3>
-                <p class="excerpt">Impara a leggere le zone per creare sedute efficaci e cicli di lavoro ben bilanciati.</p>
-                <span class="read">Leggi di più
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
+                <h3>Human Energy Bank: cos’è e perché cambia il modo di leggere il recupero</h3>
 
-          <!-- CARD 5 -->
-          <article class="blog-card">
-            <a class="blog-link" href="/blog/posts/strength-templates-ibridi.html">
-              <img class="cover" loading="lazy" src="/assets/home/recupero.jpg" alt="Template di forza per atleti ibridi">
-              <div class="content">
-                <div class="meta">
-                  <span class="badge">Forza</span>
-                  <span class="dot" aria-hidden="true"></span>
-                  <time datetime="2025-10-10">10 Ott 2025</time>
-                  <span class="dot" aria-hidden="true"></span>
-                  <span>9 min</span>
-                </div>
-                <h3>Template di forza compatibili con la corsa</h3>
-                <p class="excerpt">Strutture semplici (full-body e upper/lower) che si integrano con i lavori di endurance.</p>
-                <span class="read">Leggi di più
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </article>
+                <p class="excerpt">
+                  Un nuovo modo per interpretare energia, fatica e capacità di adattamento
+                  nell’allenamento ibrido.
+                </p>
 
-          <!-- CARD 6 -->
-          <article class="blog-card">
-            <a class="blog-link" href="/blog/posts/mindset-progressione.html">
-              <img class="cover" loading="lazy" src="/assets/home/mindset.jpg" alt="Mindset e progressione negli allenamenti">
-              <div class="content">
-                <div class="meta">
-                  <span class="badge">Mindset</span>
-                  <span class="dot" aria-hidden="true"></span>
-                  <time datetime="2025-09-25">25 Set 2025</time>
-                  <span class="dot" aria-hidden="true"></span>
-                  <span>4 min</span>
-                </div>
-                <h3>Mentalità e costanza: la vera progressione</h3>
-                <p class="excerpt">Strumenti pratici per restare costante tra impegni, carichi e recupero.</p>
-                <span class="read">Leggi di più
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <span class="card-arrow" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
               </div>
             </a>
           </article>
+          <article class="blog-card" data-category="Ibrido">
+  <a class="blog-link" href="/blog/hybrid-score/">
+    <img
+      class="cover"
+      loading="lazy"
+      src="/assets/blog/hybridscore.png"
+      alt="Hybrid Score"
+    />
+
+    <div class="content">
+      <div class="meta">
+        <span class="badge">Ibrido</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>7 min</span>
+      </div>
+
+      <h3>Hybrid Score: cos’è e come leggere l’equilibrio tra forza, corsa e recupero</h3>
+
+      <p class="excerpt">
+        Il punteggio che aiuta a capire quanto il tuo sistema è davvero bilanciato,
+        sostenibile e pronto a performare.
+      </p>
+
+      <span class="card-arrow" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+  </a>
+</article>
+
         </section>
-
-        <!-- Pagination -->
-        <nav class="pagination" aria-label="Paginazione articoli">
-          <a class="page-btn" href="#prev" aria-label="Pagina precedente">←</a>
-          <span class="page-number active" aria-current="page">1</span>
-          <a class="page-number" href="#p2">2</a>
-          <a class="page-number" href="#p3">3</a>
-          <a class="page-btn" href="#next" aria-label="Pagina successiva">→</a>
-        </nav>
       </div>
     </div>
   </main>
 
+  
+
   <div id="site-footer"></div>
 
   <script>
-    async function include(id, url){
+    async function include(id, url) {
       const el = document.getElementById(id);
-      if(!el) return;
-      try{
+      if (!el) return;
+      try {
         const r = await fetch(url, { cache: "no-cache" });
         el.innerHTML = await r.text();
-      }catch(e){ console.warn('Include failed', id, url, e); }
+      } catch (e) {
+        console.warn("Include failed", id, url, e);
+      }
     }
-    include('site-header','/partials/header.html');
-    include('site-footer','/partials/footer.html');
 
-    // Filtri client-side
-    const chips = document.querySelectorAll('.chip');
-    chips.forEach(ch=>{
-      ch.addEventListener('click', ()=>{
-        chips.forEach(c=>c.classList.remove('active'));
-        ch.classList.add('active');
-        const cat = ch.textContent.trim();
-        document.querySelectorAll('.blog-card').forEach(card=>{
-          if(cat==='Tutti'){ card.style.display='block'; return; }
-          const badge = card.querySelector('.badge')?.textContent.trim();
-          card.style.display = (badge===cat) ? 'block' : 'none';
-        });
+    include("site-header", "/partials/header.html");
+    include("site-footer", "/partials/footer.html");
+
+    const chips = document.querySelectorAll(".chip");
+    const cards = document.querySelectorAll(".blog-card");
+    const input = document.querySelector(".search input");
+
+    function applyFilters() {
+      const activeChip = document.querySelector(".chip.active");
+      const activeCategory = activeChip ? activeChip.textContent.trim().toLowerCase() : "tutti";
+      const q = input ? input.value.trim().toLowerCase() : "";
+
+      cards.forEach((card) => {
+        const badge = (card.querySelector(".badge")?.textContent || "").trim().toLowerCase();
+        const title = (card.querySelector("h3")?.textContent || "").toLowerCase();
+        const excerpt = (card.querySelector(".excerpt")?.textContent || "").toLowerCase();
+
+        const matchCategory = activeCategory === "tutti" || badge === activeCategory;
+        const matchSearch = !q || title.includes(q) || excerpt.includes(q);
+
+        card.style.display = (matchCategory && matchSearch) ? "block" : "none";
+      });
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        applyFilters();
       });
     });
 
-    // Ricerca client-side
-    const input = document.querySelector('.search input');
-    if(input){
-      input.addEventListener('input', (e)=>{
-        const q = e.target.value.toLowerCase();
-        document.querySelectorAll('.blog-card').forEach(card=>{
-          const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-          const excerpt = card.querySelector('.excerpt')?.textContent.toLowerCase() || '';
-          card.style.display = (title.includes(q) || excerpt.includes(q)) ? 'block' : 'none';
-        });
-      });
+    if (input) {
+      input.addEventListener("input", applyFilters);
     }
   </script>
 </body>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Energy Bank | Runnix Blog</title>
+  <meta
+    name="description"
+    content="Scopri cos'è lo Human Energy Bank di Runnix, come funziona e perché è utile per allenamento, recupero e performance."
+  />
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <style>
+    :root {
+      --rnx-green: #b0e655;
+      --rnx-black: #111111;
+      --rnx-text: #1b1b1b;
+      --rnx-muted: #6f6f6f;
+      --rnx-border: #e9e9e9;
+      --rnx-bg: #ffffff;
+      --rnx-card: #f7f7f7;
+      --rnx-radius-lg: 24px;
+      --rnx-radius-md: 16px;
+      --rnx-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --article-width: 820px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--rnx-bg);
+      color: var(--rnx-text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .blog-article-page {
+      padding: 40px 20px 80px;
+    }
+
+    .blog-article-shell {
+      max-width: var(--article-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .blog-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 12px 18px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--rnx-black);
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .blog-back:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-hero {
+      margin-bottom: 28px;
+    }
+
+    .blog-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(176, 230, 85, 0.16);
+      color: #57751a;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .blog-title {
+      margin: 0 0 14px;
+      color: var(--rnx-black);
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .blog-subtitle {
+      margin: 0;
+      max-width: 740px;
+      color: var(--rnx-muted);
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .blog-cover-wrap {
+      margin: 34px 0 34px;
+    }
+
+    .blog-cover {
+      width: 100%;
+      border-radius: var(--rnx-radius-lg);
+      object-fit: cover;
+      box-shadow: var(--rnx-shadow);
+      border: 1px solid #efefef;
+    }
+
+    .blog-content {
+      max-width: var(--article-width);
+      margin: 0 auto;
+    }
+
+    .blog-prose {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: left;
+      color: var(--rnx-text);
+      font-size: 18px;
+    }
+
+    .blog-prose p {
+      margin: 0 0 1.35em;
+    }
+
+    .blog-prose h2 {
+      margin: 52px 0 18px;
+      color: var(--rnx-black);
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .blog-prose h3 {
+      margin: 34px 0 14px;
+      color: var(--rnx-black);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .blog-prose strong {
+      color: var(--rnx-black);
+    }
+
+    .blog-share {
+      max-width: 720px;
+      margin: 52px auto 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--rnx-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .blog-share__label {
+      color: var(--rnx-black);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .blog-share__icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-share__btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--rnx-border);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .blog-share__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-share__btn svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--rnx-black);
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .blog-article-page {
+        padding: 26px 16px 56px;
+      }
+
+      .blog-back {
+        margin-bottom: 22px;
+      }
+
+      .blog-cover-wrap {
+        margin: 26px 0 28px;
+      }
+
+      .blog-prose {
+        font-size: 17px;
+      }
+
+      .blog-share {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" role="banner">
+    <div class="container nav">
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Apri menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+      >
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <div class="brand" aria-label="Runnix">
+        <img class="brand__logo" src="/assets/logo/logo_nero.png" alt="Runnix" />
+        <span class="brand__text">Runnix</span>
+      </div>
+
+      <nav class="center-links" aria-label="Principale">
+        <a href="/home/">Home</a>
+        <a href="/funzionalita/">Funzionalità</a>
+        <a href="/community/">Community</a>
+        <a href="/team/">Team</a>
+        <a href="/contatti/">Contatti</a>
+        <a href="/club/">Club</a>
+      </nav>
+
+      <div class="right-cta">
+        <a class="btn-app" href="https://runnix.it">Prova Gratis</a>
+      </div>
+    </div>
+
+    <div class="mobile-menu-overlay" data-menu-overlay hidden></div>
+
+    <aside id="mobileMenu" class="mobile-menu" aria-label="Menu mobile" hidden>
+      <div class="mobile-menu__top">
+        <span class="mobile-menu__title"></span>
+        <button class="mobile-menu__close" type="button" aria-label="Chiudi menu">✕</button>
+      </div>
+
+      <nav class="mobile-menu__links" aria-label="Navigazione mobile">
+        <a href="/home/">Home</a>
+        <a href="/funzionalita/">Funzionalità</a>
+        <a href="/community/">Community</a>
+        <a href="/team/">Team</a>
+        <a href="/contatti/">Contatti</a>
+        <a href="/club/">Club</a>
+
+        <div class="mobile-menu__divider" aria-hidden="true"></div>
+
+        <div class="mobile-menu__cta">
+          <a class="btn-app btn-app--mobile" href="https://runnix.it">
+            Scarica l’app
+          </a>
+        </div>
+      </nav>
+    </aside>
+  </header>
+
+  <main class="blog-article-page">
+    <div class="blog-article-shell">
+
+      <a class="blog-back" href="/blog/">
+        ← Torna agli articoli
+      </a>
+
+      <section class="blog-hero">
+        <div class="blog-tag">Recovery</div>
+
+        <h1 class="blog-title">
+          Human Energy Bank: cos’è e perché cambia il modo di leggere il recupero
+        </h1>
+
+        <p class="blog-subtitle">
+          Un nuovo modo per interpretare energia, fatica e capacità di adattamento
+          nell’allenamento ibrido, andando oltre il semplice “sei stanco / non sei stanco”.
+        </p>
+
+        <div class="blog-cover-wrap">
+          <img
+            class="blog-cover"
+            src="/assets/blog/diario.png"
+            alt="Human Energy Bank di Runnix"
+          />
+        </div>
+      </section>
+
+      <section class="blog-content">
+        <article class="blog-prose">
+          <p>
+            Allenarsi bene non significa solo misurare quanto hai corso, quanti kg hai sollevato o quante calorie hai consumato. 
+            Significa anche capire come stai davvero. Perché due allenamenti identici, fatti in due giorni diversi, sul tuo corpo non hanno mai lo stesso effetto. 
+            Il contesto cambia: sonno, stress, dolori, motivazione, recupero percepito, stato mentale. Ed è proprio qui che nasce Human Energy Bank di Runnix.
+          </p>
+
+          <p>
+            Human Energy Bank è il diario soggettivo giornaliero di Runnix: uno spazio semplice e veloce in cui registrare il tuo stato mentale, fisico e di recupero. 
+            Non serve per “fare journaling” in senso generico. Serve per trasformare percezioni spesso ignorate in segnali utili per leggere meglio fatica, recupero, tolleranza al carico e prontezza alla performance. 
+            La letteratura scientifica sull’athlete monitoring mostra da anni che le misure soggettive di benessere e stato interno sono strumenti pratici, sensibili e spesso molto utili per monitorare la risposta dell’atleta all’allenamento.
+          </p>
+
+          <h2>Perché non bastano solo i dati “oggettivi”</h2>
+
+          <p>
+            Wearable, cardiofrequenza, HRV, ritmo, volume, training load: sono tutti dati utili. Ma da soli non raccontano tutto. 
+            Un atleta può avere numeri apparentemente normali e sentirsi svuotato. 
+            Oppure può presentare un carico alto ma tollerarlo bene, perché dorme meglio, è mentalmente lucido e sta recuperando. 
+            In altre parole: il dato esterno misura cosa hai fatto; il dato soggettivo aiuta a capire come quel carico è stato assorbito. 
+            Il consenso scientifico sul monitoring degli atleti sottolinea proprio l’importanza di integrare carico esterno, carico interno e misure percettive, invece di affidarsi a un solo indicatore
+          </p>
+
+          h2>Perché non bastano solo i dati “oggettivi”</h2>
+
+          <p>
+            Runnix non ha “inventato” da zero l’idea di monitorare il benessere percepito: questa base esiste già nella scienza dello sport, nei questionari wellness, nelle athlete self-report measures e nei sistemi di monitoraggio della fatica. 
+            uello che Runnix fa è trasformare quel principio in uno strumento quotidiano, chiaro e utile per atleti ibridi, cioè persone che combinano corsa, forza, recupero e vita reale.
+            Human Energy Bank nasce da una constatazione semplice: molti atleti registrano l’allenamento, ma pochissimi registrano in modo coerente il proprio stato interno. 
+            Eppure indicatori come umore, stress, sonno, soreness muscolare e percezione di recupero sono stati associati in letteratura a cambiamenti nello stato di fatica, nella risposta al training e nella capacità di tollerare il carico.
+          </p>
+
+          <h2>Cosa misura davvero</h2>
+
+          <p>
+            Human Energy Bank non vuole diagnosticare nulla e non sostituisce valutazioni mediche o cliniche. Il suo compito è più pratico: raccogliere segnali quotidiani che spesso anticipano ciò che poi si vede nell’allenamento.
+
+            Per questo include aree come:
+
+            - umore e stress mentale
+            - motivazione
+            - DOMS e dolore articolare
+            - stato infortunio
+            - qualità del sonno
+            - pratiche di recupero
+            - aspetti lifestyle come idratazione, nutrizione, caffeina o alcol
+
+            Questi elementi non sono stati scelti a caso. Riflettono i domini più usati nei sistemi soggettivi di monitoraggio dell’atleta: sonno, stress, soreness, fatica percepita, recupero e benessere generale. Le review sul tema mostrano che questi questionari sono particolarmente utili perché sono economici, veloci, poco invasivi e abbastanza sensibili ai cambiamenti del training e del recupero nel tempo.
+          </p>
+
+          <p>
+            Se il bilancio è positivo, il corpo è in una condizione più favorevole per assorbire stimoli, adattarsi e
+            sostenere nuovi carichi. Se il bilancio si abbassa troppo, aumentano il rischio di inefficienza,
+            la sensazione di fatica persistente e la possibilità di allenarsi in una condizione non ottimale.
+          </p>
+
+          <h2>Perché è utile</h2>
+
+          <p>
+            Il vantaggio di questo approccio è che rende il recupero più leggibile. Invece di fermarsi a un dato isolato,
+            aiuta a capire il contesto. Un carico alto non è sempre un problema. Lo diventa quando non è supportato da
+            recupero sufficiente, da segnali fisiologici coerenti e da una risposta soggettiva stabile.
+          </p>
+
+          <p>
+            Questo permette di prendere decisioni migliori: spingere quando c’è margine reale, proteggersi quando il sistema
+            segnala che il saldo energetico si sta assottigliando, e soprattutto evitare interpretazioni troppo rigide.
+          </p>
+
+          <h2>La visione di Runnix</h2>
+
+          <p>
+            In Runnix stiamo costruendo strumenti che leggano performance e recupero in modo integrato.
+            Lo Human Energy Bank nasce proprio da questa visione: non guardare il corpo come una macchina che produce output,
+            ma come un sistema che gestisce risorse, priorità e adattamenti nel tempo.
+          </p>
+
+          <p>
+            L’obiettivo non è dire solo “oggi stai bene” o “oggi stai male”, ma spiegare meglio
+            <strong>quanta energia hai davvero disponibile</strong>, come la stai usando e quanto sei vicino
+            a una condizione sostenibile nel medio periodo.
+          </p>
+
+          <div class="blog-share">
+            <div class="blog-share__label">Condividi questo articolo</div>
+
+            <div class="blog-share__icons">
+              <a
+                class="blog-share__btn"
+                id="share-instagram"
+                href="#"
+                aria-label="Condividi su Instagram"
+                title="Instagram"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/>
+                </svg>
+              </a>
+
+              <a
+                class="blog-share__btn"
+                id="share-facebook"
+                href="#"
+                aria-label="Condividi su Facebook"
+                title="Facebook"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.5 0-4.1 1.5-4.1 4.4V11H7.5v3h2.8v8h3.2Z"/>
+                </svg>
+              </a>
+
+              <button
+                class="blog-share__btn"
+                id="share-copy"
+                type="button"
+                aria-label="Copia link articolo"
+                title="Copia link"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-4.2 0 1 1 0 1 1 1.4-1.4 1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 1 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l2.1-2.1a3 3 0 0 1 4.2 0 1 1 0 0 1-1.4 1.4 1 1 0 0 0-1.4 0L7.6 12.2a1 1 0 1 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0Z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="rnx-footer">
+    <div class="rnx-footer__inner">
+
+      <div class="rnx-footer__col rnx-footer__brandcol">
+        <img class="rnx-footer__logo" src="/assets/logo/logo_bianco.png" alt="Runnix" width="34" height="34">
+
+        <div class="rnx-footer__stores" aria-label="Scarica l'app">
+          <a class="rnx-footer__iconbtn" href="#" aria-label="App Store">
+            <img src="/assets/footer/appstore.png" alt="App Store">
+          </a>
+          <a class="rnx-footer__iconbtn" href="#" aria-label="Google Play">
+            <img src="/assets/footer/googleplay.png" alt="Google Play">
+          </a>
+        </div>
+
+        <div class="rnx-footer__social" aria-label="Social Runnix">
+          <a class="rnx-footer__iconbtn" href="#" aria-label="Instagram">
+            <img src="/assets/footer/ig.png" alt="Instagram">
+          </a>
+          <a class="rnx-footer__iconbtn" href="#" aria-label="TikTok">
+            <img src="/assets/footer/tiktok.png" alt="TikTok">
+          </a>
+        </div>
+      </div>
+
+      <div class="rnx-footer__col">
+        <h4 class="rnx-footer__title">Company</h4>
+        <nav class="rnx-footer__links" aria-label="Company">
+          <a href="/funzionalita/">Funzionalità</a>
+          <a href="/abbonamento/index.html">Abbonamento</a>
+          <a href="/blog/">Blog</a>
+          <a href="/team/">Team</a>
+          <a href="/community/">Community</a>
+          <a href="/beta/">Beta</a>
+          <a href="/careers/index.html">Careers</a>
+        </nav>
+      </div>
+
+      <div class="rnx-footer__col">
+        <h4 class="rnx-footer__title">Partner</h4>
+        <nav class="rnx-footer__links" aria-label="Partner">
+          <a href="#">Eventi Runnix</a>
+          <a href="/ambassador/index.html">Diventa Ambassador</a>
+          <a href="/club/">Runnix Run Club</a>
+        </nav>
+      </div>
+
+      <div class="rnx-footer__col">
+        <h4 class="rnx-footer__title">Contatti</h4>
+        <nav class="rnx-footer__links" aria-label="Contatti">
+          <a href="mailto:info@runnix.it">info@runnix.it</a>
+          <a href="mailto:runnix.app@gmail.com">runnix.app@gmail.com</a>
+        </nav>
+      </div>
+
+      <div class="rnx-footer__col">
+        <h4 class="rnx-footer__title">Informazioni legali</h4>
+        <nav class="rnx-footer__links" aria-label="Informazioni legali">
+          <a href="/policy/policy_index.html">Privacy Policy</a>
+          <a href="/policy/terms.html">Termini e condizioni</a>
+          <a href="#">Brevetti</a>
+        </nav>
+      </div>
+
+    </div>
+
+    <div class="rnx-footer__bottom">
+      <small>© <span id="year"></span> 2026 Runnix. Tutti i diritti riservati. Runnix e Runnix app sono marchii commerciali di Runnix Inc. e non possono essere utilizzati senza autorizzazione.</small>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+
+    (function () {
+      const currentUrl = window.location.href;
+      const encodedUrl = encodeURIComponent(currentUrl);
+
+      const fb = document.getElementById('share-facebook');
+      const ig = document.getElementById('share-instagram');
+      const copy = document.getElementById('share-copy');
+
+      if (fb) {
+        fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl;
+        fb.target = '_blank';
+        fb.rel = 'noopener noreferrer';
+      }
+
+      if (ig) {
+        ig.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (navigator.share) {
+            navigator.share({
+              title: document.title,
+              url: currentUrl
+            }).catch(() => {});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert('Link articolo copiato');
+            });
+          }
+        });
+      }
+
+      if (copy) {
+        copy.addEventListener('click', function () {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert('Link articolo copiato');
+            });
+          }
+        });
+      }
+    })();
+
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.getElementById('mobileMenu');
+      const overlay = document.querySelector('[data-menu-overlay]');
+      const closeBtn = document.querySelector('.mobile-menu__close');
+
+      if (!toggle || !menu || !overlay || !closeBtn) return;
+
+      function openMenu() {
+        menu.hidden = false;
+        overlay.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        menu.hidden = true;
+        overlay.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+    })();
+  </script>
+</body>
+</html>

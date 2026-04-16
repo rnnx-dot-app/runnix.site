@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hybrid Score | Runnix Blog</title>
+  <meta
+    name="description"
+    content="Scopri cos'è l’Hybrid Score di Runnix, come funziona e perché è utile per leggere l’equilibrio tra forza, corsa e recupero."
+  />
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <style>
+    :root {
+      --rnx-green: #b0e655;
+      --rnx-black: #111111;
+      --rnx-text: #1b1b1b;
+      --rnx-muted: #6f6f6f;
+      --rnx-border: #e9e9e9;
+      --rnx-bg: #ffffff;
+      --rnx-radius-lg: 24px;
+      --rnx-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --article-width: 820px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--rnx-bg);
+      color: var(--rnx-text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .blog-article-page {
+      padding: 40px 20px 80px;
+    }
+
+    .blog-article-shell {
+      max-width: var(--article-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .blog-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 12px 18px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--rnx-black);
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .blog-back:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(176, 230, 85, 0.16);
+      color: #57751a;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .blog-title {
+      margin: 0 0 14px;
+      color: var(--rnx-black);
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .blog-subtitle {
+      margin: 0;
+      max-width: 740px;
+      color: var(--rnx-muted);
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .blog-cover-wrap {
+      margin: 34px 0 34px;
+    }
+
+    .blog-cover {
+      width: 100%;
+      border-radius: var(--rnx-radius-lg);
+      object-fit: cover;
+      box-shadow: var(--rnx-shadow);
+      border: 1px solid #efefef;
+    }
+
+    .blog-prose {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: left;
+      color: var(--rnx-text);
+      font-size: 18px;
+    }
+
+    .blog-prose p {
+      margin: 0 0 1.35em;
+    }
+
+    .blog-prose h2 {
+      margin: 52px 0 18px;
+      color: var(--rnx-black);
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .blog-prose strong {
+      color: var(--rnx-black);
+    }
+
+    .blog-share {
+      max-width: 720px;
+      margin: 52px auto 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--rnx-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .blog-share__label {
+      color: var(--rnx-black);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .blog-share__icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-share__btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--rnx-border);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .blog-share__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-share__btn svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--rnx-black);
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .blog-article-page {
+        padding: 26px 16px 56px;
+      }
+
+      .blog-prose {
+        font-size: 17px;
+      }
+
+      .blog-share {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="blog-article-page">
+    <div class="blog-article-shell">
+      <a class="blog-back" href="/blog/">
+        ← Torna agli articoli
+      </a>
+
+      <section class="blog-hero">
+        <div class="blog-tag">Ibrido</div>
+
+        <h1 class="blog-title">
+          Hybrid Score: cos’è e come leggere davvero l’equilibrio tra forza, corsa e recupero
+        </h1>
+
+        <p class="blog-subtitle">
+          Un indicatore pensato per gli atleti ibridi, che aiuta a capire se il sistema è bilanciato,
+          sostenibile e coerente con la tua capacità reale di recupero.
+        </p>
+
+        <div class="blog-cover-wrap">
+          <img
+            class="blog-cover"
+            src="/assets/blog/hybridscore.png"
+            alt="Hybrid Score di Runnix"
+          />
+        </div>
+      </section>
+
+      <article class="blog-prose">
+        <p>
+          Allenarsi bene non significa soltanto accumulare volume, intensità o sessioni completate.
+          Per un atleta ibrido conta anche un altro fattore: <strong>quanto bene convivono tra loro
+          gli stimoli che stai mettendo nel sistema</strong>.
+        </p>
+
+        <p>
+          È proprio da qui che nasce l’idea di <strong>Hybrid Score</strong>: un indicatore che prova
+          a leggere non solo quanto ti alleni, ma quanto il tuo equilibrio complessivo sia davvero
+          sostenibile nel rapporto tra forza, corsa e recupero.
+        </p>
+
+        <h2>Perché serve un punteggio specifico per atleti ibridi</h2>
+
+        <p>
+          Gli atleti ibridi vivono una dinamica diversa rispetto a chi si allena in un solo dominio.
+          Un runner puro può leggere soprattutto volume, intensità e recupero legati alla corsa.
+          Un atleta focalizzato sulla forza può concentrarsi su carichi, densità, frequenza e fatica neuromuscolare.
+        </p>
+
+        <p>
+          Ma quando unisci entrambi i mondi, il quadro si complica. Un buon allenamento di forza può
+          interferire con la qualità della corsa. Una settimana ad alta densità di running può ridurre
+          la capacità di spingere in sala pesi. E tutto questo ha senso solo se viene letto insieme allo
+          stato reale di recupero.
+        </p>
+
+        <p>
+          Per questo un semplice numero isolato non basta. Serve una metrica che guardi il sistema
+          nel suo insieme.
+        </p>
+
+        <h2>Cosa misura davvero l’Hybrid Score</h2>
+
+        <p>
+          L’Hybrid Score non vuole dire soltanto se ti stai allenando tanto o poco. Il suo obiettivo è
+          capire <strong>quanto il carico complessivo sia coerente, bilanciato e sostenibile</strong>.
+        </p>
+
+        <p>
+          In pratica, prende in considerazione tre dimensioni:
+        </p>
+
+        <p>
+          <strong>Forza</strong>: quanto stimolo stai producendo sul lato strength, con la sua richiesta
+          meccanica, neurale e muscolare.
+        </p>
+
+        <p>
+          <strong>Corsa</strong>: quanto carico stai accumulando sul lato endurance, con il suo impatto
+          metabolico, cardiovascolare e periferico.
+        </p>
+
+        <p>
+          <strong>Recupero</strong>: quanto il tuo organismo sembra in grado di assorbire davvero quello
+          che stai facendo, senza entrare in una zona di squilibrio prolungato.
+        </p>
+
+        <h2>Perché l’equilibrio conta più del volume assoluto</h2>
+
+        <p>
+          Due atleti possono avere lo stesso volume totale di allenamento, ma una qualità sistemica
+          completamente diversa. Uno può essere in una condizione solida, con distribuzione dei carichi
+          coerente e buona capacità di recupero. L’altro può avere numeri simili ma essere molto più vicino
+          a uno squilibrio.
+        </p>
+
+        <p>
+          Questo succede perché la performance non dipende solo da quanto fai, ma anche da
+          <strong>come i diversi stimoli convivono tra loro</strong>. Se forza e corsa sono troppo sbilanciate,
+          oppure se entrambe salgono mentre il recupero crolla, il sistema perde qualità.
+        </p>
+
+        <p>
+          In questo senso, l’Hybrid Score è utile perché premia non soltanto il carico, ma
+          la sua compatibilità con il tuo stato complessivo.
+        </p>
+
+        <h2>Come leggere il punteggio</h2>
+
+        <p>
+          Un punteggio più alto tende a indicare una condizione più armonica: carichi distribuiti meglio,
+          relazione più sana tra i domini, maggiore coerenza con la tua capacità di recupero.
+        </p>
+
+        <p>
+          Un punteggio più basso, invece, non significa automaticamente che ti stai allenando male.
+          Più spesso indica che il sistema sta mostrando una frizione: uno dei due lati sta schiacciando
+          troppo l’altro, oppure il recupero non sta supportando bene il carico presente.
+        </p>
+
+        <p>
+          Questo rende il punteggio interessante anche sul piano decisionale. Non è solo un numero da guardare:
+          può aiutarti a capire se ha senso spingere, mantenere o riequilibrare la settimana.
+        </p>
+
+        <h2>La logica dietro Runnix</h2>
+
+        <p>
+          In Runnix l’idea non è creare metriche decorative, ma strumenti davvero leggibili per chi si allena.
+          L’Hybrid Score nasce con questa intenzione: dare agli atleti ibridi una lettura più utile rispetto
+          ai classici indicatori separati.
+        </p>
+
+        <p>
+          Quando guardi solo la forza o solo la corsa, rischi di perdere il contesto. Quando invece osservi
+          come i blocchi si relazionano tra loro, inizi a capire meglio dove si trova davvero il tuo equilibrio.
+        </p>
+
+        <p>
+          Ed è proprio questo il punto: non massimizzare tutto nello stesso momento, ma costruire
+          una condizione allenante che sia forte, progressiva e sostenibile.
+        </p>
+
+        <div class="blog-share">
+          <div class="blog-share__label">Condividi questo articolo</div>
+
+          <div class="blog-share__icons">
+            <a class="blog-share__btn" id="share-instagram" href="#" aria-label="Condividi su Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/>
+              </svg>
+            </a>
+
+            <a class="blog-share__btn" id="share-facebook" href="#" aria-label="Condividi su Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.5 0-4.1 1.5-4.1 4.4V11H7.5v3h2.8v8h3.2Z"/>
+              </svg>
+            </a>
+
+            <button class="blog-share__btn" id="share-copy" type="button" aria-label="Copia link articolo" title="Copia link">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-4.2 0 1 1 0 1 1 1.4-1.4 1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 1 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l2.1-2.1a3 3 0 0 1 4.2 0 1 1 0 0 1-1.4 1.4 1 1 0 0 0-1.4 0L7.6 12.2a1 1 0 1 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    async function include(id, url){
+      const el = document.getElementById(id);
+      if(!el) return;
+      try{
+        const r = await fetch(url, { cache: "no-cache" });
+        el.innerHTML = await r.text();
+      }catch(e){
+        console.warn("Include failed", id, url, e);
+      }
+    }
+
+    include("site-header","/partials/header.html");
+    include("site-footer","/partials/footer.html");
+
+    (function () {
+      const currentUrl = window.location.href;
+      const encodedUrl = encodeURIComponent(currentUrl);
+
+      const fb = document.getElementById("share-facebook");
+      const ig = document.getElementById("share-instagram");
+      const copy = document.getElementById("share-copy");
+
+      if (fb) {
+        fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+        fb.target = "_blank";
+        fb.rel = "noopener noreferrer";
+      }
+
+      if (ig) {
+        ig.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (navigator.share) {
+            navigator.share({
+              title: document.title,
+              url: currentUrl
+            }).catch(() => {});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+
+      if (copy) {
+        copy.addEventListener("click", function () {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
