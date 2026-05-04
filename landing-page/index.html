@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runnix — Waiting List</title>
+  <meta name="description" content="Entra nella waiting list di Runnix." />
+  <style>
+    :root {
+      --bg: #070809;
+      --text: #f5f7fa;
+      --muted: #a6adb6;
+      --muted-2: #7f8892;
+      --line: rgba(255,255,255,0.08);
+      --line-strong: rgba(255,255,255,0.12);
+      --brand: #b0e655;
+      --brand-dark: #162008;
+      --shadow-xl: 0 40px 120px rgba(0,0,0,0.45);
+      --shadow-lg: 0 24px 70px rgba(0,0,0,0.28);
+      --shadow-md: 0 18px 40px rgba(0,0,0,0.22);
+      --container: 1240px;
+      --section-space: 144px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top center, rgba(176,230,85,0.08), transparent 22%),
+        linear-gradient(180deg, #070809 0%, #0a0c0e 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: var(--section-space) 0;
+      position: relative;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4.5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: clamp(20px, 2.1vw, 26px);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      font-weight: 650;
+    }
+
+    .lead {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .copy {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #d7dde5;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 18px rgba(176,230,85,0.75);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .section-head .copy {
+      max-width: 680px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 32px 0;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7,8,9,0.48) 0%, rgba(7,8,9,0.28) 34%, rgba(7,8,9,0.78) 100%),
+        linear-gradient(90deg, rgba(7,8,9,0.58) 0%, rgba(7,8,9,0.18) 50%, rgba(7,8,9,0.55) 100%);
+      z-index: 1;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.02);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(calc(100% - 40px), 980px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .hero-content .lead {
+      max-width: 760px;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .form-card {
+      width: min(100%, 700px);
+      margin-top: 6px;
+      padding: 10px;
+      border-radius: 24px;
+      background: rgba(15,17,19,0.68);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(20px);
+    }
+
+    .email-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    .email-form input {
+      width: 100%;
+      min-width: 0;
+      height: 58px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      outline: none;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .email-form input::placeholder {
+      color: rgba(255,255,255,0.46);
+    }
+
+    .email-form input:focus {
+      border-color: rgba(176,230,85,0.55);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn {
+      height: 58px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: var(--brand-dark);
+      box-shadow: 0 16px 34px rgba(176,230,85,0.2);
+    }
+
+    .form-note {
+      margin-top: 12px;
+      color: rgba(255,255,255,0.56);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* BIG MEDIA BLOCKS */
+    .single-hero-media {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow-md);
+    }
+
+    .media-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 38%;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.22));
+      pointer-events: none;
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms ease;
+    }
+
+    .media-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .media-card.mega-horizontal {
+      width: 100%;
+      max-width: 1080px;
+      height: 520px;
+      margin: 0 auto;
+    }
+
+    .media-card.square {
+      aspect-ratio: 1 / 1;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 52px;
+    }
+
+    .metric-card {
+      padding: 26px 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      min-height: 156px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .metric-card h3 {
+      font-size: 22px;
+    }
+
+    .metric-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .block-cta {
+      margin-top: 52px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .block-cta .form-card {
+      width: min(100%, 760px);
+      background: rgba(255,255,255,0.035);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* HEB */
+    .heb-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    /* SOCIAL */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .quote-card,
+    .fit-card,
+    .faq-item {
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow-md);
+    }
+
+    .quote-card {
+      padding: 28px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: space-between;
+    }
+
+    .stars {
+      color: #ffd66b;
+      letter-spacing: 2px;
+      font-size: 16px;
+    }
+
+    .quote-card p {
+      color: #dde2e8;
+      font-size: 17px;
+      line-height: 1.62;
+    }
+
+    .quote-meta strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .quote-meta span {
+      color: var(--muted-2);
+      font-size: 14px;
+    }
+
+    /* FIT */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .fit-card {
+      padding: 30px;
+      min-height: 220px;
+    }
+
+    .fit-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .fit-card p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: 0;
+      color: var(--text);
+      text-align: left;
+      padding: 24px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      cursor: pointer;
+    }
+
+    .faq-question h3 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .faq-icon {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 220ms ease;
+    }
+
+    .faq-answer-inner {
+      overflow: hidden;
+    }
+
+    .faq-answer p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 0 26px 24px;
+    }
+
+    .faq-item.open .faq-answer {
+      grid-template-rows: 1fr;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 0 0 42px;
+    }
+
+    .footer-copy {
+      text-align: center;
+      color: var(--muted-2);
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      :root {
+        --section-space: 112px;
+      }
+
+      .metrics-grid,
+      .heb-row,
+      .social-grid,
+      .fit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .media-card.mega-horizontal {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --section-space: 88px;
+      }
+
+      .container {
+        width: min(calc(100% - 24px), var(--container));
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding: 18px 0;
+      }
+
+      .hero-content {
+        gap: 18px;
+      }
+
+      .email-form {
+        grid-template-columns: 1fr;
+      }
+
+      .btn,
+      .email-form input {
+        height: 54px;
+      }
+
+      .metric-card,
+      .quote-card,
+      .fit-card,
+      .faq-item {
+        border-radius: 22px;
+      }
+
+      .media-card.mega-horizontal {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .media-card.mega-horizontal,
+      .media-card.square {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1.1 / 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <img class="hero-bg" src="/assets/home/background.jpg" alt="Background Runnix" />
+      <div class="hero-content">
+        <div class="eyebrow">Waiting list · beta privata</div>
+        <h1>Corsa, forza e recupero<br />in un'unico piano di allenamento.</h1>
+        <p class="lead">
+          Runnix crea piani di allenamento personalizzati che si adattano ai tuoi obiettivi, al tuo livello e alle tue disponibilità. 
+        </p>
+        <div class="form-card">
+          <form class="email-form" action="#" method="post">
+            <input type="email" name="email" placeholder="Inserisci la tua email" autocomplete="email" required />
+            <button class="btn btn-primary" type="submit">Entra nella waiting list</button>
+          </form>
+          <div class="form-note">Accesso anticipato · Nessuno spam · Beta privata</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO 1 -->
+    <section class="section">
+      <div class="container">
+        <div class="feature-shell">
+          <div class="section-head">
+            <h2>Allenarsi bene non è solo questione di fare di più.</h2>
+            <p class="copy">
+              Il punto è riuscire a coordinare carico, obiettivi e continuità senza trattare corsa,
+              forza e recupero come mondi separati.
+            </p>
+          </div>
+
+          <div class="single-hero-media">
+            <div class="media-card mega-horizontal">
+              <img src="/assets/home/dashboard.png" alt="Dashboard Runnix" />
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <h3>Carico</h3>
+              <p>Monitoraggio del volume e dell’intensità per capire come si accumula davvero la settimana.</p>
+            </article>
+            <article class="metric-card">
+              <h3>Performance</h3>
+              <p>Un quadro unico su corsa e forza, senza dover leggere dati separati e scollegati.</p>
+            </article>
+            <article class="metric-card">
+              <h3>Recupero</h3>
+              <p>Segnali utili per leggere come stai e non solo quello che hai completato.</p>
+            </article>
+            <article class="metric-card">
+              <h3>Progressione</h3>
+              <p>Il percorso si aggiorna nel tempo per non restare fermo su una tabella statica.</p>
+            </article>
+          </div>
+
+          <div class="block-cta">
+            <div class="form-card">
+              <form class="email-form" action="#" method="post">
+                <input type="email" placeholder="Inserisci la tua email" required />
+                <button class="btn btn-primary" type="submit">Accedi in anteprima</button>
+              </form>
+              <div class="form-note">Lascia la tua email per entrare nella waiting list.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO 2 -->
+    <section class="section">
+      <div class="container">
+        <div class="feature-shell">
+          <div class="section-head">
+            <h2>Il recupero non è un dettaglio. È la base di tutto il resto.</h2>
+            <p class="copy">
+              Senza leggere bene come recuperi, è facile sbagliare il peso della settimana,
+              accumulare fatica e perdere continuità proprio quando servirebbe lucidità.
+            </p>
+          </div>
+
+          <div class="single-hero-media">
+            <div class="media-card mega-horizontal">
+              <img src="/assets/home/recovery.jpg" alt="Recovery Runnix" />
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <h3>Sonno</h3>
+              <p>Qualità del sonno e continuità, per leggere meglio la base del recupero quotidiano.</p>
+            </article>
+            <article class="metric-card">
+              <h3>Stress</h3>
+              <p>Il contesto reale pesa sull’allenamento più di quanto sembri quando lo guardi da fuori.</p>
+            </article>
+            <article class="metric-card">
+              <h3>HRV</h3>
+              <p>Uno dei segnali utili da leggere insieme agli altri, non come dato isolato senza contesto.</p>
+            </article>
+            <article class="metric-card">
+              <h3>Fatica</h3>
+              <p>Una lettura più chiara dello stato di affaticamento, per non trattare tutti i giorni allo stesso modo.</p>
+            </article>
+          </div>
+
+          <div class="block-cta">
+            <div class="form-card">
+              <form class="email-form" action="#" method="post">
+                <input type="email" placeholder="Inserisci la tua email" required />
+                <button class="btn btn-primary" type="submit">Accedi in anteprima</button>
+              </form>
+              <div class="form-note">Ricevi gli aggiornamenti sulla beta privata.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCCO 3 -->
+    <section class="section">
+      <div class="container">
+        <div class="feature-shell">
+          <div class="section-head">
+            <h2>Human Energy Bank</h2>
+            <p class="copy">
+              Il livello di energia reale che i wearable non vedono sempre. Un contesto in più
+              per leggere meglio carico, recupero e qualità della settimana.
+            </p>
+          </div>
+
+          <div class="heb-row">
+            <div class="media-card square">
+              <img src="/assets/home/mindset.jpg" alt="Mindset Runnix" />
+            </div>
+            <div class="media-card square">
+              <img src="/assets/home/motivazione.png" alt="Motivazione Runnix" />
+            </div>
+            <div class="media-card square">
+              <img src="/assets/home/diario.png" alt="Diario Runnix" />
+            </div>
+          </div>
+
+          <div class="block-cta">
+            <div class="form-card">
+              <form class="email-form" action="#" method="post">
+                <input type="email" placeholder="Inserisci la tua email" required />
+                <button class="btn btn-primary" type="submit">Accedi in anteprima</button>
+              </form>
+              <div class="form-note">Entra nella waiting list e prova Runnix prima del lancio.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Social proof</div>
+          <h2>Le parole di chi l’ha già provata.</h2>
+          <p class="copy">
+            Feedback iniziali di utenti che hanno testato l’esperienza e il modo in cui Runnix organizza il percorso.
+          </p>
+        </div>
+
+        <div class="social-grid">
+          <article class="quote-card">
+            <div class="stars">★★★★★</div>
+            <p>“Finalmente una visione unica. Non devo più tenere insieme tutto a mano tra corsa, palestra e recupero.”</p>
+            <div class="quote-meta">
+              <strong>Marco R.</strong>
+              <span>Runner e palestra</span>
+            </div>
+          </article>
+
+          <article class="quote-card">
+            <div class="stars">★★★★★</div>
+            <p>“La cosa che mi è piaciuta di più è la sensazione di avere un piano che evolve, non una scheda da seguire alla cieca.”</p>
+            <div class="quote-meta">
+              <strong>Giulia P.</strong>
+              <span>Atleta ibrida amatoriale</span>
+            </div>
+          </article>
+
+          <article class="quote-card">
+            <div class="stars">★★★★★</div>
+            <p>“Molto più chiaro di tante app piene di dati. Qui il punto è capire meglio cosa fare e come progredire.”</p>
+            <div class="quote-meta">
+              <strong>Andrea T.</strong>
+              <span>Runner e forza</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FA PER TE SE -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Fa per te se</div>
+          <h2>Runnix fa per te se…</h2>
+          <p class="copy">Ti riconosci in una di queste situazioni:</p>
+        </div>
+
+        <div class="fit-grid">
+          <article class="fit-card">
+            <h3>Se non sai da dove partire con l’allenamento</h3>
+            <p>Runnix crea per te un piano ibrido chiaro e progressivo, senza confusione.</p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Se vuoi ottenere risultati ma non ci riesci</h3>
+            <p>L’AI adatta volumi e intensità, aiutandoti a sbloccarti e migliorare davvero.</p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Se vuoi monitorare i tuoi progressi</h3>
+            <p>Una dashboard unica con tutti i tuoi dati: capisci cosa funziona e dove stai crescendo.</p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Se hai bisogno di una guida</h3>
+            <p>Il nostro Coach AI ti indica cosa fare, quando farlo e come evitare errori.</p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Se vuoi allenarti ovunque</h3>
+            <p>Workout efficaci per palestra, casa o outdoor: zero scuse, massima flessibilità.</p>
+          </article>
+
+          <article class="fit-card">
+            <h3>Se temi il sovraccarico o non sai come bilanciare i carichi</h3>
+            <p>Runnix gestisce recupero e intensità per allenarti in modo sicuro e sostenibile.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">FAQ</div>
+          <h2>Domande frequenti</h2>
+          <p class="copy">Le risposte principali per capire come funziona l’accesso alla waiting list.</p>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item open">
+            <button class="faq-question" type="button">
+              <h3>Quanto tempo ci vuole per creare il mio piano di allenamento?</h3>
+              <span class="faq-icon">–</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Meno di 60 secondi. Apri l'app, rispondi al questionario e in pochissimo tempo vedrai il tuo piano di allenamento all'interno dell'app, pronto per essere eseguito.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Ma se faccio forza, perdo velocità?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>No. Studi dimostrano che 2-3 sessioni/settimana di forza migliorano la performance senza aumentare peso.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Se uso Runnix diventerò troppo grosso?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>No. Runnix programma forza funzionale, non bodybuilding. Risultato: più potenza, aumento graduale delle massa muscolare, ma stessa leggerezza.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Non ho tempo per 6 allenamenti a settimana che faccio?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Runnix ottimizza. Anche 4 sessioni/settimana (2 corsa + 2 forza) danno risultati enormi.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Cosa significa "accesso anticipato" per Runnix?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>L'accesso anticipato si riferisce alla 3a versione di Runnix, che include funzionalità migliorate attualmente testate dai nostri primi utenti.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Devo pagare per usare l'app in anteprima?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>No, l'accesso anticipato è completamente gratuito per tutti. Potrai usare Runnix senza nessun tipo di costo aggiuntivo.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Funziona sia per principianti che per atleti esperti?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Assolutamente sì. L'IA di Runnix adatta gli allenamenti al tuo livello attuale, che tu sia alle prime armi o un atleta esperto. Il sistema impara dai tuoi progressi.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Posso sincronizzare i dati con altre app fitness?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Attualmente Runnix supporta solo la sincronizzazione con Strava, Apple Watch, Suunto, Polar e GoogleFit. Stiamo lavorando per aggiungere questa funzionalità nelle prossime versioni.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button">
+              <h3>Quanto tempo ci vuole per vedere i primi risultati?</h3>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>La maggior parte degli utenti nota miglioramenti nella pianificazione degli allenamenti entro le prime 2 settimane. Tuttavia, i risultati fisici variano, ma in genere diventano evidenti dopo 4 settimane di uso costante.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="block-cta" style="margin-top:0;">
+          <div class="form-card" style="width:min(100%,860px);">
+            <form class="email-form" action="#" method="post">
+              <input type="email" placeholder="Inserisci la tua email" required />
+              <button class="btn btn-primary" type="submit">Entra nella waiting list</button>
+            </form>
+            <div class="form-note">✅ Accesso Gratuito • ✅ Nessuna carta di credito richiesta • ✅ Inizi subito ad allenarti</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-copy">
+        © COPYRIGHT 2025-2026 Runnix – Tutti i diritti sono riservati – Privacy Policy
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item').forEach((el) => {
+          el.classList.remove('open');
+          const icon = el.querySelector('.faq-icon');
+          if (icon) icon.textContent = '+';
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          const icon = item.querySelector('.faq-icon');
+          if (icon) icon.textContent = '–';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

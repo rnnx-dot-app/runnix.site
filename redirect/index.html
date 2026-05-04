@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Runnix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script>
+    function redirectUser() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      var params = window.location.search;
+
+      var appStoreUrl = "https://apps.apple.com/it/app/runnix/id6756656016";
+      var webAppUrl = "https://runnix.it";
+
+      // iOS → App Store
+      if (/iPhone|iPad|iPod/i.test(userAgent)) {
+        window.location.href = appStoreUrl + params;
+      }
+
+      // Android + Desktop → Web App
+      else {
+        window.location.href = webAppUrl + params;
+      }
+    }
+
+    window.onload = redirectUser;
+  </script>
+</head>
+
+<body style="background:#000; color:#fff; display:flex; align-items:center; justify-content:center; height:100vh; text-align:center; font-family:sans-serif;">
+  <div>
+    <h1>Allenamenti casuali, risultati casuali.</h1>
+    <p>Ti stiamo portando su Runnix...</p>
+    <p>
+      <a href="https://runnix.it?utm_source=klaviyo&utm_medium=email&utm_campaign=launch_runnix&utm_content=fallback_link" style="color:#fff;">
+        Vai alla versione web
+      </a>
+    </p>
+  </div>
+</body>
+</html>

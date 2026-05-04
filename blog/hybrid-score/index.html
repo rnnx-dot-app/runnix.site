@@ -6,7 +6,7 @@
   <title>Hybrid Score | Runnix Blog</title>
   <meta
     name="description"
-    content="Scopri cos'è l’Hybrid Score di Runnix, come funziona e perché è utile per leggere l’equilibrio tra forza, corsa e recupero."
+    content="Scopri cos'è l’Hybrid Score di Runnix, come funziona e perché aiuta a leggere meglio l’equilibrio tra forza, corsa e recupero."
   />
 
   <link rel="stylesheet" href="/css/main.css" />
@@ -21,17 +21,20 @@
       --rnx-bg: #ffffff;
       --rnx-radius-lg: 24px;
       --rnx-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      --article-width: 820px;
+      --article-width: 920px;
+      --prose-width: 760px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       background: var(--rnx-bg);
       color: var(--rnx-text);
       font-family: Inter, Arial, Helvetica, sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     img {
@@ -93,23 +96,24 @@
     .blog-title {
       margin: 0 0 14px;
       color: var(--rnx-black);
-      font-size: clamp(32px, 5vw, 54px);
-      line-height: 1.05;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.04;
       font-weight: 800;
       letter-spacing: -0.03em;
+      max-width: 900px;
     }
 
     .blog-subtitle {
       margin: 0;
-      max-width: 740px;
+      max-width: 760px;
       color: var(--rnx-muted);
-      font-size: clamp(17px, 2.2vw, 21px);
+      font-size: clamp(18px, 2.2vw, 22px);
       line-height: 1.55;
       font-weight: 500;
     }
 
     .blog-cover-wrap {
-      margin: 34px 0 34px;
+      margin: 34px 0 42px;
     }
 
     .blog-cover {
@@ -122,7 +126,7 @@
 
     .blog-prose {
       width: 100%;
-      max-width: 720px;
+      max-width: var(--prose-width);
       margin: 0 auto;
       text-align: left;
       color: var(--rnx-text);
@@ -134,19 +138,52 @@
     }
 
     .blog-prose h2 {
-      margin: 52px 0 18px;
+      margin: 54px 0 18px;
       color: var(--rnx-black);
-      font-size: clamp(24px, 3vw, 32px);
+      font-size: clamp(25px, 3vw, 34px);
       line-height: 1.15;
       letter-spacing: -0.02em;
+    }
+
+    .blog-prose ul {
+      margin: 0 0 1.35em 1.2em;
+      padding: 0;
+    }
+
+    .blog-prose li {
+      margin: 0 0 0.6em;
     }
 
     .blog-prose strong {
       color: var(--rnx-black);
     }
 
+    .blog-sources {
+      margin-top: 52px;
+      padding: 24px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 20px;
+      background: #fafafa;
+    }
+
+    .blog-sources h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--rnx-black);
+    }
+
+    .blog-sources ol {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .blog-sources li {
+      margin-bottom: 10px;
+    }
+
     .blog-share {
-      max-width: 720px;
+      max-width: var(--prose-width);
       margin: 52px auto 0;
       padding-top: 26px;
       border-top: 1px solid var(--rnx-border);
@@ -208,6 +245,10 @@
         align-items: flex-start;
         flex-direction: column;
       }
+
+      .blog-sources {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -224,18 +265,18 @@
         <div class="blog-tag">Ibrido</div>
 
         <h1 class="blog-title">
-          Hybrid Score: cos’è e come leggere davvero l’equilibrio tra forza, corsa e recupero
+          Hybrid Score: cos’è e perché cambia il modo di leggere l’allenamento
         </h1>
 
         <p class="blog-subtitle">
-          Un indicatore pensato per gli atleti ibridi, che aiuta a capire se il sistema è bilanciato,
-          sostenibile e coerente con la tua capacità reale di recupero.
+          La metrica di Runnix che sintetizza forza, capacità aerobica e recupero
+          per capire quanto il tuo allenamento è davvero efficace nel contesto in cui ti trovi.
         </p>
 
         <div class="blog-cover-wrap">
           <img
             class="blog-cover"
-            src="/assets/blog/hybridscore.png"
+            src="/assets/home/hero.jpg"
             alt="Hybrid Score di Runnix"
           />
         </div>
@@ -243,118 +284,222 @@
 
       <article class="blog-prose">
         <p>
-          Allenarsi bene non significa soltanto accumulare volume, intensità o sessioni completate.
-          Per un atleta ibrido conta anche un altro fattore: <strong>quanto bene convivono tra loro
-          gli stimoli che stai mettendo nel sistema</strong>.
+          Allenarsi bene non significa solo accumulare volume o aumentare l’intensità. Significa soprattutto capire se ciò che stai facendo
+          ha senso per il tuo corpo, oggi. Perché due settimane con lo stesso carico possono portare a risultati completamente diversi:
+          in una migliori, nell’altra accumuli fatica. La differenza non è nel singolo dato, ma nella relazione tra tutti i fattori in gioco.
+          Ed è proprio da qui che nasce l’Hybrid Score di Runnix.
         </p>
 
         <p>
-          È proprio da qui che nasce l’idea di <strong>Hybrid Score</strong>: un indicatore che prova
-          a leggere non solo quanto ti alleni, ma quanto il tuo equilibrio complessivo sia davvero
-          sostenibile nel rapporto tra forza, corsa e recupero.
+          Hybrid Score è una metrica che sintetizza in modo chiaro e utilizzabile tre dimensioni fondamentali dell’allenamento:
+          forza, capacità aerobica e recupero. Non nasce per aggiungere un altro numero da guardare, ma per rispondere a una domanda concreta:
+          quanto il tuo allenamento è realmente efficace nel contesto in cui ti trovi.
         </p>
 
-        <h2>Perché serve un punteggio specifico per atleti ibridi</h2>
+        <h2>Perché non bastano forza o corsa da sole</h2>
 
         <p>
-          Gli atleti ibridi vivono una dinamica diversa rispetto a chi si allena in un solo dominio.
-          Un runner puro può leggere soprattutto volume, intensità e recupero legati alla corsa.
-          Un atleta focalizzato sulla forza può concentrarsi su carichi, densità, frequenza e fatica neuromuscolare.
-        </p>
-
-        <p>
-          Ma quando unisci entrambi i mondi, il quadro si complica. Un buon allenamento di forza può
-          interferire con la qualità della corsa. Una settimana ad alta densità di running può ridurre
-          la capacità di spingere in sala pesi. E tutto questo ha senso solo se viene letto insieme allo
-          stato reale di recupero.
+          Nel mondo reale, l’allenamento non è mai isolato. Anche quando pensi di lavorare su una sola qualità, il corpo sta gestendo uno stress complessivo.
+          Sollevare pesi influisce sul recupero neurale e muscolare, correre impatta il sistema cardiovascolare e metabolico, il sonno e lo stress modificano
+          la capacità di adattamento. Tutto è collegato.
         </p>
 
         <p>
-          Per questo un semplice numero isolato non basta. Serve una metrica che guardi il sistema
-          nel suo insieme.
-        </p>
-
-        <h2>Cosa misura davvero l’Hybrid Score</h2>
-
-        <p>
-          L’Hybrid Score non vuole dire soltanto se ti stai allenando tanto o poco. Il suo obiettivo è
-          capire <strong>quanto il carico complessivo sia coerente, bilanciato e sostenibile</strong>.
+          La letteratura sulla scienza dell’allenamento ha affrontato questo problema da più angolazioni. I modelli di training load, come TRIMP o le evoluzioni successive,
+          cercano di quantificare lo stress complessivo. Gli studi sulla concurrent training mostrano come forza ed endurance possano interferire tra loro se mal gestiti.
+          Le ricerche su HRV e fatigue evidenziano quanto il recupero condizioni la risposta allo stimolo.
         </p>
 
         <p>
-          In pratica, prende in considerazione tre dimensioni:
+          Il punto è che queste informazioni esistono, ma spesso restano separate. Nella pratica quotidiana, l’atleta si trova a interpretare numeri diversi senza una sintesi reale.
+        </p>
+
+        <h2>Il problema degli indicatori isolati</h2>
+
+        <p>
+          I dati che usi ogni giorno sono utili, ma parziali.
+        </p>
+
+        <ul>
+          <li>Un carico alto può essere positivo o negativo, a seconda del recupero.</li>
+          <li>Un buon stato di forma può non tradursi in performance se lo stimolo è insufficiente.</li>
+          <li>Un equilibrio tra forza e corsa può essere inutile se non è sostenibile nel tempo.</li>
+        </ul>
+
+        <p>
+          In altre parole: ogni metrica racconta una parte della storia, ma nessuna da sola è sufficiente per capire se stai andando nella direzione giusta.
         </p>
 
         <p>
-          <strong>Forza</strong>: quanto stimolo stai producendo sul lato strength, con la sua richiesta
-          meccanica, neurale e muscolare.
+          Il monitoring moderno dell’atleta sottolinea proprio questo: la performance e l’adattamento dipendono dall’interazione tra carico esterno,
+          carico interno e stato dell’individuo. Guardare solo uno di questi aspetti porta inevitabilmente a interpretazioni incomplete.
+        </p>
+
+        <h2>La logica dietro Hybrid Score</h2>
+
+        <p>
+          Runnix non ha inventato i concetti alla base dell’Hybrid Score. I principi sono ben noti nella letteratura:
+        </p>
+
+        <ul>
+          <li>l’equilibrio tra diversi tipi di stimolo</li>
+          <li>la relazione tra carico e recupero</li>
+          <li>la necessità di mantenere uno stimolo sufficiente ma sostenibile</li>
+          <li>l’importanza della distribuzione del carico nel tempo</li>
+        </ul>
+
+        <p>
+          Quello che mancava era una traduzione pratica di questi principi per atleti che non sono specialisti puri, ma combinano forza, corsa e vita reale.
         </p>
 
         <p>
-          <strong>Corsa</strong>: quanto carico stai accumulando sul lato endurance, con il suo impatto
-          metabolico, cardiovascolare e periferico.
+          Hybrid Score nasce da una constatazione semplice: allenarsi bene non è solo fare di più, ma fare la cosa giusta nel contesto giusto.
+          Per questo non misura una singola variabile, ma cerca di leggere la coerenza del sistema.
+        </p>
+
+        <h2>Cosa misura davvero</h2>
+
+        <p>
+          Hybrid Score non è un indicatore di performance pura e non è un voto sulla tua forma fisica. È una misura di qualità dell’allenamento nel suo insieme.
         </p>
 
         <p>
-          <strong>Recupero</strong>: quanto il tuo organismo sembra in grado di assorbire davvero quello
-          che stai facendo, senza entrare in una zona di squilibrio prolungato.
+          In pratica, riflette tre aspetti fondamentali:
         </p>
 
-        <h2>Perché l’equilibrio conta più del volume assoluto</h2>
+        <ul>
+          <li>quanto sono bilanciati i diversi stimoli</li>
+          <li>quanto il carico è coerente con il tuo stato di recupero</li>
+          <li>quanto lo stimolo totale è sufficiente per generare adattamento</li>
+        </ul>
 
         <p>
-          Due atleti possono avere lo stesso volume totale di allenamento, ma una qualità sistemica
-          completamente diversa. Uno può essere in una condizione solida, con distribuzione dei carichi
-          coerente e buona capacità di recupero. L’altro può avere numeri simili ma essere molto più vicino
-          a uno squilibrio.
+          Questi elementi sono alla base di qualsiasi processo di miglioramento. Se manca uno di questi, la progressione si blocca o diventa inefficiente.
         </p>
 
-        <p>
-          Questo succede perché la performance non dipende solo da quanto fai, ma anche da
-          <strong>come i diversi stimoli convivono tra loro</strong>. Se forza e corsa sono troppo sbilanciate,
-          oppure se entrambe salgono mentre il recupero crolla, il sistema perde qualità.
-        </p>
+        <h2>Come influisce sull’allenamento</h2>
 
         <p>
-          In questo senso, l’Hybrid Score è utile perché premia non soltanto il carico, ma
-          la sua compatibilità con il tuo stato complessivo.
-        </p>
-
-        <h2>Come leggere il punteggio</h2>
-
-        <p>
-          Un punteggio più alto tende a indicare una condizione più armonica: carichi distribuiti meglio,
-          relazione più sana tra i domini, maggiore coerenza con la tua capacità di recupero.
+          L’Hybrid Score non cambia direttamente il tuo allenamento. Non modifica i tuoi dati. Non crea adattamenti.
+          Il suo ruolo è diverso: aiuta a interpretare ciò che stai facendo.
         </p>
 
         <p>
-          Un punteggio più basso, invece, non significa automaticamente che ti stai allenando male.
-          Più spesso indica che il sistema sta mostrando una frizione: uno dei due lati sta schiacciando
-          troppo l’altro, oppure il recupero non sta supportando bene il carico presente.
+          Quando hai una sintesi coerente del tuo stato, diventa più facile:
+        </p>
+
+        <ul>
+          <li>capire se ha senso spingere o mantenere</li>
+          <li>riconoscere quando il carico è troppo rispetto al recupero</li>
+          <li>identificare situazioni di sottostimolo</li>
+          <li>leggere meglio periodi in cui la performance non migliora</li>
+        </ul>
+
+        <p>
+          Questo approccio è coerente con la letteratura sul training monitoring: l’obiettivo non è accumulare dati,
+          ma migliorare la capacità decisionale. Il valore non sta nel numero in sé, ma nel modo in cui aiuta a contestualizzare le scelte.
+        </p>
+
+        <h2>Perché serve soprattutto agli atleti ibridi</h2>
+
+        <p>
+          Chi si allena solo per una singola qualità ha già un riferimento chiaro. Chi combina più sistemi, invece, si trova in una situazione più complessa.
         </p>
 
         <p>
-          Questo rende il punteggio interessante anche sul piano decisionale. Non è solo un numero da guardare:
-          può aiutarti a capire se ha senso spingere, mantenere o riequilibrare la settimana.
+          Allenare forza e corsa insieme significa gestire:
         </p>
 
-        <h2>La logica dietro Runnix</h2>
+        <ul>
+          <li>stimoli diversi</li>
+          <li>tempi di recupero diversi</li>
+          <li>adattamenti che possono supportarsi o interferire</li>
+          <li>carichi che si sommano anche quando sembrano separati</li>
+        </ul>
 
         <p>
-          In Runnix l’idea non è creare metriche decorative, ma strumenti davvero leggibili per chi si allena.
-          L’Hybrid Score nasce con questa intenzione: dare agli atleti ibridi una lettura più utile rispetto
-          ai classici indicatori separati.
-        </p>
-
-        <p>
-          Quando guardi solo la forza o solo la corsa, rischi di perdere il contesto. Quando invece osservi
-          come i blocchi si relazionano tra loro, inizi a capire meglio dove si trova davvero il tuo equilibrio.
+          In questo contesto, il rischio non è solo allenarsi troppo o troppo poco, ma allenarsi in modo non coerente.
         </p>
 
         <p>
-          Ed è proprio questo il punto: non massimizzare tutto nello stesso momento, ma costruire
-          una condizione allenante che sia forte, progressiva e sostenibile.
+          Hybrid Score nasce per questo tipo di atleta. Non per semplificare l’allenamento, ma per renderlo leggibile.
         </p>
+
+        <h2>Il ruolo del recupero</h2>
+
+        <p>
+          Uno degli errori più comuni è considerare il recupero come qualcosa di separato dall’allenamento. In realtà, è parte integrante del processo.
+        </p>
+
+        <p>
+          Senza recupero non c’è adattamento.<br />
+          Senza adattamento non c’è miglioramento.
+        </p>
+
+        <p>
+          La letteratura su fatigue e recovery è chiara: il carico ha senso solo in relazione alla capacità di assorbirlo.
+          Questo è vero sia negli sport di endurance che nella forza.
+        </p>
+
+        <p>
+          Hybrid Score integra questo principio. Non valuta solo quanto stai facendo, ma quanto il tuo corpo è in grado di sostenere quello che stai facendo.
+        </p>
+
+        <h2>Perché Runnix lo ha creato</h2>
+
+        <p>
+          Runnix è pensato per un contesto reale, non teorico. Un contesto in cui:
+        </p>
+
+        <ul>
+          <li>non esiste solo l’allenamento</li>
+          <li>lo stress non è solo fisico</li>
+          <li>la disponibilità cambia di giorno in giorno</li>
+          <li>le decisioni devono essere rapide e pratiche</li>
+        </ul>
+
+        <p>
+          In questo scenario, serviva uno strumento che unisse:
+        </p>
+
+        <ul>
+          <li>dati oggettivi</li>
+          <li>logica fisiologica</li>
+          <li>leggibilità immediata</li>
+        </ul>
+
+        <p>
+          Hybrid Score nasce per colmare questo spazio. Non sostituisce le metriche esistenti, ma le integra in una visione più ampia.
+        </p>
+
+        <h2>Cosa non è Hybrid Score</h2>
+
+        <p>
+          Per evitare interpretazioni sbagliate, è importante chiarire cosa non rappresenta.
+        </p>
+
+        <ul>
+          <li>Non è una previsione di performance</li>
+          <li>Non è una misura clinica</li>
+          <li>Non è un valore assoluto valido per tutti</li>
+          <li>Non è un sistema che sostituisce l’esperienza o il giudizio</li>
+        </ul>
+
+        <p>
+          È uno strumento di lettura. Il suo valore emerge nel tempo, osservando i pattern e le relazioni tra allenamento e risposta del corpo.
+        </p>
+
+        <div class="blog-sources">
+          <h3>Fonti scientifiche base</h3>
+          <ol>
+            <li>Banister EW. Modeling elite athletic performance. 1991.</li>
+            <li>Foster C et al. A new approach to monitoring exercise training. 2001.</li>
+            <li>Wilson JM et al. Concurrent training: a meta-analysis examining interference. 2012.</li>
+            <li>Plews DJ et al. Heart rate variability in elite endurance athletes. 2013.</li>
+            <li>Buchheit M. Monitoring training status with HR measures. 2014.</li>
+            <li>Bourdon PC et al. Monitoring Athlete Training Loads: Consensus Statement. 2017.</li>
+          </ol>
+        </div>
 
         <div class="blog-share">
           <div class="blog-share__label">Condividi questo articolo</div>
