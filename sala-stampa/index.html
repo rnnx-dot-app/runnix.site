@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sala stampa – Runnix</title>
+  <meta name="description" content="Notizie, comunicati e aggiornamenti ufficiali su Runnix." />
+
+  <link rel="stylesheet" href="/css/main.css">
+
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --text:#1d1d1f;
+      --muted:rgba(0,0,0,.62);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --border:rgba(0,0,0,.06);
+      --lime:#B0E655;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Zalando Sans SemiExpanded', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .page{
+      padding:0 0 120px;
+    }
+
+    .wrap{
+      width:1300px;
+      max-width:calc(100% - 40px);
+      margin:0 auto;
+    }
+
+    .container-1100{
+      width:1100px;
+      max-width:100%;
+      margin:0 auto;
+    }
+
+    .press-head{
+      text-align:center;
+      padding-top:156px;
+    }
+
+    .press-head h1{
+      margin:0 0 16px;
+      font-size:clamp(32px,4.15vw,54px);
+      line-height:1.07;
+      font-weight:550;
+      letter-spacing:0;
+      color:var(--text);
+    }
+
+    .press-head .sub{
+      margin:0 auto;
+      max-width:780px;
+      font-size:18px;
+      line-height:1.65;
+      color:var(--muted);
+      font-weight:400;
+    }
+
+    .press-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:24px;
+      margin-top:54px;
+      align-items:stretch;
+    }
+
+    .press-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      height:100%;
+    }
+
+    .press-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(0,0,0,.12);
+      box-shadow:0 16px 46px rgba(0,0,0,.10);
+    }
+
+    .press-link{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      text-align:left;
+    }
+
+    .cover{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      background:#0c0c0c;
+    }
+
+    .content{
+      padding:24px 24px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      height:100%;
+      text-align:left;
+      align-items:flex-start;
+    }
+
+    .meta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:0;
+      font-size:12px;
+      color:rgba(0,0,0,.55);
+    }
+
+    .dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:rgba(0,0,0,.25);
+      display:inline-block;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      background:rgba(176,230,85,.14);
+      border:1px solid rgba(176,230,85,.28);
+      color:#2b3b10;
+    }
+
+    .content h3{
+      margin:0;
+      font-size:24px;
+      line-height:1.22;
+      font-weight:600;
+      color:var(--text);
+      letter-spacing:-.03em;
+      text-align:left;
+    }
+
+    .excerpt{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      text-align:left;
+      font-weight:400;
+    }
+
+    .card-arrow{
+      margin-top:auto;
+      margin-left:auto;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(0,0,0,.78);
+      border:1px solid rgba(0,0,0,.08);
+      transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .press-card:hover .card-arrow{
+      transform:translateX(2px);
+      border-color:rgba(0,0,0,.14);
+      box-shadow:0 10px 22px rgba(0,0,0,.06);
+    }
+
+    @media (max-width:1024px){
+      .press-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:640px){
+      .page{
+        padding-bottom:90px;
+      }
+
+      .press-head{
+        padding-top:116px;
+      }
+
+      .press-head .sub{
+        font-size:16px;
+      }
+
+      .press-grid{
+        margin-top:38px;
+        gap:18px;
+      }
+
+      .cover{
+        height:220px;
+      }
+
+      .content{
+        padding:18px;
+      }
+
+      .content h3{
+        font-size:21px;
+      }
+
+      .excerpt{
+        font-size:15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="page">
+    <section class="wrap press-head page-hero">
+      <h1 class="page-title">Comunicati</h1>
+      <p class="sub page-subtitle">
+        Notizie, riconoscimenti e aggiornamenti ufficiali su Runnix.
+      </p>
+
+      <div class="container-1100">
+        <div class="press-grid" aria-label="Articoli sala stampa">
+
+<article class="press-card">
+  <a class="press-link" href="/sala-stampa/boost.html">
+
+    <img
+      class="cover"
+      loading="lazy"
+      src="/assets/press/boost1.jpg"
+      alt="Runnix vince Boost Your Ideas"
+    />
+
+    <div class="content">
+
+      <div class="meta">
+        <span class="badge">Riconoscimenti</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Boost Your Ideas</span>
+      </div>
+
+      <h3>
+        Runnix vince Boost Your Ideas di Lazio Innova
+      </h3>
+
+      <p class="excerpt">
+        Il progetto Runnix è stato selezionato tra le iniziative vincitrici del programma,
+        confermando il percorso di sviluppo costruito finora.
+      </p>
+
+      <span class="card-arrow" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M5 12h14M13 5l7 7-7 7"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+
+    </div>
+  </a>
+</article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Runnix tra i vincitori di Boost Your Ideas | Sala stampa Runnix</title>
+  <meta
+    name="description"
+    content="Runnix è tra i vincitori del percorso Team Lab della prima call 2025-2026 di Boost Your Ideas, programma promosso dalla Regione Lazio e gestito da Lazio Innova."
+  />
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <style>
+    :root {
+      --rnx-green: #b0e655;
+      --rnx-black: #111111;
+      --rnx-text: #1b1b1b;
+      --rnx-muted: #6f6f6f;
+      --rnx-border: #e9e9e9;
+      --rnx-bg: #ffffff;
+      --rnx-radius-lg: 24px;
+      --rnx-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --article-width: 920px;
+      --prose-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--rnx-bg);
+      color: var(--rnx-text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.75;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .press-article-page {
+      padding: 150px 20px 90px;
+    }
+
+    .press-hero.page-hero {
+      padding-top: 0;
+      text-align: left;
+    }
+
+    .press-article-shell {
+      max-width: var(--article-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .press-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 46px;
+      padding: 12px 18px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--rnx-black);
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .press-back:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .press-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(176, 230, 85, 0.16);
+      color: #57751a;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .press-title {
+      margin: 0 0 18px;
+      color: var(--rnx-black);
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.08;
+      font-weight: 550;
+      letter-spacing: 0;
+      max-width: 900px;
+    }
+
+    .press-subtitle {
+      margin: 0;
+      max-width: 780px;
+      color: var(--rnx-muted);
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .press-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 14px;
+    }
+
+    .press-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.25);
+      display: inline-block;
+    }
+
+    .press-cover-wrap {
+      margin: 46px 0 52px;
+    }
+
+    .press-cover {
+      width: 100%;
+      min-height: 420px;
+      border-radius: var(--rnx-radius-lg);
+      object-fit: cover;
+      box-shadow: var(--rnx-shadow);
+      border: 1px solid #efefef;
+      background: #f5f5f7;
+    }
+
+    .press-prose {
+      width: 100%;
+      max-width: var(--prose-width);
+      margin: 0 auto;
+      text-align: left;
+      color: var(--rnx-text);
+      font-size: 18px;
+    }
+
+    .press-prose p {
+      margin: 0 0 1.35em;
+    }
+
+    .press-prose h2 {
+      margin: 58px 0 18px;
+      color: var(--rnx-black);
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .press-prose ul {
+      margin: 0 0 1.35em 1.2em;
+      padding: 0;
+    }
+
+    .press-prose li {
+      margin: 0 0 0.6em;
+    }
+
+    .press-prose strong {
+      color: var(--rnx-black);
+    }
+
+    .press-highlight {
+      margin: 42px 0;
+      padding: 28px;
+      border-radius: 22px;
+      background: #f5f5f7;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .press-highlight p {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--rnx-black);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .press-sources {
+      margin-top: 52px;
+      padding: 24px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 20px;
+      background: #fafafa;
+    }
+
+    .press-sources h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--rnx-black);
+    }
+
+    .press-sources ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .press-sources li {
+      margin-bottom: 10px;
+    }
+
+    .press-sources a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .press-share {
+      max-width: var(--prose-width);
+      margin: 52px auto 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--rnx-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .press-share__label {
+      color: var(--rnx-black);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .press-share__icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .press-share__btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--rnx-border);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .press-share__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .press-share__btn svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--rnx-black);
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .press-article-page {
+        padding: 120px 16px 60px;
+      }
+
+      .press-back {
+        margin-bottom: 34px;
+      }
+
+      .press-cover {
+        min-height: 260px;
+      }
+
+      .press-prose {
+        font-size: 17px;
+      }
+
+      .press-highlight {
+        padding: 22px;
+      }
+
+      .press-highlight p {
+        font-size: 18px;
+      }
+
+      .press-share {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .press-sources {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="press-article-page">
+    <div class="press-article-shell">
+      <a class="press-back" href="/sala-stampa/">
+        ← Torna alla sala stampa
+      </a>
+
+      <section class="press-hero page-hero">
+        <div class="press-tag">Sala stampa</div>
+
+        <h1 class="press-title page-title">
+          Runnix tra i vincitori del percorso Team Lab di Boost Your Ideas
+        </h1>
+
+        <p class="press-subtitle page-subtitle">
+          Il progetto è stato premiato nell’ambito della prima call 2025-2026 di Boost Your Ideas,
+          programma promosso dalla Regione Lazio e gestito da Lazio Innova.
+        </p>
+
+        <div class="press-meta">
+          <span>15 maggio 2026</span>
+          <span class="press-dot" aria-hidden="true"></span>
+          <span>Boost Your Ideas</span>
+          <span class="press-dot" aria-hidden="true"></span>
+          <span>Lazio Innova</span>
+        </div>
+
+        <div class="press-cover-wrap">
+          <img
+            class="press-cover"
+            src="/assets/press/boost1.jpg"
+            alt="Runnix vincitore Boost Your Ideas"
+          />
+        </div>
+      </section>
+
+      <article class="press-prose">
+        <p>
+          Runnix è tra i vincitori del percorso di accelerazione <strong>Team Lab</strong>
+          della prima call 2025-2026 di <strong>Boost Your Ideas</strong>, il programma promosso
+          dalla Regione Lazio e gestito da Lazio Innova per sostenere la nascita e lo sviluppo
+          di nuove imprese innovative.
+        </p>
+
+        <p>
+          L’evento di premiazione si è svolto presso lo <strong>Spazio Attivo di Lazio Innova Roma Tecnopolo</strong>.
+          Secondo quanto riportato da Lazio Innova, 16 progetti hanno completato il percorso e
+          14 partner hanno interagito con i team attraverso un totale di 45 incontri.
+        </p>
+
+        <div class="press-highlight">
+          <p>
+            Runnix è stata premiata insieme a Sunomy e Alix tra i tre progetti distinti per
+            grado di innovazione, potenziale di mercato e capacità di rispondere in modo concreto
+            alle sfide economiche e sociali contemporanee.
+          </p>
+        </div>
+
+        <h2>Il riconoscimento</h2>
+
+        <p>
+          Al termine del percorso Team Lab, sono stati proclamati vincitori <strong>Sunomy</strong>,
+          <strong>Alix</strong> e <strong>Runnix</strong>. I tre progetti hanno ricevuto premi in denaro
+          pari a 5.000 euro ciascuno.
+        </p>
+
+        <p>
+          Nella descrizione pubblicata da Boost Your Ideas e Lazio Innova, Runnix viene presentata
+          come un’app innovativa per la pianificazione dell’allenamento, capace di integrare dati
+          su corsa, forza e recupero per generare programmi personalizzati e adattivi.
+        </p>
+
+        <h2>Cosa rappresenta per Runnix</h2>
+
+        <p>
+          Questo riconoscimento rappresenta un passaggio importante nel percorso di crescita di Runnix.
+          Il premio conferma l’interesse verso soluzioni digitali capaci di rendere più semplice,
+          leggibile e personalizzato il modo in cui le persone organizzano allenamento, recupero e progressi.
+        </p>
+
+        <p>
+          Runnix nasce con l’obiettivo di riunire in un unico sistema piani, dati di allenamento,
+          recupero e indicazioni pratiche, aiutando gli utenti a prendere decisioni più chiare
+          e coerenti con il proprio percorso.
+        </p>
+
+        <h2>Il programma Boost Your Ideas</h2>
+
+        <p>
+          Boost Your Ideas rientra nell’ambito del progetto <strong>“Potenziamento Rete Spazio Attivo”</strong>,
+          finanziato dal <strong>PR Lazio FESR 2021/2027</strong>, Obiettivo 1.3:
+          sostenere la crescita, la competitività e l’occupazione nelle PMI.
+        </p>
+
+        <p>
+          L’iniziativa è pensata per supportare progetti innovativi attraverso percorsi di accompagnamento,
+          confronto con partner e occasioni di validazione imprenditoriale.
+        </p>
+
+        <h2>Fonti ufficiali</h2>
+
+        <p>
+          La notizia è stata pubblicata sui canali ufficiali di Boost Your Ideas e Lazio Innova.
+        </p>
+
+        <div class="press-sources">
+          <h3>Riferimenti</h3>
+          <ul>
+            <li>
+              <a
+                href="https://boostyourideas.lazioinnova.it/it/news/ecco-i-vincitori-del-primo-percorso-team-lab/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Boost Your Ideas – Ecco i vincitori del primo percorso Team Lab
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.lazioinnova.it/news/la-regione-lazio-premia-linnovazione/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Lazio Innova – La Regione Lazio premia l’innovazione
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="press-share">
+          <div class="press-share__label">Condividi questo articolo</div>
+
+          <div class="press-share__icons">
+            <a class="press-share__btn" id="share-instagram" href="#" aria-label="Condividi su Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/>
+              </svg>
+            </a>
+
+            <a class="press-share__btn" id="share-facebook" href="#" aria-label="Condividi su Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.5 0-4.1 1.5-4.1 4.4V11H7.5v3h2.8v8h3.2Z"/>
+              </svg>
+            </a>
+
+            <button class="press-share__btn" id="share-copy" type="button" aria-label="Copia link articolo" title="Copia link">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-4.2 0 1 1 0 1 1 1.4-1.4 1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 1 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l2.1-2.1a3 3 0 0 1 4.2 0 1 1 0 0 1-1.4 1.4 1 1 0 0 0-1.4 0L7.6 12.2a1 1 0 1 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    (function () {
+      const currentUrl = window.location.href;
+      const encodedUrl = encodeURIComponent(currentUrl);
+
+      const fb = document.getElementById("share-facebook");
+      const ig = document.getElementById("share-instagram");
+      const copy = document.getElementById("share-copy");
+
+      if (fb) {
+        fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+        fb.target = "_blank";
+        fb.rel = "noopener noreferrer";
+      }
+
+      if (ig) {
+        ig.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          if (navigator.share) {
+            navigator.share({
+              title: document.title,
+              url: currentUrl
+            }).catch(() => {});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+
+      if (copy) {
+        copy.addEventListener("click", function () {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+    })();
+  </script>
+  <script src="/main.js" defer></script>
+</body>
+</html>

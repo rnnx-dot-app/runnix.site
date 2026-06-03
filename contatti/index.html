@@ -4,11 +4,10 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contatti – Runnix</title>
-  <meta name="description" content="Supporto Runnix: scrivici e ti aiutiamo subito."/>
+  <meta name="description" content="Supporto: scrivici e ti aiutiamo subito."/>
   <link rel="icon" href="/icons/img_logo.png"/>
 
   <!-- Font + CSS globali -->
-  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css"/>
 
   <style>
@@ -33,7 +32,7 @@
 
     /* ===== Layout pagina ===== */
     .support-page{
-      padding:110px 0 140px;
+      padding:0 0 140px;
     }
 
     /* ===== Intro (prima del blocco form) ===== */
@@ -45,19 +44,21 @@
     }
   
     .support-h1{
-      margin:0 0 50px; /* Titolo -> Sottotitolo: h50 */
-      font-size:clamp(30px,4.4vw,58px);
-      line-height:1.08;
-      font-weight:850;
+      margin:0 0 16px;
+      font-size:clamp(32px,4.15vw,54px);
+      line-height:1.07;
+      font-weight:550;
+      letter-spacing:0;
       color:#1d1d1f;
     }
 
     .support-sub{
       margin:0 auto 70px; /* Sottotitolo -> blocchi: h70 */
-      max-width:720px;
+      max-width:780px;
       font-size:18px;
-      line-height:1.6;
+      line-height:1.65;
       color:var(--muted);
+      font-weight:400;
     }
 
     .quick-grid{
@@ -236,7 +237,7 @@
     }
 
     @media (max-width: 640px){
-      .support-page{ padding:90px 0 110px; }
+      .support-page{ padding:0 0 110px; }
       .support-box{ height:auto; padding:34px 18px; }
       .support-inner{ max-width:100%; }
       .support-logo{ margin-bottom:70px; }
@@ -251,10 +252,10 @@
   <main class="support-page">
 
     <!-- INTRO + GRID -->
-    <section class="support-intro" aria-label="Supporto Runnix - scorciatoie">
+    <section class="support-intro page-hero" aria-label="Supporto Runnix - scorciatoie">
 
-      <h1 class="support-h1">Supporto Runnix</h1>
-      <p class="support-sub">Hai bisogno di aiuto? Inizia qui</p>
+      <h1 class="support-h1 page-title">Supporto</h1>
+      <p class="support-sub page-subtitle">Hai bisogno di aiuto? Inizia qui</p>
 
       <div class="quick-grid">
         <a class="quick-card" href="#" aria-label="Per iniziare">
@@ -364,18 +365,6 @@
 
   <div id="site-footer"></div>
 
-  <script>
-    async function include(id, url){
-      const el = document.getElementById(id);
-      if(!el) return;
-      try{
-        const r = await fetch(url, { cache: "no-cache" });
-        el.innerHTML = await r.text();
-      }catch(e){ console.error('Include failed:', e); }
-    }
-    include('site-header','/partials/header.html');
-    include('site-footer','/partials/footer.html');
-  </script>
-  <script src="/main.js"></script>
+  <script src="/main.js" defer></script>
 </body>
 </html>

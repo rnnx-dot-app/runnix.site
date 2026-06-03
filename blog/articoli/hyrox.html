@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hybrid Score | Runnix Blog</title>
+  <meta
+    name="description"
+    content="Scopri cos'è l’Hybrid Score di Runnix, come funziona e perché aiuta a leggere meglio l’equilibrio tra forza, corsa e recupero."
+  />
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <style>
+    :root {
+      --rnx-green: #b0e655;
+      --rnx-black: #111111;
+      --rnx-text: #1b1b1b;
+      --rnx-muted: #6f6f6f;
+      --rnx-border: #e9e9e9;
+      --rnx-bg: #ffffff;
+      --rnx-radius-lg: 24px;
+      --rnx-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --article-width: 920px;
+      --prose-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--rnx-bg);
+      color: var(--rnx-text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.75;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .blog-article-page {
+      padding: 40px 20px 80px;
+    }
+
+    .blog-article-shell {
+      max-width: var(--article-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .blog-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 12px 18px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--rnx-black);
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .blog-back:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(176, 230, 85, 0.16);
+      color: #57751a;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .blog-title {
+      margin: 0 0 14px;
+      color: var(--rnx-black);
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+
+    .blog-subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: var(--rnx-muted);
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .blog-cover-wrap {
+      margin: 34px 0 42px;
+    }
+
+    .blog-cover {
+      width: 100%;
+      border-radius: var(--rnx-radius-lg);
+      object-fit: cover;
+      box-shadow: var(--rnx-shadow);
+      border: 1px solid #efefef;
+    }
+
+    .blog-prose {
+      width: 100%;
+      max-width: var(--prose-width);
+      margin: 0 auto;
+      text-align: left;
+      color: var(--rnx-text);
+      font-size: 18px;
+    }
+
+    .blog-prose p {
+      margin: 0 0 1.35em;
+    }
+
+    .blog-prose h2 {
+      margin: 54px 0 18px;
+      color: var(--rnx-black);
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .blog-prose ul {
+      margin: 0 0 1.35em 1.2em;
+      padding: 0;
+    }
+
+    .blog-prose li {
+      margin: 0 0 0.6em;
+    }
+
+    .blog-prose strong {
+      color: var(--rnx-black);
+    }
+
+    .blog-sources {
+      margin-top: 52px;
+      padding: 24px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 20px;
+      background: #fafafa;
+    }
+
+    .blog-sources h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--rnx-black);
+    }
+
+    .blog-sources ol {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .blog-sources li {
+      margin-bottom: 10px;
+    }
+
+    .blog-share {
+      max-width: var(--prose-width);
+      margin: 52px auto 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--rnx-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .blog-share__label {
+      color: var(--rnx-black);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .blog-share__icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-share__btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--rnx-border);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .blog-share__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-share__btn svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--rnx-black);
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .blog-article-page {
+        padding: 26px 16px 56px;
+      }
+
+      .blog-prose {
+        font-size: 17px;
+      }
+
+      .blog-share {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .blog-sources {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="blog-article-page">
+    <div class="blog-article-shell">
+      <a class="blog-back" href="/blog/">
+        ← Torna agli articoli
+      </a>
+
+      <section class="blog-hero">
+        <div class="blog-tag">Ibrido</div>
+
+        <h1 class="blog-title">
+          Hybrid Score: cos’è e perché cambia il modo di leggere l’allenamento
+        </h1>
+
+        <p class="blog-subtitle">
+          La metrica di Runnix che sintetizza forza, capacità aerobica e recupero
+          per capire quanto il tuo allenamento è davvero efficace nel contesto in cui ti trovi.
+        </p>
+
+        <div class="blog-cover-wrap">
+          <img
+            class="blog-cover"
+            src="/assets/home/hero.jpg"
+            alt="Hybrid Score di Runnix"
+          />
+        </div>
+      </section>
+
+      <article class="blog-prose">
+        <p>
+          Allenarsi bene non significa solo accumulare volume o aumentare l’intensità. Significa soprattutto capire se ciò che stai facendo
+          ha senso per il tuo corpo, oggi. Perché due settimane con lo stesso carico possono portare a risultati completamente diversi:
+          in una migliori, nell’altra accumuli fatica. La differenza non è nel singolo dato, ma nella relazione tra tutti i fattori in gioco.
+          Ed è proprio da qui che nasce l’Hybrid Score di Runnix.
+        </p>
+
+        <p>
+          Hybrid Score è una metrica che sintetizza in modo chiaro e utilizzabile tre dimensioni fondamentali dell’allenamento:
+          forza, capacità aerobica e recupero. Non nasce per aggiungere un altro numero da guardare, ma per rispondere a una domanda concreta:
+          quanto il tuo allenamento è realmente efficace nel contesto in cui ti trovi.
+        </p>
+
+        <h2>Perché non bastano forza o corsa da sole</h2>
+
+        <p>
+          Nel mondo reale, l’allenamento non è mai isolato. Anche quando pensi di lavorare su una sola qualità, il corpo sta gestendo uno stress complessivo.
+          Sollevare pesi influisce sul recupero neurale e muscolare, correre impatta il sistema cardiovascolare e metabolico, il sonno e lo stress modificano
+          la capacità di adattamento. Tutto è collegato.
+        </p>
+
+        <p>
+          La letteratura sulla scienza dell’allenamento ha affrontato questo problema da più angolazioni. I modelli di training load, come TRIMP o le evoluzioni successive,
+          cercano di quantificare lo stress complessivo. Gli studi sulla concurrent training mostrano come forza ed endurance possano interferire tra loro se mal gestiti.
+          Le ricerche su HRV e fatigue evidenziano quanto il recupero condizioni la risposta allo stimolo.
+        </p>
+
+        <p>
+          Il punto è che queste informazioni esistono, ma spesso restano separate. Nella pratica quotidiana, l’atleta si trova a interpretare numeri diversi senza una sintesi reale.
+        </p>
+
+        <h2>Il problema degli indicatori isolati</h2>
+
+        <p>
+          I dati che usi ogni giorno sono utili, ma parziali.
+        </p>
+
+        <ul>
+          <li>Un carico alto può essere positivo o negativo, a seconda del recupero.</li>
+          <li>Un buon stato di forma può non tradursi in performance se lo stimolo è insufficiente.</li>
+          <li>Un equilibrio tra forza e corsa può essere inutile se non è sostenibile nel tempo.</li>
+        </ul>
+
+        <p>
+          In altre parole: ogni metrica racconta una parte della storia, ma nessuna da sola è sufficiente per capire se stai andando nella direzione giusta.
+        </p>
+
+        <p>
+          Il monitoring moderno dell’atleta sottolinea proprio questo: la performance e l’adattamento dipendono dall’interazione tra carico esterno,
+          carico interno e stato dell’individuo. Guardare solo uno di questi aspetti porta inevitabilmente a interpretazioni incomplete.
+        </p>
+
+        <h2>La logica dietro Hybrid Score</h2>
+
+        <p>
+          Runnix non ha inventato i concetti alla base dell’Hybrid Score. I principi sono ben noti nella letteratura:
+        </p>
+
+        <ul>
+          <li>l’equilibrio tra diversi tipi di stimolo</li>
+          <li>la relazione tra carico e recupero</li>
+          <li>la necessità di mantenere uno stimolo sufficiente ma sostenibile</li>
+          <li>l’importanza della distribuzione del carico nel tempo</li>
+        </ul>
+
+        <p>
+          Quello che mancava era una traduzione pratica di questi principi per atleti che non sono specialisti puri, ma combinano forza, corsa e vita reale.
+        </p>
+
+        <p>
+          Hybrid Score nasce da una constatazione semplice: allenarsi bene non è solo fare di più, ma fare la cosa giusta nel contesto giusto.
+          Per questo non misura una singola variabile, ma cerca di leggere la coerenza del sistema.
+        </p>
+
+        <h2>Cosa misura davvero</h2>
+
+        <p>
+          Hybrid Score non è un indicatore di performance pura e non è un voto sulla tua forma fisica. È una misura di qualità dell’allenamento nel suo insieme.
+        </p>
+
+        <p>
+          In pratica, riflette tre aspetti fondamentali:
+        </p>
+
+        <ul>
+          <li>quanto sono bilanciati i diversi stimoli</li>
+          <li>quanto il carico è coerente con il tuo stato di recupero</li>
+          <li>quanto lo stimolo totale è sufficiente per generare adattamento</li>
+        </ul>
+
+        <p>
+          Questi elementi sono alla base di qualsiasi processo di miglioramento. Se manca uno di questi, la progressione si blocca o diventa inefficiente.
+        </p>
+
+        <h2>Come influisce sull’allenamento</h2>
+
+        <p>
+          L’Hybrid Score non cambia direttamente il tuo allenamento. Non modifica i tuoi dati. Non crea adattamenti.
+          Il suo ruolo è diverso: aiuta a interpretare ciò che stai facendo.
+        </p>
+
+        <p>
+          Quando hai una sintesi coerente del tuo stato, diventa più facile:
+        </p>
+
+        <ul>
+          <li>capire se ha senso spingere o mantenere</li>
+          <li>riconoscere quando il carico è troppo rispetto al recupero</li>
+          <li>identificare situazioni di sottostimolo</li>
+          <li>leggere meglio periodi in cui la performance non migliora</li>
+        </ul>
+
+        <p>
+          Questo approccio è coerente con la letteratura sul training monitoring: l’obiettivo non è accumulare dati,
+          ma migliorare la capacità decisionale. Il valore non sta nel numero in sé, ma nel modo in cui aiuta a contestualizzare le scelte.
+        </p>
+
+        <h2>Perché serve soprattutto agli atleti ibridi</h2>
+
+        <p>
+          Chi si allena solo per una singola qualità ha già un riferimento chiaro. Chi combina più sistemi, invece, si trova in una situazione più complessa.
+        </p>
+
+        <p>
+          Allenare forza e corsa insieme significa gestire:
+        </p>
+
+        <ul>
+          <li>stimoli diversi</li>
+          <li>tempi di recupero diversi</li>
+          <li>adattamenti che possono supportarsi o interferire</li>
+          <li>carichi che si sommano anche quando sembrano separati</li>
+        </ul>
+
+        <p>
+          In questo contesto, il rischio non è solo allenarsi troppo o troppo poco, ma allenarsi in modo non coerente.
+        </p>
+
+        <p>
+          Hybrid Score nasce per questo tipo di atleta. Non per semplificare l’allenamento, ma per renderlo leggibile.
+        </p>
+
+        <h2>Il ruolo del recupero</h2>
+
+        <p>
+          Uno degli errori più comuni è considerare il recupero come qualcosa di separato dall’allenamento. In realtà, è parte integrante del processo.
+        </p>
+
+        <p>
+          Senza recupero non c’è adattamento.<br />
+          Senza adattamento non c’è miglioramento.
+        </p>
+
+        <p>
+          La letteratura su fatigue e recovery è chiara: il carico ha senso solo in relazione alla capacità di assorbirlo.
+          Questo è vero sia negli sport di endurance che nella forza.
+        </p>
+
+        <p>
+          Hybrid Score integra questo principio. Non valuta solo quanto stai facendo, ma quanto il tuo corpo è in grado di sostenere quello che stai facendo.
+        </p>
+
+        <h2>Perché Runnix lo ha creato</h2>
+
+        <p>
+          Runnix è pensato per un contesto reale, non teorico. Un contesto in cui:
+        </p>
+
+        <ul>
+          <li>non esiste solo l’allenamento</li>
+          <li>lo stress non è solo fisico</li>
+          <li>la disponibilità cambia di giorno in giorno</li>
+          <li>le decisioni devono essere rapide e pratiche</li>
+        </ul>
+
+        <p>
+          In questo scenario, serviva uno strumento che unisse:
+        </p>
+
+        <ul>
+          <li>dati oggettivi</li>
+          <li>logica fisiologica</li>
+          <li>leggibilità immediata</li>
+        </ul>
+
+        <p>
+          Hybrid Score nasce per colmare questo spazio. Non sostituisce le metriche esistenti, ma le integra in una visione più ampia.
+        </p>
+
+        <h2>Cosa non è Hybrid Score</h2>
+
+        <p>
+          Per evitare interpretazioni sbagliate, è importante chiarire cosa non rappresenta.
+        </p>
+
+        <ul>
+          <li>Non è una previsione di performance</li>
+          <li>Non è una misura clinica</li>
+          <li>Non è un valore assoluto valido per tutti</li>
+          <li>Non è un sistema che sostituisce l’esperienza o il giudizio</li>
+        </ul>
+
+        <p>
+          È uno strumento di lettura. Il suo valore emerge nel tempo, osservando i pattern e le relazioni tra allenamento e risposta del corpo.
+        </p>
+
+        <div class="blog-sources">
+          <h3>Fonti scientifiche base</h3>
+          <ol>
+            <li>Banister EW. Modeling elite athletic performance. 1991.</li>
+            <li>Foster C et al. A new approach to monitoring exercise training. 2001.</li>
+            <li>Wilson JM et al. Concurrent training: a meta-analysis examining interference. 2012.</li>
+            <li>Plews DJ et al. Heart rate variability in elite endurance athletes. 2013.</li>
+            <li>Buchheit M. Monitoring training status with HR measures. 2014.</li>
+            <li>Bourdon PC et al. Monitoring Athlete Training Loads: Consensus Statement. 2017.</li>
+          </ol>
+        </div>
+
+        <div class="blog-share">
+          <div class="blog-share__label">Condividi questo articolo</div>
+
+          <div class="blog-share__icons">
+            <a class="blog-share__btn" id="share-instagram" href="#" aria-label="Condividi su Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/>
+              </svg>
+            </a>
+
+            <a class="blog-share__btn" id="share-facebook" href="#" aria-label="Condividi su Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.5 0-4.1 1.5-4.1 4.4V11H7.5v3h2.8v8h3.2Z"/>
+              </svg>
+            </a>
+
+            <button class="blog-share__btn" id="share-copy" type="button" aria-label="Copia link articolo" title="Copia link">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-4.2 0 1 1 0 1 1 1.4-1.4 1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 1 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l2.1-2.1a3 3 0 0 1 4.2 0 1 1 0 0 1-1.4 1.4 1 1 0 0 0-1.4 0L7.6 12.2a1 1 0 1 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    (function () {
+      const currentUrl = window.location.href;
+      const encodedUrl = encodeURIComponent(currentUrl);
+
+      const fb = document.getElementById("share-facebook");
+      const ig = document.getElementById("share-instagram");
+      const copy = document.getElementById("share-copy");
+
+      if (fb) {
+        fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+        fb.target = "_blank";
+        fb.rel = "noopener noreferrer";
+      }
+
+      if (ig) {
+        ig.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (navigator.share) {
+            navigator.share({
+              title: document.title,
+              url: currentUrl
+            }).catch(() => {});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+
+      if (copy) {
+        copy.addEventListener("click", function () {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+    })();
+  </script>
+  <script src="/main.js" defer></script>
+</body>
+</html>

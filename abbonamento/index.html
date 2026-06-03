@@ -7,7 +7,6 @@
   <title>Abbonamento</title>
 
   <!-- Font + CSS globali -->
-  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
 
   <style>
@@ -52,23 +51,24 @@
 
     /* ===== hero title ===== */
     .ab-hero{
-      padding:90px 0 36px;
+      padding:156px 0 36px;
       text-align:center;
     }
     .ab-hero h1{
-      margin:0 0 10px;
-      font-size:clamp(34px,4.4vw,56px);
-      line-height:1.08;
-      font-weight:900;
-      letter-spacing:-.3px;
+      margin:0 0 16px;
+      font-size:clamp(32px,4.15vw,54px);
+      line-height:1.07;
+      font-weight:550;
+      letter-spacing:0;
       text-shadow:0 20px 80px rgba(0,0,0,.45);
     }
     .ab-hero p{
       margin:0 auto;
-      max-width:820px;
+      max-width:780px;
       font-size:18px;
-      line-height:1.55;
+      line-height:1.65;
       color:var(--mutedW);
+      font-weight:400;
     }
 
     /* ===== white containers ===== */
@@ -483,7 +483,7 @@
       .btn-outline, .btn-lime{ width:100%; }
     }
     @media (max-width:760px){
-      .ab-hero{ padding:70px 0 28px; }
+      .ab-hero{ padding:116px 0 28px; }
       .timeline{ padding:22px 18px; }
       .compare__head, .row{ grid-template-columns: 1.6fr .7fr .7fr; }
       .cta-primary{ min-width:100%; }
@@ -498,10 +498,10 @@
     <div id="site-header"></div>
 
     <!-- HERO -->
-    <section class="ab-hero">
+    <section class="ab-hero page-hero">
       <div class="wrap">
-        <h1>Abbonamento</h1>
-        <p>Gestisci la prova gratuita e scopri cosa sblocchi con Runnix Pro.</p>
+        <h1 class="page-title">Abbonamento</h1>
+        <p class="page-subtitle">Gestisci la prova gratuita e scopri cosa sblocchi con Runnix Pro.</p>
       </div>
     </section>
 
@@ -768,18 +768,6 @@
   </div>
 
   <script>
-    // include header + footer
-    async function include(id, url){
-      const el = document.getElementById(id);
-      if(!el) return;
-      try{
-        const r = await fetch(url, { cache: "no-cache" });
-        el.innerHTML = await r.text();
-      }catch(e){ console.error("Include failed:", e); }
-    }
-    include('site-header','/partials/header.html');
-    include('site-footer','/partials/footer.html');
-
     // Toggle pricing Mensile/Annuale (come home)
     const toggle = document.getElementById('billingToggle');
     const priceEls = document.querySelectorAll('.amount[data-monthly][data-annual]');

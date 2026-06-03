@@ -22,17 +22,26 @@
           <img src="/assets/footer/tiktok.png" alt="TikTok">
         </a>
       </div>
+
+      <div class="rnx-footer__signup">
+        <form class="rnx-footer__signup-form" action="" method="post" data-footer-signup>
+          <label class="sr-only" for="footer-email">Email</label>
+          <input id="footer-email" name="email" type="email" placeholder="La tua email" autocomplete="email" required>
+          <button type="submit">Iscriviti</button>
+        </form>
+        <p class="rnx-footer__signup-status" data-footer-signup-status aria-live="polite"></p>
+      </div>
     </div>
 
     <!-- Col 2 (Company) -->
     <div class="rnx-footer__col">
       <h4 class="rnx-footer__title">Company</h4>
       <nav class="rnx-footer__links" aria-label="Company">
+                <a href="/team/">Team</a>
         <a href="/funzionalita/">Funzionalità</a>
         <a href="/abbonamento/index.html">Abbonamento</a>
-        <a href="/blog/">Blog</a>
-        <a href="/team/">Team</a>
-        <a href="/community/">Community</a>
+        <a href="/blog/">Risorse</a>
+        <a href="/sala-stampa/">Sala Stampa</a>
         <a href="/beta/">Beta</a>
         <a href="/careers/index.html">Careers</a>
       </nav>
@@ -42,9 +51,8 @@
     <div class="rnx-footer__col">
       <h4 class="rnx-footer__title">Partner</h4>
       <nav class="rnx-footer__links" aria-label="Partner">
-        <a href="#">Eventi Runnix</a>
+        <a href="#">Eventi</a>
         <a href="/ambassador/index.html">Diventa Ambassador</a>
-        <a href="/club/">Runnix Run Club</a>
       </nav>
     </div>
 
@@ -53,6 +61,7 @@
       <h4 class="rnx-footer__title">Contatti</h4>
       <nav class="rnx-footer__links" aria-label="Contatti">
         <a href="mailto:info@runnix.it">info@runnix.it</a>
+        <a href="mailto:info@runnix.site">info@runnix.site</a>
         <a href="mailto:runnix.app@gmail.com">runnix.app@gmail.com</a>
       </nav>
     </div>
@@ -70,13 +79,6 @@
   </div>
 
   <div class="rnx-footer__bottom">
-    <small>© <span id="year"></span> 2026 Runnix. Tutti i diritti riservati. Runnix e Runnix app sono marchii commerciali di Runnix Inc. e non possono essere utilizzati senza autorizzazione.</small>
+    <small>© <span id="year"></span> Runnix. Tutti i diritti riservati. Runnix e Runnix app sono marchii commerciali di Runnix Inc. e non possono essere utilizzati senza autorizzazione.</small>
   </div>
 </footer>
-
-<script>
-  (function(){
-    const y = document.getElementById('year');
-    if(y) y.textContent = new Date().getFullYear();
-  })();
-</script>

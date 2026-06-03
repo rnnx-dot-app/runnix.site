@@ -8,7 +8,6 @@
   <link rel="icon" href="/icons/img_logo.png"/>
 
   <!-- Font + CSS globali -->
-  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- ✅ font “scritto a matita” per citazione -->
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 
@@ -34,7 +33,7 @@
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
 
-    .page{ padding:110px 0 140px; }
+    .page{ padding:0 0 140px; }
 
     /* ===== widths allineate (immagine grande + valori) ===== */
     .w980{
@@ -52,18 +51,20 @@
       text-align:center;
     }
     .hero h1{
-      margin:0 0 14px;
-      font-size:clamp(32px,4.8vw,58px);
-      line-height:1.08;
-      font-weight:850;
+      margin:0 0 16px;
+      font-size:clamp(32px,4.15vw,54px);
+      line-height:1.07;
+      font-weight:550;
+      letter-spacing:0;
       color:#1d1d1f;
     }
     .hero p{
       margin:0 auto;
-      max-width:900px;
+      max-width:780px;
       font-size:18px;
-      line-height:1.3;
+      line-height:1.65;
       color:var(--muted);
+      font-weight:400;
     }
 
     /* ===== immagine grande centrale ===== */
@@ -488,9 +489,9 @@
   <main class="page">
 
     <!-- HERO -->
-    <section class="w980 hero" aria-label="Careers Runnix">
-      <h1>Lavora con noi</h1>
-      <p>
+    <section class="w980 hero page-hero" aria-label="Careers Runnix">
+      <h1 class="page-title">Lavora con noi</h1>
+      <p class="page-subtitle">
         Stiamo costruendo Runnix per rendere l’allenamento ibrido più chiaro, sostenibile e umano.
         Se ti riconosci in questo approccio, potresti essere nel posto giusto.
       </p>
@@ -695,7 +696,7 @@
 
   <div id="site-footer"></div>
 
-  <script src="/main.js"></script>
+  <script src="/main.js" defer></script>
   <script>
     // ===== Values slider: + / - toggles description, arrows scroll =====
     (function(){

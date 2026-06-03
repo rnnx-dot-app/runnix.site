@@ -12,7 +12,6 @@
   <link rel="apple-touch-icon" href="/icons/img_logo.png" />
 
   <!-- Font + CSS globali (IDENTICI all’Home) -->
-  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
 
   <!-- SOLO stili di pagina (non tocco header) -->
@@ -36,19 +35,20 @@
     /* ===== Manifesto ===== */
     .manifesto-final{
       background:var(--bg);
-      padding:140px 20px 90px 20px;
+      padding:156px 20px 90px 20px;
     }
     .manifesto-final-inner{
       max-width:980px; /* contenitore più grande */
       margin:0 auto;
     }
     .manifesto-title{
-      font-size:clamp(32px,4.5vw,42px);
-      line-height:1.1;
-      margin:0 0 100px;
+      font-size:clamp(32px,4.15vw,42px);
+      line-height:1.08;
+      margin:0 0 88px;
       color:#1d1d1f;
       text-align:center;
-      font-weight:800;
+      font-weight:550;
+      letter-spacing:0;
     }
 
     .manifesto-card{
@@ -270,7 +270,7 @@
       .cta-box{ height:520px; }
     }
     @media (max-width: 640px){
-      .manifesto-final{ padding:90px 16px 70px 16px; }
+      .manifesto-final{ padding:116px 16px 70px 16px; }
       .manifesto-card{ padding:46px 18px 34px 18px; min-height:620px; }
       .doc-toolbar{ top:14px; right:14px; }
       .manifesto-in-title{ font-size:30px; }
@@ -289,9 +289,9 @@
 
   <main>
     <!-- Manifesto -->
-    <section class="manifesto-final">
+    <section class="manifesto-final page-hero">
       <div class="manifesto-final-inner">
-        <h2 class="manifesto-title">In missione per sbloccare il potenziale umano attraverso il movimento.</h2>
+        <h2 class="manifesto-title page-title">In missione per sbloccare il potenziale umano attraverso il movimento.</h2>
 
         <div class="manifesto-card">
           <div class="doc-toolbar" aria-hidden="true">
@@ -441,25 +441,6 @@ In Runnix, progetta brand identity, user experience e interfaccia dell’app.</p
   <!-- Footer via partial -->
   <div id="site-footer"></div>
 
-  <script>
-    async function include(id, url){
-      const el = document.getElementById(id);
-      if(!el) return;
-      try{
-        const r = await fetch(url, { cache: "no-cache" });
-        el.innerHTML = await r.text();
-      }catch(e){ console.error('Include failed:', e); }
-    }
-    include('site-header','/partials/header.html');
-    include('site-footer','/partials/footer.html');
-
-    // (opz.) attiva pulsante menu dal partial
-    document.addEventListener('click', (e)=>{
-      if(e.target && e.target.id === 'menuBtn'){
-        alert('Menu mobile in arrivo');
-      }
-    });
-  </script>
-  <script src="/main.js"></script>
+  <script src="/main.js" defer></script>
 </body>
 </html>

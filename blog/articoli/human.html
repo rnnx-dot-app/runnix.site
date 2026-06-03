@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Energy Bank | Runnix Blog</title>
+  <meta
+    name="description"
+    content="Scopri cos'è Human Energy Bank di Runnix, come funziona e perché aiuta a leggere meglio recupero, fatica e readiness."
+  />
+
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <style>
+    :root {
+      --rnx-green: #b0e655;
+      --rnx-black: #111111;
+      --rnx-text: #1b1b1b;
+      --rnx-muted: #6f6f6f;
+      --rnx-border: #e9e9e9;
+      --rnx-bg: #ffffff;
+      --rnx-radius-lg: 24px;
+      --rnx-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --article-width: 920px;
+      --prose-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--rnx-bg);
+      color: var(--rnx-text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      line-height: 1.75;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .blog-article-page {
+      padding: 40px 20px 80px;
+    }
+
+    .blog-article-shell {
+      max-width: var(--article-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .blog-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 12px 18px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--rnx-black);
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .blog-back:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(176, 230, 85, 0.16);
+      color: #57751a;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .blog-title {
+      margin: 0 0 14px;
+      color: var(--rnx-black);
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+
+    .blog-subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: var(--rnx-muted);
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .blog-cover-wrap {
+      margin: 34px 0 42px;
+    }
+
+    .blog-cover {
+      width: 100%;
+      border-radius: var(--rnx-radius-lg);
+      object-fit: cover;
+      box-shadow: var(--rnx-shadow);
+      border: 1px solid #efefef;
+    }
+
+    .blog-prose {
+      width: 100%;
+      max-width: var(--prose-width);
+      margin: 0 auto;
+      text-align: left;
+      color: var(--rnx-text);
+      font-size: 18px;
+    }
+
+    .blog-prose p {
+      margin: 0 0 1.35em;
+    }
+
+    .blog-prose h2 {
+      margin: 54px 0 18px;
+      color: var(--rnx-black);
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .blog-prose ul {
+      margin: 0 0 1.35em 1.2em;
+      padding: 0;
+    }
+
+    .blog-prose li {
+      margin: 0 0 0.6em;
+    }
+
+    .blog-prose strong {
+      color: var(--rnx-black);
+    }
+
+    .blog-sources {
+      margin-top: 52px;
+      padding: 24px;
+      border: 1px solid var(--rnx-border);
+      border-radius: 20px;
+      background: #fafafa;
+    }
+
+    .blog-sources h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--rnx-black);
+    }
+
+    .blog-sources ol {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .blog-sources li {
+      margin-bottom: 10px;
+    }
+
+    .blog-share {
+      max-width: var(--prose-width);
+      margin: 52px auto 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--rnx-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .blog-share__label {
+      color: var(--rnx-black);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .blog-share__icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-share__btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--rnx-border);
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .blog-share__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--rnx-shadow);
+      border-color: #dcdcdc;
+    }
+
+    .blog-share__btn svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--rnx-black);
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .blog-article-page {
+        padding: 26px 16px 56px;
+      }
+
+      .blog-prose {
+        font-size: 17px;
+      }
+
+      .blog-share {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .blog-sources {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="blog-article-page">
+    <div class="blog-article-shell">
+      <a class="blog-back" href="/blog/">
+        ← Torna agli articoli
+      </a>
+
+      <section class="blog-hero">
+        <div class="blog-tag">Recupero</div>
+
+        <h1 class="blog-title">
+          Human Energy Bank: cos’è e perché cambia il modo di leggere il recupero
+        </h1>
+
+        <p class="blog-subtitle">
+          Il diario soggettivo giornaliero di Runnix per leggere meglio fatica,
+          recupero, readiness e tolleranza al carico.
+        </p>
+
+        <div class="blog-cover-wrap">
+          <img
+            class="blog-cover"
+            src="/assets/home/hero.jpg"
+            alt="Human Energy Bank di Runnix"
+          />
+        </div>
+      </section>
+
+      <article class="blog-prose">
+        <p>
+          Allenarsi bene non significa solo misurare quanto hai corso, quanti kg hai sollevato o quante calorie hai consumato.
+          Significa anche capire come stai davvero. Perché due allenamenti identici, fatti in due giorni diversi, sul tuo corpo
+          non hanno mai lo stesso effetto. Il contesto cambia: sonno, stress, dolori, motivazione, recupero percepito, stato mentale.
+          Ed è proprio qui che nasce Human Energy Bank di Runnix.
+        </p>
+
+        <p>
+          Human Energy Bank è il diario soggettivo giornaliero di Runnix: uno spazio semplice e veloce in cui registrare il tuo stato
+          mentale, fisico e di recupero. Non serve per “fare journaling” in senso generico. Serve per trasformare percezioni spesso ignorate
+          in segnali utili per leggere meglio fatica, recupero, tolleranza al carico e prontezza alla performance. La letteratura scientifica
+          sull’athlete monitoring mostra da anni che le misure soggettive di benessere e stato interno sono strumenti pratici, sensibili e spesso
+          molto utili per monitorare la risposta dell’atleta all’allenamento.
+        </p>
+
+        <h2>Perché non bastano solo i dati “oggettivi”</h2>
+
+        <p>
+          Wearable, cardiofrequenza, HRV, ritmo, volume, training load: sono tutti dati utili. Ma da soli non raccontano tutto.
+          Un atleta può avere numeri apparentemente normali e sentirsi svuotato. Oppure può presentare un carico alto ma tollerarlo bene,
+          perché dorme meglio, è mentalmente lucido e sta recuperando. In altre parole: il dato esterno misura cosa hai fatto;
+          il dato soggettivo aiuta a capire come quel carico è stato assorbito. Il consenso scientifico sul monitoring degli atleti
+          sottolinea proprio l’importanza di integrare carico esterno, carico interno e misure percettive, invece di affidarsi a un solo indicatore.
+        </p>
+
+        <h2>La logica dietro Human Energy Bank</h2>
+
+        <p>
+          Runnix non ha “inventato” da zero l’idea di monitorare il benessere percepito: questa base esiste già nella scienza dello sport,
+          nei questionari wellness, nelle athlete self-report measures e nei sistemi di monitoraggio della fatica. Quello che Runnix fa è
+          trasformare quel principio in uno strumento quotidiano, chiaro e utile per atleti ibridi, cioè persone che combinano corsa, forza,
+          recupero e vita reale.
+        </p>
+
+        <p>
+          Human Energy Bank nasce da una constatazione semplice: molti atleti registrano l’allenamento, ma pochissimi registrano in modo coerente
+          il proprio stato interno. Eppure indicatori come umore, stress, sonno, soreness muscolare e percezione di recupero sono stati associati
+          in letteratura a cambiamenti nello stato di fatica, nella risposta al training e nella capacità di tollerare il carico.
+        </p>
+
+        <h2>Cosa misura davvero</h2>
+
+        <p>
+          Human Energy Bank non vuole diagnosticare nulla e non sostituisce valutazioni mediche o cliniche. Il suo compito è più pratico:
+          raccogliere segnali quotidiani che spesso anticipano ciò che poi si vede nell’allenamento.
+        </p>
+
+        <p>
+          Per questo include aree come:
+        </p>
+
+        <ul>
+          <li>umore e stress mentale</li>
+          <li>motivazione</li>
+          <li>DOMS e dolore articolare</li>
+          <li>stato infortunio</li>
+          <li>qualità del sonno</li>
+          <li>pratiche di recupero</li>
+          <li>aspetti lifestyle come idratazione, nutrizione, caffeina o alcol</li>
+        </ul>
+
+        <p>
+          Questi elementi non sono stati scelti a caso. Riflettono i domini più usati nei sistemi soggettivi di monitoraggio dell’atleta:
+          sonno, stress, soreness, fatica percepita, recupero e benessere generale. Le review sul tema mostrano che questi questionari sono
+          particolarmente utili perché sono economici, veloci, poco invasivi e abbastanza sensibili ai cambiamenti del training e del recupero nel tempo.
+        </p>
+
+        <h2>Come influisce sul recupero</h2>
+
+        <p>
+          Il recupero non è solo una questione biologica. È il risultato dell’interazione tra carico allenante, sonno, stato psicologico,
+          dolori, stress e capacità individuale di adattamento. Per questo Human Energy Bank influisce sul recupero non perché “crea” recupero,
+          ma perché aiuta Runnix a leggerlo meglio.
+        </p>
+
+        <p>
+          Quando registri con costanza come ti senti, Runnix può interpretare meglio il significato dei tuoi dati oggettivi. Ad esempio:
+        </p>
+
+        <ul>
+          <li>un carico normale con stress alto e sonno scarso non vale quanto un carico normale con alta freschezza</li>
+          <li>DOMS, dolori articolari e motivazione bassa possono suggerire una minore disponibilità ad assorbire intensità</li>
+          <li>una buona percezione generale, insieme a segnali fisiologici coerenti, può indicare maggiore readiness</li>
+        </ul>
+
+        <p>
+          Questo approccio è coerente con quanto emerge dalla letteratura sulla fatigue e sul monitoring: nessun singolo indicatore basta da solo;
+          il recupero si comprende meglio combinando più segnali, inclusi quelli soggettivi.
+        </p>
+
+        <h2>Perché la percezione conta davvero</h2>
+
+        <p>
+          Nello sport si tende spesso a considerare “soggettivo” come sinonimo di poco affidabile. In realtà, in molti contesti sportivi,
+          la percezione è una fonte di informazione preziosa. Un esempio classico è la session RPE, cioè la percezione globale dello sforzo
+          di una sessione: da oltre vent’anni viene usata per quantificare il carico interno e ha mostrato buona utilità in diversi tipi di
+          esercizio, inclusi endurance e resistance training.
+        </p>
+
+        <p>
+          Il punto chiave è questo: il corpo non risponde al carico “teorico”, ma al carico come viene vissuto e assorbito.
+          La percezione, se raccolta bene e con continuità, non è rumore: è parte del segnale. Le athlete self-report measures sono state
+          proposte proprio perché spesso rilevano cambiamenti di benessere e affaticamento in modo pratico e tempestivo.
+        </p>
+
+        <h2>Perché Runnix lo ha creato</h2>
+
+        <p>
+          Runnix è pensato per atleti ibridi, non per specialisti isolati. Chi alterna forza, corsa, recupero, vita lavorativa e stress quotidiano
+          non vive il proprio stato di forma come una singola metrica. Vive una realtà più complessa: magari le gambe sono ok ma la testa è scarica;
+          oppure il sonno è stato pessimo ma la motivazione è alta; oppure il carico della settimana è sostenibile sulla carta, ma il corpo sta iniziando
+          a mandare segnali.
+        </p>
+
+        <p>
+          Human Energy Bank nasce quindi per colmare un vuoto: dare valore a ciò che spesso viene percepito, ma non registrato.
+          Non vuole sostituire i dati oggettivi. Vuole completarli. In pratica, è il ponte tra:
+        </p>
+
+        <ul>
+          <li>ciò che hai fatto</li>
+          <li>ciò che il tuo corpo ha assorbito</li>
+          <li>ciò che senti oggi</li>
+          <li>ciò che ha più senso fare dopo</li>
+        </ul>
+
+        <h2>In che modo può migliorare le decisioni</h2>
+
+        <p>
+          Usato con continuità, Human Energy Bank può aiutare a rendere più intelligenti decisioni come:
+        </p>
+
+        <ul>
+          <li>spingere o alleggerire una giornata</li>
+          <li>contestualizzare una performance peggiore del solito</li>
+          <li>distinguere tra stanchezza “normale” e segnali di eccessivo accumulo</li>
+          <li>leggere meglio il rapporto tra carico, recupero e benessere</li>
+        </ul>
+
+        <p>
+          Questa idea è in linea con il monitoring moderno dell’atleta: lo scopo non è collezionare dati per il gusto di farlo,
+          ma migliorare il dialogo tra segnale e decisione. Il consenso internazionale sul training-load monitoring insiste proprio su questo:
+          monitorare serve a capire la risposta all’allenamento e a guidare scelte più adatte all’individuo.
+        </p>
+
+        <h2>Cosa non è Human Energy Bank</h2>
+
+        <p>
+          Human Energy Bank non è:
+        </p>
+
+        <ul>
+          <li>una diagnosi medica</li>
+          <li>un test clinico</li>
+          <li>un punteggio assoluto di salute</li>
+          <li>un sostituto del giudizio professionale in presenza di dolore, infortunio o sintomi importanti</li>
+        </ul>
+
+        <p>
+          È uno strumento di consapevolezza e monitoraggio. Il suo valore non sta nel singolo giorno isolato, ma nel pattern che emerge nel tempo.
+          Ed è proprio sui pattern longitudinali che la letteratura sul wellness monitoring trova il maggior valore pratico.
+        </p>
+
+        <p>
+          In una frase: Human Energy Bank è il modo con cui Runnix dà struttura scientifica a una domanda che ogni atleta dovrebbe farsi ogni giorno:
+          “Come sto davvero, e cosa significa questo per il mio allenamento?”
+        </p>
+
+        <div class="blog-sources">
+          <h3>Fonti scientifiche base</h3>
+          <ol>
+            <li>Hooper SL, Mackinnon LT. Markers for monitoring overtraining and recovery. 1995.</li>
+            <li>Foster C et al. A new approach to monitoring exercise training. 2001.</li>
+            <li>Saw AE et al. Monitoring the athlete training response: subjective self-reported measures trump commonly used objective measures. 2016.</li>
+            <li>Bourdon PC et al. Monitoring Athlete Training Loads: Consensus Statement. 2017.</li>
+            <li>Bestwick-Stevenson T et al. Assessment of Fatigue and Recovery in Sport: Narrative Review. 2022.</li>
+            <li>Thorpe RT et al. Monitoring Fatigue Status in Elite Team-Sport Athletes. 2017.</li>
+          </ol>
+        </div>
+
+        <div class="blog-share">
+          <div class="blog-share__label">Condividi questo articolo</div>
+
+          <div class="blog-share__icons">
+            <a class="blog-share__btn" id="share-instagram" href="#" aria-label="Condividi su Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.1a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/>
+              </svg>
+            </a>
+
+            <a class="blog-share__btn" id="share-facebook" href="#" aria-label="Condividi su Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.5 0-4.1 1.5-4.1 4.4V11H7.5v3h2.8v8h3.2Z"/>
+              </svg>
+            </a>
+
+            <button class="blog-share__btn" id="share-copy" type="button" aria-label="Copia link articolo" title="Copia link">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-4.2 0 1 1 0 1 1 1.4-1.4 1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 1 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l2.1-2.1a3 3 0 0 1 4.2 0 1 1 0 0 1-1.4 1.4 1 1 0 0 0-1.4 0L7.6 12.2a1 1 0 1 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0Z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    (function () {
+      const currentUrl = window.location.href;
+      const encodedUrl = encodeURIComponent(currentUrl);
+
+      const fb = document.getElementById("share-facebook");
+      const ig = document.getElementById("share-instagram");
+      const copy = document.getElementById("share-copy");
+
+      if (fb) {
+        fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+        fb.target = "_blank";
+        fb.rel = "noopener noreferrer";
+      }
+
+      if (ig) {
+        ig.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (navigator.share) {
+            navigator.share({
+              title: document.title,
+              url: currentUrl
+            }).catch(() => {});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+
+      if (copy) {
+        copy.addEventListener("click", function () {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+              alert("Link articolo copiato");
+            });
+          }
+        });
+      }
+    })();
+  </script>
+  <script src="/main.js" defer></script>
+</body>
+</html>

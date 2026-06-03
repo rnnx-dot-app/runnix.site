@@ -8,7 +8,6 @@
   <link rel="icon" href="/icons/img_logo.png"/>
 
   <!-- Font + CSS globali -->
-  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css"/>
 
   <style>
@@ -31,7 +30,7 @@
     img{max-width:100%; display:block}
 
     .page{
-      padding:110px 0 140px;
+      padding:0 0 140px;
     }
 
     /* ===== Hero titolo + sottotitolo ===== */
@@ -42,18 +41,20 @@
       text-align:center;
     }
     .hero h1{
-      margin:0 0 14px;
-      font-size:clamp(32px,4.8vw,58px);
-      line-height:1.08;
-      font-weight:850;
+      margin:0 0 16px;
+      font-size:clamp(32px,4.15vw,54px);
+      line-height:1.07;
+      font-weight:550;
+      letter-spacing:0;
       color:#1d1d1f;
     }
     .hero p{
       margin:0 auto;
-      max-width:820px;
+      max-width:780px;
       font-size:18px;
-      line-height:1.6;
+      line-height:1.65;
       color:var(--muted);
+      font-weight:400;
     }
 
     /* Immagine grande al centro w980 x h600 */
@@ -322,9 +323,9 @@
   <main class="page">
 
     <!-- Titolo + sottotitolo -->
-    <section class="hero">
-      <h1>Community Runnix</h1>
-      <p>Il luogo dove gli atleti ibridi si incontrano, si motivano e crescono insieme.</p>
+    <section class="hero page-hero">
+      <h1 class="page-title">Community Runnix</h1>
+      <p class="page-subtitle">Il luogo dove gli atleti ibridi si incontrano, si motivano e crescono insieme.</p>
 
       <!-- Immagine grande (LASCIARE COSÌ) -->
       <div class="hero-image">
@@ -433,18 +434,6 @@
   <!-- Footer via partial -->
   <div id="site-footer"></div>
 
-  <script>
-    async function include(id, url){
-      const el = document.getElementById(id);
-      if(!el) return;
-      try{
-        const r = await fetch(url, { cache: "no-cache" });
-        el.innerHTML = await r.text();
-      }catch(e){ console.error('Include failed:', e); }
-    }
-    include('site-header','/partials/header.html');
-    include('site-footer','/partials/footer.html');
-  </script>
-  <script src="/main.js"></script>
+  <script src="/main.js" defer></script>
 </body>
 </html>

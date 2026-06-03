@@ -10,7 +10,6 @@
   <link rel="apple-touch-icon" href="/icons/img_logo.png" />
 
   <!-- Font + CSS globali (IDENTICI all’Home) -->
-  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
 
   <!-- CSS essenziale -->
@@ -251,24 +250,6 @@ A.2. In caso di discrepanza operativa sulla gestione dell’abbonamento (rinnovo
   <!-- Footer via partial -->
   <div id="site-footer"></div>
 
-  <script>
-    async function include(id, url){
-      const el = document.getElementById(id);
-      if(!el) return;
-      try{
-        const r = await fetch(url, { cache: "no-cache" });
-        el.innerHTML = await r.text();
-      }catch(e){ console.error('Include failed:', e); }
-    }
-    include('site-header','/partials/header.html');
-    include('site-footer','/partials/footer.html');
-
-    // (opz.) attiva pulsante menu dal partial
-    document.addEventListener('click', (e)=>{
-      if(e.target && e.target.id === 'menuBtn'){
-        alert('Menu mobile in arrivo');
-      }
-    });
-  </script>
+  <script src="/main.js" defer></script>
 </body>
 </html>

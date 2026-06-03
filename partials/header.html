@@ -1,7 +1,7 @@
 <header class="header" role="banner">
+
   <div class="container nav">
 
-    <!-- ✅ SOLO MOBILE: hamburger -->
     <button
       class="nav-toggle"
       type="button"
@@ -12,54 +12,64 @@
       <span class="nav-toggle__icon" aria-hidden="true"></span>
     </button>
 
-    <!-- ✅ NON LINK -->
-    <div class="brand" aria-label="Runnix">
-      <img class="brand__logo" src="/assets/logo/logo_nero.png" alt="Runnix" />
-      <span class="brand__text">Runnix</span>
-    </div>
+    <a class="brand" href="/home/" aria-label="Runnix Home">
+      <img
+        class="brand__logo"
+        src="/assets/logo/logo.png"
+        alt="Runnix"
+      />
+    </a>
 
-    <!-- Desktop links -->
-    <nav class="center-links" aria-label="Principale">
+    <nav class="center-links unbounded-nav" aria-label="Principale">
       <a href="/home/">Home</a>
-      <a href="/funzionalita/">Funzionalità</a>
-      <a href="/community/">Community</a>
       <a href="/team/">Team</a>
+      <a href="/blog/">Risorse</a>
+      <a href="/sala-stampa/">Sala stampa</a>
       <a href="/contatti/">Contatti</a>
-      <a href="/club/">Club</a>
     </nav>
 
-    <!-- CTA destra -->
     <div class="right-cta">
-      <a class="btn-app" href="https://runnix.it">Prova Gratis</a>
+      <a class="btn-app" href="https://runnix.it">
+        Prova gratis
+      </a>
     </div>
+
   </div>
 
-  <!-- Overlay + Drawer -->
   <div class="mobile-menu-overlay" data-menu-overlay hidden></div>
 
   <aside id="mobileMenu" class="mobile-menu" aria-label="Menu mobile" hidden>
+
     <div class="mobile-menu__top">
-      <span class="mobile-menu__title"></span>
-      <button class="mobile-menu__close" type="button" aria-label="Chiudi menu">✕</button>
+      <span class="mobile-menu__title">Menu</span>
+
+      <button
+        class="mobile-menu__close"
+        type="button"
+        aria-label="Chiudi menu"
+      >
+        ✕
+      </button>
     </div>
 
     <nav class="mobile-menu__links" aria-label="Navigazione mobile">
       <a href="/home/">Home</a>
-      <a href="/funzionalita/">Funzionalità</a>
-      <a href="/community/">Community</a>
       <a href="/team/">Team</a>
+      <a href="/blog/">Risorse</a>
+      <a href="/sala-stampa/">Sala stampa</a>
       <a href="/contatti/">Contatti</a>
-      <a href="/club/">Club</a>
-          <!-- Divider -->
-    <div class="mobile-menu__divider" aria-hidden="true"></div>
 
-    <!-- CTA mobile -->
-    <div class="mobile-menu__cta">
-      <a class="btn-app btn-app--mobile" href="https://runnix.it">
-        Scarica l’app
-      </a>
-    </div>
+      <div class="mobile-menu__divider" aria-hidden="true"></div>
 
+      <div class="mobile-menu__cta">
+        <a
+          class="btn-app btn-app--mobile"
+          href="https://runnix.it"
+        >
+          Prova gratis
+        </a>
+      </div>
     </nav>
+
   </aside>
 </header>
