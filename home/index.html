@@ -141,78 +141,57 @@
     /* ===== HERO ===== */
 
     .hero{
-      position:relative;
-      min-height:100vh;
-      height:100vh;
       display:flex;
+      flex-direction:column;
       align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      background:#000;
-      isolation:isolate;
+      padding:calc(clamp(52px, 7vw, 96px) + clamp(35px, 2.8vw, 40px)) 20px 0;
+      background:#fff;
+      color:#111;
     }
 
     .hero-img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center center;
-      transform:none;
-      will-change:auto;
-      z-index:-2;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 50% 38%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 40%),
-        linear-gradient(180deg, rgba(0,0,0,.24) 0%, rgba(0,0,0,.56) 58%, rgba(0,0,0,.90) 100%);
-      z-index:-1;
-      pointer-events:none;
+      position:relative;
+      z-index:0;
+      width:min(100%, 1440px);
+      height:auto;
+      margin:calc(clamp(24px, 3vw, 44px) - clamp(40px, calc(10.6vw - 1.3px), 80px)) auto 0;
+      object-fit:initial;
     }
 
     .hero-inner{
-      width:1180px;
-      max-width:calc(100% - 40px);
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:1050px;
       margin:0 auto;
-
       padding:0;
-      transform:translateY(-70px);
-
-      color:#fff;
+      color:#111;
       text-align:center;
     }
 
     .hero-title{
-      margin:0 auto 20px;
-      max-width:980px;
-      font-size:clamp(44px,7vw,66px);
-      line-height:.95;
-      letter-spacing:-.072em;
-      font-weight:400;
-      text-shadow:0 40px 100px rgba(0,0,0,.36);
+      margin:0 auto 18px;
+      max-width:1050px;
+      font-size:clamp(40px, 5vw, 64px);
+      line-height:1.05;
+      letter-spacing:-.045em;
+      font-weight:600;
     }
 
-        .hero-sub{
-      margin:0 auto 34px;
-      max-width:820px;
-
-      font-size:clamp(19px,1.7vw,24px);
+    .hero-sub{
+      margin:0 auto 28px;
+      max-width:760px;
+      font-size:clamp(17px, 1.4vw, 20px);
       line-height:1.5;
-      letter-spacing:-.022em;
+      letter-spacing:-.015em;
       font-weight:400;
-
-      color:rgba(255,255,255,.84);
+      color:#666;
     }
 
     .hero-cta{
       display:flex;
       justify-content:center;
-      gap:12px;
+      gap:14px;
       flex-wrap:wrap;
     }
 
@@ -241,10 +220,37 @@
                   background .2s ease;
       }
 
-    .btn-dark{
-      background:#fff;
-      color:#0A0A0A;
+    .hero .btn-dark{
+      background:#1F2025;
+      color:#fff;
       min-width:210px;
+    }
+
+    .hero-cta .btn-dark{
+      position:relative;
+      isolation:isolate;
+      gap:9px;
+      padding-right:22px;
+      padding-left:22px;
+    }
+
+    .hero-cta .btn-dark::before{
+      content:"";
+      position:absolute;
+      inset:8px -8px -12px;
+      z-index:-1;
+      border-radius:inherit;
+      background:rgba(125,135,160,.2);
+      filter:blur(18px);
+      pointer-events:none;
+    }
+
+    .hero-cta-icon{
+      display:block;
+      width:20px;
+      height:20px;
+      flex:0 0 20px;
+      fill:currentColor;
     }
 
     .btn-light{
@@ -279,7 +285,7 @@
       max-width:100%;
       margin:64px auto 0;
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:22px;
       align-items:stretch;
     }
@@ -306,6 +312,14 @@
       height:390px;
       object-fit:cover;
       background:#fff;
+    }
+
+    .nutrition-feature-img{
+      object-position:left center;
+    }
+
+    .nutrition-placeholder{
+      background:#e8e9ed;
     }
 
     .clean-body{
@@ -362,6 +376,60 @@
       line-height:1.5;
     }
 
+    /* Fitness-only image fill */
+    #allenamento .clean-card--fitness .clean-img{
+      flex:1 1 0;
+      height:auto;
+      min-height:0;
+    }
+
+    #piani .clean-card{
+      background:#303137;
+      border-color:rgba(255,255,255,.08);
+      box-shadow:0 14px 44px rgba(0,0,0,.18);
+    }
+
+    #piani .clean-body h3{
+      color:#FFFFFF;
+    }
+
+    #piani .clean-body p{
+      color:#BDBDC2;
+    }
+
+    #piani .clean-img{
+      background:transparent;
+    }
+
+    #piani .clean-card--fitness .clean-img{
+      flex:1 1 0;
+      height:auto;
+      min-height:0;
+    }
+
+    #nutrizione .clean-card--fitness .clean-img{
+      flex:1 1 0;
+      height:auto;
+      min-height:0;
+    }
+
+    @media (min-width:1101px){
+      .clean-grid{
+        grid-template-columns:repeat(2,485px);
+        justify-content:center;
+      }
+
+      .clean-card--fitness{
+        width:485px;
+        height:680px;
+      }
+
+      #nutrizione .clean-card--fitness{
+        height:560px;
+      }
+
+    }
+
     /* ===== RUNNIX INTELLIGENCE ===== */
 
     .intelligence-shell{
@@ -380,55 +448,6 @@
       flex-direction:column;
       gap:0;
       border-top:1px solid rgba(29,29,31,.10);
-    }
-
-    .intel-option{
-      width:100%;
-      appearance:none;
-      border:0;
-      border-bottom:1px solid rgba(29,29,31,.10);
-      background:transparent;
-      color:var(--text);
-      border-radius:0;
-      padding:22px 0;
-      text-align:left;
-      cursor:pointer;
-      transition:opacity .2s ease;
-    }
-
-    .intel-option:hover{
-      opacity:.78;
-    }
-
-    .intel-option.is-active{
-      opacity:1;
-    }
-
-    .intel-option h3{
-      margin:0;
-      font-size:clamp(20px,2.1vw,30px);
-      line-height:1.04;
-      letter-spacing:-.045em;
-      font-weight:500;
-      color:rgba(29,29,31,.96);
-    }
-
-    .intel-option p{
-      max-height:0;
-      opacity:0;
-      overflow:hidden;
-      margin:0;
-      color:rgba(29,29,31,.62);
-      font-size:15.5px;
-      line-height:1.5;
-      font-weight:400;
-      transition:max-height .28s ease, opacity .22s ease, margin .22s ease;
-    }
-
-    .intel-option.is-active p{
-      max-height:140px;
-      opacity:1;
-      margin-top:12px;
     }
 
     .intel-preview{
@@ -458,143 +477,97 @@
       transform:scale(1);
     }
 
-    .intel-bottom-note{
-      width:var(--inner);
-      max-width:100%;
-      margin:46px auto 0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      color:rgba(29,29,31,.58);
-      font-size:14.5px;
-      line-height:1.45;
-      text-align:center;
+    #intelligence .intelligence-visual{
+      display:block;
+      width:100%;
+      max-width:1260px;
+      height:auto;
+      margin:50px auto 0;
     }
 
-    .intel-bottom-note span{
-      color:rgba(29,29,31,.86);
-      font-weight:500;
-    }
-
-    /* ===== PLANS DARK SECTION ===== */
-
-    .plans-shell{
-      width:var(--inner);
-      max-width:100%;
-      margin:72px auto 0;
-      display:grid;
-      grid-template-columns:minmax(360px,500px) minmax(320px,460px);
-      gap:44px;
-      align-items:start;
-      justify-content:center;
-    }
-
-    .plan-menu{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-
-    .plan-option{
+    #biologia-energia .bio-option{
       width:100%;
       appearance:none;
       border:0;
-      border-bottom:1px solid rgba(255,255,255,.12);
+      border-bottom:1px solid rgba(29,29,31,.10);
       background:transparent;
-      color:#fff;
+      color:var(--text);
       border-radius:0;
-      padding:20px 0;
+      padding:22px 0;
       text-align:left;
       cursor:pointer;
       transition:opacity .2s ease;
     }
 
-    .plan-option:hover{
-      opacity:.82;
-    }
+    #biologia-energia .bio-option:hover{opacity:.78;}
+    #biologia-energia .bio-option.is-active{opacity:1;}
 
-    .plan-option.is-active{
-      opacity:1;
-    }
-
-    .plan-option h3{
+    #biologia-energia .bio-option h3{
       margin:0;
       font-size:clamp(20px,2.1vw,30px);
       line-height:1.04;
       letter-spacing:-.045em;
       font-weight:500;
-      color:rgba(255,255,255,.96);
+      color:rgba(29,29,31,.96);
     }
 
-    .plan-option p{
+    #biologia-energia .bio-option p{
       max-height:0;
       opacity:0;
       overflow:hidden;
       margin:0;
-      color:rgba(255,255,255,.66);
-      font-size:15px;
-      line-height:1.45;
+      color:rgba(29,29,31,.62);
+      font-size:15.5px;
+      line-height:1.5;
       font-weight:400;
       transition:max-height .28s ease, opacity .22s ease, margin .22s ease;
     }
 
-    .plan-option.is-active p{
-      max-height:120px;
+    #biologia-energia .bio-option.is-active p{
+      max-height:140px;
       opacity:1;
       margin-top:12px;
     }
 
-    .mini-pill{
-      display:none;
+    #biologia-energia .bio-option-title-row{
+      display:flex;
       align-items:center;
-      width:max-content;
-      margin-top:14px;
-      padding:6px 9px;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    #biologia-energia .bio-coming-badge{
+      flex:0 0 auto;
+      padding:5px 9px;
+      border:1px solid rgba(29,29,31,.12);
       border-radius:999px;
-      background:rgba(176,230,85,.16);
-      border:1px solid rgba(176,230,85,.22);
-      color:rgba(255,255,255,.78);
-      font-size:11.5px;
+      color:rgba(29,29,31,.58);
+      font-size:11px;
+      font-weight:550;
       line-height:1;
-      font-weight:450;
-      letter-spacing:-.01em;
     }
 
-    .plan-option.is-active .mini-pill{
-      display:inline-flex;
-    }
-
-    .plan-preview{
-      position:relative;
-      width:100%;
-      min-height:560px;
-      border-radius:var(--radius);
-      overflow:hidden;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:0 22px 80px rgba(0,0,0,.24);
-    }
-
-    .plan-preview img{
+    #biologia-energia .bio-preview-placeholder{
       position:absolute;
       inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#F5F5F7;
+      color:rgba(29,29,31,.58);
       opacity:0;
-      transform:scale(1.015);
-      transition:opacity .28s ease, transform .35s ease;
+      transition:opacity .28s ease;
     }
 
-    .plan-preview img.is-active{
-      opacity:1;
-      transform:scale(1);
-    }
+    #biologia-energia .bio-preview-placeholder.is-active{opacity:1;}
 
-    .plan-caption{
-      display:none;
+    #biologia-energia .bio-preview-placeholder span{
+      padding:10px 16px;
+      border:1px solid rgba(29,29,31,.1);
+      border-radius:999px;
+      background:rgba(255,255,255,.76);
+      font-size:14px;
+      font-weight:500;
     }
 
     /* ===== LIFE SECTION ===== */
@@ -632,34 +605,214 @@
 
     /* ===== DEVICES ===== */
 
-    .device-section .logos{
-      width:var(--inner);
-      max-width:100%;
-      margin:56px auto 0;
-      display:grid;
-      grid-template-columns:repeat(5,minmax(0,1fr));
-      gap:12px;
-      align-items:center;
-      justify-items:center;
+    .device-stage{
+      position:relative;
+      isolation:isolate;
+      width:min(var(--inner),100%);
     }
 
-    .logo-box{
-      width:100%;
-      height:84px;
+    #compat{padding:70px 0 90px;}
+
+    #compat .device-stage{
+      height:284px;
+      margin:0 auto 8px;
+      overflow:hidden;
+    }
+
+    #compat .title-center{font-size:clamp(30.6px,3.78vw,50.4px);}
+
+    #compat + #piani{
+      margin-top:0;
+    }
+
+    #compat .btn-dark{
+      min-width:210px;
+      background:#1F2025;
+      color:#fff;
+    }
+
+    #compat .compat-cta{margin-top:24px;}
+
+    .device-logo-layer{
+      position:absolute;
+      inset:0;
+      z-index:0;
       display:flex;
+      flex-direction:column;
+      align-items:stretch;
       justify-content:center;
-      align-items:center;
-      border-radius:16px;
-      background:#fff;
-      border:1px solid var(--line);
-      box-shadow:0 10px 28px rgba(0,0,0,.035);
+      gap:14px;
+      overflow:hidden;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 9%,#000 91%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,#000 9%,#000 91%,transparent 100%);
+      pointer-events:none;
     }
 
-    .logo-box img{
-      height:88px;
-      width:auto;
+    .device-logo-row{
+      display:flex;
+      align-items:center;
+      width:100%;
+      height:60px;
+      flex:0 0 60px;
+      overflow:visible;
+      opacity:.58;
+    }
+
+    .device-logo-track{
+      position:relative;
+      left:50%;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      width:max-content;
+      flex:0 0 auto;
+      animation:device-drift 9s ease-in-out infinite alternate;
+      will-change:transform;
+    }
+
+    .device-logo-row--two .device-logo-track{animation-direction:alternate-reverse; animation-duration:8s;}
+
+    .device-logo-pill{
+      width:160px;
+      height:60px;
+      flex:0 0 160px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(20,22,28,.07);
+      border-radius:16px;
+      background:rgba(255,255,255,.94);
+      box-shadow:0 6px 18px rgba(20,22,28,.035);
+    }
+
+    .device-logo-pill img{
+      display:block;
+      width:44px;
+      height:44px;
       object-fit:contain;
-      opacity:.92;
+      opacity:.68;
+    }
+
+    .device-logo-row--two{opacity:.48;}
+
+    .device-watch{
+      position:absolute;
+      top:50%;
+      left:50%;
+      z-index:2;
+      width:174px;
+      height:274px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transform:translate(-50%,-50%);
+      filter:drop-shadow(0 22px 26px rgba(20,22,35,.2));
+    }
+
+    .device-watch-image-wrap{
+      position:absolute;
+      top:50%;
+      left:50%;
+      z-index:3;
+      display:none;
+      width:174px;
+      height:274px;
+      transform:translate(-50%,-50%);
+    }
+
+    .device-watch-image{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .device-stage.has-watch-image .device-watch-image-wrap{display:block;}
+    .device-stage.has-watch-image > .device-watch{display:none;}
+
+    .device-watch::before{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:50%;
+      z-index:-1;
+      width:82px;
+      border:1px solid rgba(40,42,50,.12);
+      border-radius:34px;
+      background:linear-gradient(90deg,#bfc1c8,#f7f7f8 48%,#aeb0b8);
+      transform:translateX(-50%);
+    }
+
+    .device-watch-face{
+      position:relative;
+      width:158px;
+      height:194px;
+      padding:18px 14px;
+      overflow:hidden;
+      border:6px solid #d6d7dc;
+      border-radius:45px;
+      background:radial-gradient(ellipse at 50% 20%,#252a38 0%,#11131a 70%);
+      box-shadow:inset 0 0 0 2px #747680,0 8px 16px rgba(0,0,0,.22);
+      color:#fff;
+      text-align:center;
+    }
+
+    .device-watch-brand{
+      display:block;
+      width:21px;
+      height:21px;
+      margin:0 auto 6px;
+      object-fit:contain;
+      filter:brightness(0) invert(1);
+      opacity:.9;
+    }
+
+    .device-watch-time{
+      font-size:27px;
+      line-height:1;
+      font-weight:650;
+      letter-spacing:-.06em;
+    }
+
+    .device-watch-caption{
+      margin-top:5px;
+      color:rgba(255,255,255,.62);
+      font-size:8px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .device-watch-rings{
+      position:relative;
+      width:55px;
+      height:55px;
+      margin:12px auto 0;
+      border:4px solid #fb496e;
+      border-right-color:rgba(251,73,110,.28);
+      border-radius:50%;
+      transform:rotate(-35deg);
+    }
+
+    .device-watch-rings::before,
+    .device-watch-rings::after{
+      content:"";
+      position:absolute;
+      border:4px solid #9d7aff;
+      border-bottom-color:rgba(157,122,255,.25);
+      border-radius:50%;
+    }
+
+    .device-watch-rings::before{inset:5px;}
+    .device-watch-rings::after{inset:14px; border-color:#57d7c3; border-left-color:rgba(87,215,195,.25);}
+
+    @keyframes device-drift{
+      from{transform:translateX(calc(-50% - 40px));}
+      to{transform:translateX(calc(-50% + 40px));}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .device-logo-track{animation:none; will-change:auto; transform:translateX(-50%);}
     }
 
     /* ===== REVIEWS — IG STORIES ===== */
@@ -1006,91 +1159,41 @@
     /* ===== FINAL CTA ===== */
 
     .cta-final{
-      margin-top:170px;
+      margin-top:100px;
     }
 
-    .cta{
-      position:relative;
-      width:var(--inner);
-      min-height:560px;
-      max-width:calc(100% - 40px);
+    .final-cta-content{
+      width:min(1400px,calc(100% - 40px));
       margin:0 auto;
-      border-radius:var(--radius);
-      overflow:hidden;
-      background:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:52px 26px;
-      text-align:center;
-      box-shadow:var(--shadow);
-      isolation:isolate;
-    }
-
-    .cta-bg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:-2;
-    }
-
-    .cta::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.36) 0%, rgba(0,0,0,.68) 100%);
-      z-index:-1;
-    }
-
-    .cta-inner{
-      width:100%;
-      max-width:760px;
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:14px;
+    }
+
+    #cta-final .hero-cta{margin-top:24px;}
+
+    #cta-final .btn-dark{
+      min-width:210px;
+      background:#1F2025;
       color:#fff;
     }
 
-    .cta-title{
-      margin:0 0 6px;
-      font-size:clamp(34px,4.5vw,58px);
-      line-height:1.04;
-      letter-spacing:-.052em;
-      font-weight:600;
-      color:#fff;
-    }
-
-    .cta-sub{
-      margin:0 0 10px;
-      font-size:18px;
-      line-height:1.55;
-      color:rgba(255,255,255,.78);
-      font-weight:400;
-    }
-
-    .cta-btn{
+    #cta-final .final-ecosystem{
+      display:block;
       width:100%;
-      max-width:520px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 18px;
-      border-radius:999px;
-      background:var(--lime);
-      color:#0A0A0A;
-      font-size:14px;
-      font-weight:550;
-      border:0;
-      cursor:pointer;
-      text-decoration:none;
+      max-width:1400px;
+      height:auto;
+      margin:70px auto 0;
     }
+
+    #cta-final .final-ecosystem[hidden]{display:none;}
 
     /* ===== RESPONSIVE ===== */
 
     @media (max-width:1100px){
+      #compat{padding:60px 0 80px;}
+      #compat .device-stage{height:274px; margin:0 auto 8px;}
+
       .section{
         padding-top:130px;
       }
@@ -1105,7 +1208,7 @@
       }
 
       .clean-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2,minmax(0,1fr));
         gap:18px;
       }
 
@@ -1113,35 +1216,54 @@
         min-height:auto;
       }
 
+      .clean-card--fitness{
+        width:100%;
+        height:auto;
+      }
+
       .clean-img{
         height:340px;
       }
 
       .clean-card--wide{
-        display:flex;
-        flex-direction:column;
-        min-height:auto;
+        display:grid;
+        grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+        min-height:360px;
       }
 
       .clean-card--wide .clean-img{
-        order:1;
-        height:340px;
-        min-height:0;
+        order:2;
+        height:100%;
+        min-height:360px;
       }
 
       .clean-card--wide .clean-body{
-        order:2;
-        padding:28px 24px;
+        order:1;
+        justify-content:center;
+        padding:clamp(24px,4vw,40px);
         max-width:none;
       }
 
-      .plans-shell,
+      #allenamento .clean-card--fitness .clean-img{
+        flex:0 0 340px;
+        height:340px;
+      }
+
+      #piani .clean-card--fitness .clean-img{
+        flex:0 0 340px;
+        height:340px;
+      }
+
+      #nutrizione .clean-card--fitness .clean-img{
+        flex:0 0 340px;
+        height:340px;
+      }
+
       .intelligence-shell{
         grid-template-columns:1fr;
         gap:30px;
       }
 
-      .plan-preview,
       .intel-preview{
         min-height:560px;
         max-width:520px;
@@ -1160,10 +1282,6 @@
 
       .life-grid .clean-img{
         height:360px;
-      }
-
-      .device-section .logos{
-        grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
       .review-shot{
@@ -1200,17 +1318,21 @@
       }
 
       .cta-final{
-        margin-top:130px;
+        margin-top:80px;
       }
     }
 
     @media (max-width:640px){
+      #compat{padding:56px 0 75px;}
+      #compat .title-center{font-size:clamp(28.8px,9vw,39.6px);}
+      #compat .device-stage{height:230px; margin:0 auto 14px;}
+
       .wrap{
         max-width:calc(100% - 28px);
       }
 
       .hero-inner{
-        max-width:calc(100% - 28px);
+        max-width:100%;
       }
 
       .section{
@@ -1230,8 +1352,49 @@
         font-size:clamp(32px,10vw,44px);
       }
 
+      .clean-grid{
+        grid-template-columns:1fr;
+      }
+
+      .clean-card--wide{
+        display:flex;
+        flex-direction:column;
+        min-height:auto;
+      }
+
+      .clean-card--wide .clean-img{
+        order:1;
+        height:240px;
+        min-height:0;
+      }
+
+      .clean-card--wide .clean-body{
+        order:2;
+        padding:24px;
+      }
+
+      #allenamento .clean-card--fitness .clean-img{
+        flex-basis:300px;
+        height:300px;
+      }
+
+      #piani .clean-card--fitness .clean-img{
+        flex-basis:300px;
+        height:300px;
+      }
+
+      #nutrizione .clean-card--fitness .clean-img{
+        flex-basis:300px;
+        height:300px;
+      }
+
       .hero-title{
-        font-size:clamp(44px,14vw,68px);
+        font-size:clamp(36px, 9vw, 48px);
+      }
+
+      .hero-sub{
+        font-size:17px;
+        margin-bottom:24px;
       }
 
       .clean-img,
@@ -1244,30 +1407,15 @@
         padding:22px 20px 24px;
       }
 
-      .plan-menu{
-        gap:0;
-      }
-
-      .plan-option{
-        padding:17px 0;
-      }
-
-      .plan-preview,
       .intel-preview{
         min-height:500px;
       }
 
-      .device-section .logos{
-        gap:10px;
-      }
-
-      .logo-box{
-        height:74px;
-      }
-
-      .logo-box img{
-        height:76px;
-      }
+      .device-watch{width:144px; height:230px;}
+      .device-watch-image-wrap{width:144px; height:230px;}
+      .device-watch::before{width:68px; border-radius:28px;}
+      .device-watch-face{width:136px; height:166px; padding:14px 10px; border-radius:39px;}
+      .device-watch-time{font-size:24px;}
 
       .review-shot{
         flex-basis:250px;
@@ -1277,9 +1425,16 @@
         padding:24px;
       }
 
-      .cta{
-        min-height:500px;
-        max-width:calc(100% - 28px);
+      .cta-final{
+        margin-top:64px;
+      }
+
+      .final-cta-content{
+        width:calc(100% - 28px);
+      }
+
+      #cta-final .final-ecosystem{
+        margin-top:44px;
       }
     }
   </style>
@@ -1292,79 +1447,48 @@
 
     <!-- ATF -->
     <section class="hero" aria-label="Hero Runnix">
-      <img class="hero-img" src="/assets/home/ATF.png" alt="" aria-hidden="true" width="1920" height="1080" fetchpriority="high" decoding="async">
-
       <div class="hero-inner">
         <h1 class="hero-title">
-          Tutti i tuoi allenamenti <br /> in un'unica app.
+          Un corpo più forte. Una vita migliore.
         </h1>
 
         <p class="hero-sub">
-          Crea il tuo piano. Monitora progressi, carico, km e recupero. <br />
-          Ricevi suggerimenti personalizzati basati sui tuoi dati.
+          Allenamento, nutrizione e recupero lavorano insieme. Runnix ti aiuta a comprenderli e a costruire abitudini migliori, con indicazioni personalizzate basate sui tuoi dati. <br />
         </p>
 
         <div class="hero-cta">
           <a class="btn-dark" href="https://runnix.it">
-            Registrati gratis
+            <svg class="hero-cta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7.5 4.1 6.2 1.9a.7.7 0 0 1 1.2-.7l1.4 2.3a8 8 0 0 1 6.4 0l1.4-2.3a.7.7 0 1 1 1.2.7l-1.3 2.2A7.6 7.6 0 0 1 20 10H4a7.6 7.6 0 0 1 3.5-5.9ZM8 7.2a.8.8 0 1 0 0-1.6.8.8 0 0 0 0 1.6Zm8 0a.8.8 0 1 0 0-1.6.8.8 0 0 0 0 1.6ZM4 11h16v6.1a2 2 0 0 1-2 2h-1v2.2a1 1 0 0 1-2 0v-2.2h-4v2.2a1 1 0 0 1-2 0v-2.2H8a2 2 0 0 1-2-2V11Zm-2 1a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0v-5Zm18 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0v-5Z"/>
+            </svg>
+            <span>Registrati gratis</span>
+          </a>
+          <a class="btn-dark" href="https://apps.apple.com/it/app/runnix/id6756656016">
+            <svg class="hero-cta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16.9 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.9-3.4.9-.7 0-1.8-.9-3-.9-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3.1-.7s1.9.7 3.2.7c1.3 0 2.1-1.1 2.8-2.2.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.8-1.1-2.8-4.3ZM14.7 6.2c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.8-1.3Z"/>
+            </svg>
+            <span>Scarica l'app</span>
           </a>
         </div>
       </div>
+      <img class="hero-img" src="/assets/home/ATF.png" alt="" aria-hidden="true" width="1920" height="1080" fetchpriority="high" decoding="async">
     </section>
 
     <!-- STATS -->
     <section class="section" id="allenamento">
       <div class="wrap">
         <h2 class="title-center">
-          Una visione completa del tuo allenamento
+          Una visione completa dei tuoi allenamenti
         </h2>
 
         <p class="sub-center">
-          Corsa, forza, recupero e balance: tutto organizzato in dashboard semplici,
-          leggibili e collegate al tuo percorso.
+          Corsa, forza, recupero: tutto organizzato e collegato al tuo percorso.
         </p>
 
         <div class="clean-grid" aria-label="Dashboard Runnix">
 
-          <article class="clean-card">
-            <img class="clean-img" src="/assets/home/corsa.jpg" alt="Endurance" loading="lazy" decoding="async">
-
-            <div class="clean-body">
-              <h3>Endurance</h3>
-              <p>
-                Volumi, qualità e continuità della corsa raccolti in una vista chiara,
-                così sai come stai costruendo la tua base.
-              </p>
-            </div>
-          </article>
-
-          <article class="clean-card">
-            <img class="clean-img" src="/assets/home/forza.jpg" alt="Forza" loading="lazy" decoding="async">
-
-            <div class="clean-body">
-              <h3>Forza</h3>
-              <p>
-                Tieni sotto controllo sessioni, volume e progressi in palestra
-                senza perdere il filo del tuo programma.
-              </p>
-            </div>
-          </article>
-
-          <article class="clean-card">
-            <img class="clean-img" src="/assets/home/recupero.jpg" alt="Recupero" loading="lazy" decoding="async">
-
-            <div class="clean-body">
-              <h3>Recupero</h3>
-              <p>
-                Collega allenamento, sensazioni e recupero per capire quando spingere,
-                quando consolidare e quando rallentare.
-              </p>
-            </div>
-          </article>
-
           <article class="clean-card clean-card--wide">
             <img class="clean-img" src="/assets/home/hybridscore.png" alt="Balance" loading="lazy" decoding="async">
-
             <div class="clean-body">
               <h3>Balance</h3>
               <p>
@@ -1374,6 +1498,178 @@
             </div>
           </article>
 
+          <article class="clean-card clean-card--fitness">
+            <div class="clean-body">
+              <h3>Forza</h3>
+              <p>
+                Tieni sotto controllo sessioni, volume e progressi in palestra
+                senza perdere il filo del tuo programma.
+              </p>
+            </div>
+            <img class="clean-img" src="/assets/home/forza.png" alt="Forza" loading="lazy" decoding="async">
+          </article>
+
+          <article class="clean-card clean-card--fitness">
+            <div class="clean-body">
+              <h3>Endurance</h3>
+              <p>
+                Volumi, qualità e continuità della corsa raccolti in una vista chiara,
+                così sai come stai costruendo la tua base.
+              </p>
+            </div>
+            <img class="clean-img" src="/assets/home/endurance.png" alt="Endurance" loading="lazy" decoding="async">
+          </article>
+
+          <article class="clean-card clean-card--wide">
+            <img class="clean-img" src="/assets/home/progressive.png" alt="Anteprima di un piano gara personalizzato in Runnix" loading="lazy" decoding="async">
+            <div class="clean-body">
+              <h3>Piano personalizzato</h3>
+              <p>
+                Organizza i tuoi allenamenti con un piano costruito intorno ai tuoi obiettivi, oppure crea liberamente il tuo percorso.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DISPOSITIVI -->
+    <section class="section device-section" id="compat">
+      <div class="wrap">
+        <div class="device-stage" role="group" aria-label="App e dispositivi compatibili">
+          <div class="device-logo-layer">
+            <div class="device-logo-row device-logo-row--one">
+              <div class="device-logo-track">
+                <div class="device-logo-pill" role="img" aria-label="Strava"><img src="/assets/partner/strava.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Garmin"><img src="/assets/partner/garmin.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Nike+"><img src="/assets/partner/nikeplus.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Suunto"><img src="/assets/partner/suunto.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Whoop"><img src="/assets/partner/whoop.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/strava.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/garmin.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/nikeplus.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/suunto.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/whoop.png" alt="" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+            <div class="device-logo-row device-logo-row--two">
+              <div class="device-logo-track">
+                <div class="device-logo-pill" role="img" aria-label="Amazfit"><img src="/assets/partner/amazfit.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Polar"><img src="/assets/partner/polar.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Coros"><img src="/assets/partner/coros.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" role="img" aria-label="Google Fit"><img src="/assets/partner/googlefit.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/amazfit.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/polar.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/coros.png" alt="" loading="lazy" decoding="async"></div>
+                <div class="device-logo-pill" aria-hidden="true"><img src="/assets/partner/googlefit.png" alt="" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+          </div>
+          <div class="device-watch-image-wrap">
+            <img class="device-watch-image" src="/assets/home/watch.png" alt="Apple Watch" loading="eager" decoding="async">
+          </div>
+          <div class="device-watch" role="img" aria-label="Anteprima stilizzata di Apple Watch">
+            <div class="device-watch-fallback">
+              <div class="device-watch-face">
+                <img class="device-watch-brand" src="/assets/partner/watch.png" alt="" loading="lazy" decoding="async">
+                <div class="device-watch-time">06:42</div>
+                <div class="device-watch-caption">Attività</div>
+                <div class="device-watch-rings" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="title-center">Connetti ciò che usi già.</h2>
+
+        <p class="sub-center">
+          Importa i dati dai tuoi dispositivi preferiti per avere una visione ancora più completa.
+        </p>
+
+        <div class="hero-cta compat-cta">
+          <a class="btn-dark" href="https://apps.apple.com/it/app/runnix/id6756656016">
+            <svg class="hero-cta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16.9 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.9-3.4.9-.7 0-1.8-.9-3-.9-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3.1-.7s1.9.7 3.2.7c1.3 0 2.1-1.1 2.8-2.2.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.8-1.1-2.8-4.3ZM14.7 6.2c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.8-1.3Z"/>
+            </svg>
+            <span>Scarica gratis</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIANI -->
+    <section class="section--dark" id="piani">
+      <div class="wrap">
+        <h2 class="title-center">
+          Recuperare è parte del miglioramento.
+        </h2>
+
+        <p class="sub-center">
+          Sonno, recupero e stress sono parte del tuo benessere. Impara a comprenderli con Runnix.
+        </p>
+
+        <div class="clean-grid recovery-grid" aria-label="Recupero, sonno e stress">
+          <article class="clean-card clean-card--wide recovery-feature-card">
+            <img class="clean-img" src="/assets/home/recupero.png" alt="Stretching per favorire il recupero" loading="lazy" decoding="async">
+            <div class="clean-body">
+              <h3>Recupero</h3>
+              <p>Comprendi come il tuo corpo recupera e impara a riconoscere quando è il momento di spingere e quando rallentare.</p>
+            </div>
+          </article>
+
+          <article class="clean-card clean-card--fitness">
+            <div class="clean-body">
+              <h3>Sonno e ritmo circadiano</h3>
+              <p>Monitora il sonno e la regolarità dei tuoi ritmi per comprendere meglio il tuo riposo.</p>
+            </div>
+            <img class="clean-img" src="/assets/home/sleep.png" alt="Monitoraggio del sonno e del ritmo circadiano" loading="lazy" decoding="async">
+          </article>
+
+          <article class="clean-card clean-card--fitness">
+            <div class="clean-body">
+              <h3>Diario delle abituidini</h3>
+              <p>Monitora il tuo stile di vita quotidiano e comprendi come impatta sul tuo benessere.</p>
+            </div>
+            <img class="clean-img" src="/assets/home/journal.png" alt="Diario delle abituidini" loading="lazy" decoding="async">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUTRIZIONE -->
+    <section class="section section--after-dark" id="nutrizione">
+      <div class="wrap">
+        <h2 class="title-center">Alimenta il tuo benessere.</h2>
+
+        <p class="sub-center">
+          Traccia la tua alimentazione e il suo ruolo nell'energia, nell'allenamento e nella vita quotidiana.
+        </p>
+
+        <div class="clean-grid nutrition-grid" aria-label="Nutrizione e bilancio energetico">
+          <article class="clean-card clean-card--wide">
+            <img class="clean-img nutrition-feature-img" src="/assets/home/nutrizione.png" alt="Dashboard con dati di nutrizione e calorie" loading="lazy" decoding="async">
+            <div class="clean-body">
+              <h3>Nutrizione</h3>
+              <p>Comprendi meglio la tua alimentazione e il suo rapporto con energia, allenamento e benessere quotidiano.</p>
+            </div>
+          </article>
+
+          <article class="clean-card clean-card--fitness">
+            <div class="clean-body">
+              <h3>Diario alimentare</h3>
+              <p>Monitora pasti, nutrienti e abitudini alimentari per avere una visione più chiara della tua nutrizione.</p>
+            </div>
+            <img class="clean-img" src="/assets/home/catalogo.png" alt="Diario di abitudini e nutrizione" loading="lazy" decoding="async">
+          </article>
+
+          <article class="clean-card clean-card--fitness">
+            <div class="clean-body">
+              <h3>Bilanciamento energetico</h3>
+              <p>Confronta l'energia introdotta e quella consumata per comprendere meglio il tuo equilibrio quotidiano.</p>
+            </div>
+            <img class="clean-img" src="/assets/home/energetico.png" alt="Diario di abitudini e nutrizione" loading="lazy" decoding="async">
+          </article>
         </div>
       </div>
     </section>
@@ -1388,206 +1684,67 @@
           energia e progressi per aiutarti a capire cosa sta succedendo e cosa fare dopo.
         </p>
 
-        <div class="intelligence-shell">
-          <div class="intelligence-menu" role="tablist" aria-label="Runnix Intelligence">
-
-            <button class="intel-option is-active" type="button" data-intel="learn" role="tab" aria-selected="true">
-              <h3>Impara da te</h3>
-              <p>
-                Runnix costruisce una comprensione del tuo modo di allenarti.
-                Più lo usi, più le indicazioni diventano rilevanti per il tuo percorso reale.
-              </p>
-            </button>
-
-            <button class="intel-option" type="button" data-intel="patterns" role="tab" aria-selected="false">
-              <h3>Riconosce i tuoi schemi</h3>
-              <p>
-                Analizza l’andamento nel tempo e individua relazioni tra sessioni,
-                recupero, energia, continuità e carico accumulato.
-              </p>
-            </button>
-
-            <button class="intel-option" type="button" data-intel="advice" role="tab" aria-selected="false">
-              <h3>Ti dà indicazioni pratiche</h3>
-              <p>
-                Ricevi suggerimenti basati sui tuoi dati, sui tuoi obiettivi
-                e sul tuo stato attuale, non consigli generici uguali per tutti.
-              </p>
-            </button>
-
-            <button class="intel-option" type="button" data-intel="priority" role="tab" aria-selected="false">
-              <h3>Ti mostra cosa conta</h3>
-              <p>
-                Quando tutto sembra importante, Runnix mette in evidenza i segnali più utili
-                per decidere se spingere, consolidare o recuperare.
-              </p>
-            </button>
-
-            <button class="intel-option" type="button" data-intel="coach" role="tab" aria-selected="false">
-              <h3>AI Coach</h3>
-              <p>
-                Chiedi cose concrete: “oggi ho 30 minuti”, “ho dormito male”,
-                “posso aumentare il carico?”. Runnix ti aiuta a scegliere la soluzione più sensata.
-              </p>
-            </button>
-
-          </div>
-
-          <div class="intel-preview" aria-live="polite">
-            <img class="is-active" data-intel-img="learn" src="/assets/home/ai1.png" alt="Runnix Intelligence overview" loading="lazy" decoding="async">
-            <img data-intel-img="patterns" src="/assets/home/ai2.png" alt="Schemi di allenamento" loading="lazy" decoding="async">
-            <img data-intel-img="advice" src="/assets/home/ai3.png" alt="Indicazioni personalizzate" loading="lazy" decoding="async">
-            <img data-intel-img="priority" src="/assets/home/ai4.png" alt="Priorità chiare" loading="lazy" decoding="async">
-            <img data-intel-img="coach" src="/assets/home/ai5.png" alt="AI Coach Runnix" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-        <div class="intel-bottom-note">
-          <span>Una guida che evolve con te.</span>
-          Il tuo allenamento cambia, i tuoi obiettivi cambiano, il tuo stato cambia.
-          Runnix si aggiorna con il tuo percorso.
-        </div>
-      </div>
-    </section>
-
-    <!-- PIANI -->
-    <section class="section--dark" id="piani">
-      <div class="wrap">
-        <h2 class="title-center">
-          Scegli il piano. Runnix ti dà la struttura.
-        </h2>
-
-        <p class="sub-center">
-          Programmi per obiettivi diversi, organizzati in modo chiaro
-          e aggiornati in base al tuo percorso.
-        </p>
-
-        <div class="plans-shell">
-          <div class="plan-menu" role="tablist" aria-label="Piani Runnix">
-
-            <button class="plan-option is-active" type="button" data-plan="fitness" role="tab" aria-selected="true">
-              <h3>Mantenermi in forma</h3>
-              <p>Un percorso equilibrato per allenarti con costanza tra forza, corsa e recupero.</p>
-              <span class="mini-pill">Progressione guidata dall'AI</span>
-            </button>
-
-            <button class="plan-option" type="button" data-plan="endurance" role="tab" aria-selected="false">
-              <h3>Migliorare corsa e resistenza</h3>
-              <p>Una struttura progressiva per costruire fiato, volume e qualità senza improvvisare.</p>
-              <span class="mini-pill">Progressione guidata dall'AI</span>
-            </button>
-
-            <button class="plan-option" type="button" data-plan="muscle" role="tab" aria-selected="false">
-              <h3>Aumentare la massa muscolare</h3>
-              <p>Sessioni di forza organizzate per dare continuità, volume e direzione al lavoro.</p>
-              <span class="mini-pill">Progressione guidata dall'AI</span>
-            </button>
-
-            <button class="plan-option" type="button" data-plan="5k" role="tab" aria-selected="false">
-              <h3>5K, 10K, 21K</h3>
-              <p>
-                Un piano di allenamento progressivo e strutturato che sviluppa ritmo,
-                continuità e fiducia, bilanciando volume, intensità e recupero.
-              </p>
-              <span class="mini-pill">Piano gara</span>
-            </button>
-
-            <button class="plan-option" type="button" data-plan="hyrox" role="tab" aria-selected="false">
-              <h3>Hyrox</h3>
-              <p>Combina corsa, forza e conditioning con una progressione leggibile.</p>
-              <span class="mini-pill">Piano gara</span>
-            </button>
-
-            <button class="plan-option" type="button" data-plan="custom" role="tab" aria-selected="false">
-              <h3>Piano Custom</h3>
-              <p>Crea liberamente allenamenti e settimane quando vuoi gestire tu la struttura.</p>
-              <span class="mini-pill">Costruito da te</span>
-            </button>
-
-          </div>
-
-          <div class="plan-preview" aria-live="polite">
-            <img class="is-active" data-plan-img="fitness" src="/assets/home/plan1.png" alt="Piano per mantenersi in forma" loading="lazy" decoding="async">
-            <img data-plan-img="endurance" src="/assets/home/plan2.png" alt="Piano corsa e resistenza" loading="lazy" decoding="async">
-            <img data-plan-img="muscle" src="/assets/home/plan3.png" alt="Piano massa muscolare" loading="lazy" decoding="async">
-            <img data-plan-img="5k" src="/assets/home/corsa.jpg" alt="Piano 5K, 10K, 21K" loading="lazy" decoding="async">
-            <img data-plan-img="hyrox" src="/assets/home/hyrox.jpg" alt="Piano HYROX" loading="lazy" decoding="async">
-            <img data-plan-img="custom" src="/assets/home/custom.jpg" alt="Piano Custom" loading="lazy" decoding="async">
-
-            <div class="plan-caption">
-              <h3 id="planCaptionTitle">Mantenermi in forma</h3>
-              <p id="planCaptionText">
-                Un percorso equilibrato per allenarti con costanza tra forza, corsa e recupero.
-              </p>
-            </div>
-          </div>
-        </div>
+        <img class="intelligence-visual" src="/assets/home/coach.png" alt="iPhone con Runnix Coach e fumetti blu" loading="lazy" decoding="async">
       </div>
     </section>
 
     <!-- BIOLOGIA / ENERGIA -->
     <section class="section section--after-dark" id="biologia-energia">
       <div class="wrap">
-        <h2 class="title-center">
-          Allenamento, corpo ed energia quotidiana.
-        </h2>
+        <h2 class="title-center">Biologia</h2>
 
         <p class="sub-center">
-          Non solo sessioni completate. Runnix ti aiuta a leggere anche ciò che influenza
-          davvero il modo in cui ti alleni.
+          Una visione più completa del tuo corpo e dei suoi cambiamenti.
         </p>
 
-        <div class="life-grid">
+        <div class="intelligence-shell">
+          <div class="intelligence-menu" role="tablist" aria-label="Biologia">
+            <button class="bio-option is-active" id="bio-tab-heart" type="button" data-bio="heart" role="tab" aria-selected="true" aria-controls="bio-preview" tabindex="0">
+              <h3>Cuore</h3>
+              <p aria-hidden="false">Monitora la frequenza cardiaca a riposo (RHR) e la variabilità cardiaca (HRV) per conoscere meglio i segnali del tuo organismo.</p>
+            </button>
 
-          <article class="clean-card">
-            <img class="clean-img" src="/assets/home/biologia.png" alt="Biologia" loading="lazy" decoding="async">
+            <button class="bio-option" id="bio-tab-circadian" type="button" data-bio="circadian" role="tab" aria-selected="false" aria-controls="bio-preview" tabindex="-1">
+              <h3>Circadiano</h3>
+              <p aria-hidden="true">Comprendi il tuo ritmo circadiano e osserva come gli orari di sonno e veglia si collegano alle tue abitudini quotidiane.</p>
+            </button>
 
-            <div class="clean-body">
-              <h3>Biologia</h3>
-              <p>
-                Peso, idratazione, ritmo e segnali del corpo diventano informazioni semplici
-                per capire meglio il tuo stato quotidiano.
-              </p>
+            <button class="bio-option" id="bio-tab-breath" type="button" data-bio="breath" role="tab" aria-selected="false" aria-controls="bio-preview" tabindex="-1">
+              <h3>Respiro</h3>
+              <p aria-hidden="true">Tieni sotto controllo il VO₂ max, un indicatore della capacità cardiorespiratoria e della forma aerobica.</p>
+            </button>
+
+            <button class="bio-option" id="bio-tab-weight" type="button" data-bio="weight" role="tab" aria-selected="false" aria-controls="bio-preview" tabindex="-1">
+              <h3>Peso</h3>
+              <p aria-hidden="true">Monitora l'andamento del peso e della composizione corporea, tenendo traccia di massa magra e massa grassa.</p>
+            </button>
+
+            <button class="bio-option" id="bio-tab-water" type="button" data-bio="water" role="tab" aria-selected="false" aria-controls="bio-preview" tabindex="-1">
+              <h3>Acqua</h3>
+              <p aria-hidden="true">Registra quanta acqua bevi e monitora le tue abitudini di idratazione durante la giornata.</p>
+            </button>
+
+            <button class="bio-option" id="bio-tab-cycle" type="button" data-bio="cycle" role="tab" aria-selected="false" aria-controls="bio-preview" tabindex="-1">
+              <div class="bio-option-title-row">
+                <h3>Ciclo</h3>
+                <span class="bio-coming-badge">In arrivo</span>
+              </div>
+              <p aria-hidden="true">Una nuova area dedicata al monitoraggio del ciclo.</p>
+            </button>
+          </div>
+
+          <div class="intel-preview" id="bio-preview" role="tabpanel" aria-labelledby="bio-tab-heart" aria-live="polite">
+            <img class="is-active" data-bio-img="heart" src="/assets/home/carido.png" alt="Allenamento cardio e andamento dei dati cardiovascolari" loading="lazy" decoding="async" aria-hidden="false">
+            <img data-bio-img="circadian" src="/assets/home/sleep.png" alt="Andamento del sonno e degli orari di riposo" loading="lazy" decoding="async" aria-hidden="true">
+            <div class="bio-preview-placeholder" data-bio-img="breath" role="img" aria-label="Anteprima VO₂ max non disponibile" aria-hidden="true">
+              <span>Anteprima non disponibile</span>
             </div>
-          </article>
-
-          <article class="clean-card">
-            <img class="clean-img" src="/assets/home/diario.png" alt="Energia" loading="lazy" decoding="async">
-
-            <div class="clean-body">
-              <h3>Energia</h3>
-              <p>
-                Un feedback veloce è spesso più utile di mille dettagli.
-                Runnix usa il diario per contestualizzare i dati e aiutarti a decidere meglio.
-              </p>
+            <img data-bio-img="weight" src="/assets/home/biologia.png" alt="Indicatori di peso, idratazione e ritmo circadiano" loading="lazy" decoding="async" aria-hidden="true">
+            <img data-bio-img="water" src="/assets/home/diario.png" alt="Diario quotidiano con indicatore di idratazione" loading="lazy" decoding="async" aria-hidden="true">
+            <div class="bio-preview-placeholder" data-bio-img="cycle" role="img" aria-label="Monitoraggio del ciclo mestruale in arrivo" aria-hidden="true">
+              <span>In arrivo</span>
             </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- DISPOSITIVI -->
-    <section class="section device-section" id="compat">
-      <div class="wrap">
-        <h2 class="title-center">Connetti ciò che usi già.</h2>
-
-        <p class="sub-center">
-          Importa dati da app e dispositivi compatibili per avere una visione più completa
-          del tuo allenamento.
-        </p>
-
-        <div class="logos" aria-label="Compatibilità">
-          <div class="logo-box"><img src="/assets/partner/strava.png" alt="Strava" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/garmin.png" alt="Garmin" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/watch.png" alt="Apple Watch" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/nikeplus.png" alt="Nike Run Club" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/suunto.png" alt="Suunto" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/whoop.png" alt="Whoop" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/amazfit.png" alt="Amazfit" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/polar.png" alt="Polar" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/coros.png" alt="Coros" loading="lazy" decoding="async"></div>
-          <div class="logo-box"><img src="/assets/partner/googlefit.png" alt="Google Fit" loading="lazy" decoding="async"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1882,24 +2039,25 @@
     </section>
 
     <!-- CTA Finale -->
-    <section class="cta-final" aria-label="Scarica l'app">
-      <div class="cta">
-        <img class="cta-bg" src="/assets/home/background.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <section class="cta-final" id="cta-final" aria-label="Scarica l'app">
+      <div class="final-cta-content">
+        <h2 class="title-center">Pronti quando vuoi.</h2>
 
-        <div class="cta-inner">
-          <h2 class="cta-title">
-            Pronti quando vuoi.
-          </h2>
+        <p class="sub-center">
+          Inizia con un allenamento alla volta.
+          Runnix ti aiuta con chiarezza e continuità.
+        </p>
 
-          <p class="cta-sub">
-            Inizia con un allenamento alla volta.
-            Runnix ti aiuta con chiarezza e continuità.
-          </p>
-
-          <a class="cta-btn" href="https://runnix.it">
-            Scarica ora l’app
+        <div class="hero-cta">
+          <a class="btn-dark" href="https://apps.apple.com/it/app/runnix/id6756656016">
+            <svg class="hero-cta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16.9 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.9-3.4.9-.7 0-1.8-.9-3-.9-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3.1-.7s1.9.7 3.2.7c1.3 0 2.1-1.1 2.8-2.2.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.8-1.1-2.8-4.3ZM14.7 6.2c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.8-1.3Z"/>
+            </svg>
+            <span>Scarica gratis</span>
           </a>
         </div>
+
+        <img class="final-ecosystem" src="/assets/home/ctafinale.png" alt="Ecosistema di schermate e dispositivi Runnix" loading="eager" decoding="async" hidden>
       </div>
     </section>
 
@@ -1970,38 +2128,88 @@
       });
     }
 
-    // ========================================
-    // RUNNIX INTELLIGENCE SWITCHER
-    // ========================================
-    function initIntelligenceSwitcher(){
-      const buttons = Array.from(document.querySelectorAll(".intel-option"));
-      const images = Array.from(document.querySelectorAll("[data-intel-img]"));
+    function initBiologySwitcher(){
+      const section = document.querySelector("#biologia-energia");
+      if(!section) return;
 
-      if(!buttons.length || !images.length) return;
+      const buttons = Array.from(section.querySelectorAll(".bio-option"));
+      const previews = Array.from(section.querySelectorAll("[data-bio-img]"));
+      const panel = section.querySelector("#bio-preview");
+      if(!buttons.length || !previews.length || !panel) return;
 
-      function setIntel(key){
-        buttons.forEach(btn=>{
-          const isActive = btn.dataset.intel === key;
-          btn.classList.toggle("is-active", isActive);
-          btn.setAttribute("aria-selected", isActive ? "true" : "false");
+      function setBiology(key){
+        const activeButton = buttons.find(button=>button.dataset.bio === key);
+        if(!activeButton) return;
+
+        buttons.forEach(button=>{
+          const isActive = button === activeButton;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-selected", isActive ? "true" : "false");
+          button.tabIndex = isActive ? 0 : -1;
+          button.querySelector("p")?.setAttribute("aria-hidden", isActive ? "false" : "true");
         });
 
-        images.forEach(img=>{
-          img.classList.toggle("is-active", img.dataset.intelImg === key);
+        previews.forEach(preview=>{
+          const isActive = preview.dataset.bioImg === key;
+          preview.classList.toggle("is-active", isActive);
+          preview.setAttribute("aria-hidden", isActive ? "false" : "true");
         });
+        panel.setAttribute("aria-labelledby", activeButton.id);
       }
 
-      buttons.forEach(btn=>{
-        btn.addEventListener("click", ()=>setIntel(btn.dataset.intel));
+      buttons.forEach((button,index)=>{
+        button.addEventListener("click", ()=>setBiology(button.dataset.bio));
+        button.addEventListener("keydown", event=>{
+          let nextIndex = index;
+          if(event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % buttons.length;
+          else if(event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + buttons.length) % buttons.length;
+          else if(event.key === "Home") nextIndex = 0;
+          else if(event.key === "End") nextIndex = buttons.length - 1;
+          else return;
+
+          event.preventDefault();
+          const nextButton = buttons[nextIndex];
+          setBiology(nextButton.dataset.bio);
+          nextButton.focus();
+        });
       });
+    }
+
+    function initFinalEcosystemImage(){
+      const image = document.querySelector("#cta-final .final-ecosystem");
+      if(!image) return;
+
+      const revealLoadedImage = ()=>{
+        if(image.naturalWidth > 0) image.hidden = false;
+      };
+
+      image.addEventListener("load", revealLoadedImage, {once:true});
+      image.addEventListener("error", ()=>{image.hidden = true;}, {once:true});
+      if(image.complete) revealLoadedImage();
     }
 
     // ========================================
     // INIT
     // ========================================
+    function initDeviceWatchImage(){
+      const stage = document.querySelector("#compat .device-stage");
+      const image = stage?.querySelector(".device-watch-image");
+      if(!stage || !image) return;
+
+      const showLoadedImage = ()=>{
+        if(image.naturalWidth > 0) stage.classList.add("has-watch-image");
+      };
+
+      image.addEventListener("load", showLoadedImage, {once:true});
+      image.addEventListener("error", ()=>stage.classList.remove("has-watch-image"), {once:true});
+      if(image.complete) showLoadedImage();
+    }
+
     function initHome(){
       initPlanSwitcher();
-      initIntelligenceSwitcher();
+      initDeviceWatchImage();
+      initBiologySwitcher();
+      initFinalEcosystemImage();
     }
 
     if(document.readyState === "loading"){

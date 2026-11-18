@@ -206,31 +206,6 @@ function initFooterYear(){
 }
 
 // ========================================
-// PARALLAX HERO
-// ========================================
-function initHeroParallax(){
-  const heroImg = document.querySelector('.hero-img');
-  if(!heroImg) return;
-
-  let ticking = false;
-
-  const update = ()=>{
-    const y = window.scrollY * 0.12;
-    heroImg.style.transform = `translateY(${Math.min(80, y)}px) scale(1.02)`;
-    ticking = false;
-  };
-
-  const onScroll = ()=>{
-    if(ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(update);
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  update();
-}
-
-// ========================================
 // PRICING TOGGLE
 // ========================================
 function initPricingToggle(){
@@ -266,10 +241,7 @@ async function init(){
   initFooterSignup();
   initFooterYear();
 
-  // 3. Parallax hero (se esiste nella pagina)
-  initHeroParallax();
-
-  // 4. Toggle pricing (se esiste nella pagina)
+  // 3. Toggle pricing (se esiste nella pagina)
   initPricingToggle();
 }
 

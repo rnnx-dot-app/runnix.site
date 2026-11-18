@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;500;600;700&display=swap");
 
 /* =========================
@@ -106,8 +107,10 @@ a{ color:inherit; text-decoration:none; }
   z-index:1000;
   background:transparent;
   pointer-events:none;
-  font-family:'Zalando Sans SemiExpanded', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:'Geist', sans-serif;
 }
+
+.header button{font-family:inherit;}
 
 .container.nav{
   width:min(860px, calc(100% - 32px));
@@ -301,7 +304,7 @@ a{ color:inherit; text-decoration:none; }
 
   border:1px solid rgba(255,255,255,.55);
   box-shadow:0 24px 80px rgba(0,0,0,.16);
-  font-family:'Zalando Sans SemiExpanded', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:'Geist', sans-serif;
 
   transform:translateY(-12px);
   opacity:0;
@@ -543,8 +546,12 @@ body.menu-open .mobile-menu-overlay{
   text-align:center;
   border-top:1px solid rgba(255,255,255,.06);
   font-size:13px;
+  line-height:1.5;
+  font-family:'Geist', sans-serif;
   color:#AEB4BB;
 }
+
+.rnx-footer__bottom small{font-size:inherit;}
 
 .rnx-footer__signup{
   max-width:300px;
@@ -619,6 +626,7 @@ body.menu-open .mobile-menu-overlay{
   }
   .rnx-footer__bottom{
     margin-top:48px;
+    font-size:12px;
   }
   .rnx-footer__signup{
     max-width:100%;
